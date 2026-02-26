@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# Internal
+PLAN.txt
+_archive/
+_private/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

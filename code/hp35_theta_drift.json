@@ -1,0 +1,142 @@
+{
+  "wt": {
+    "pdb": "1YRF.pdb",
+    "chain": "A",
+    "sequence": "LSDEDFKAVFGMTRSAFANLPLWKQQHLKKEKGLF",
+    "rho": 1.0131228360266258,
+    "n_unstable": 14,
+    "frust_max": 1.0
+  },
+  "mutations": [
+    {
+      "mutation": "M12A",
+      "label": "unknown",
+      "position": 12,
+      "theta_drift_patch": 0.2864584516705638,
+      "theta_drift_site": 1.2866794434029039,
+      "delta_frust_patch": 0.7460016787966355,
+      "delta_frust_site": -0.95984686883922,
+      "delta_rho": -0.0013620862963203972,
+      "delta_unstable": -1,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "M12G",
+      "label": "unknown",
+      "position": 12,
+      "theta_drift_patch": 0.36024572094688034,
+      "theta_drift_site": 1.6289755947703353,
+      "delta_frust_patch": 0.4345679637181372,
+      "delta_frust_site": -0.9677003383568383,
+      "delta_rho": -0.0013620791538861976,
+      "delta_unstable": -2,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "M12W",
+      "label": "unknown",
+      "position": 12,
+      "theta_drift_patch": 0.20045467980484816,
+      "theta_drift_site": 0.8775169796893662,
+      "delta_frust_patch": 1.2107547220552854,
+      "delta_frust_site": -0.3779778050588135,
+      "delta_rho": -0.0013620898340906962,
+      "delta_unstable": 0,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "P21A",
+      "label": "unknown",
+      "position": 21,
+      "theta_drift_patch": 0.07974220208778429,
+      "theta_drift_site": 0.20781252380323406,
+      "delta_frust_patch": -0.4175037518693818,
+      "delta_frust_site": -0.4089876159502784,
+      "delta_rho": -7.49326954558871e-05,
+      "delta_unstable": -1,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "P21G",
+      "label": "unknown",
+      "position": 21,
+      "theta_drift_patch": 0.36560564769939574,
+      "theta_drift_site": 1.6412295086807254,
+      "delta_frust_patch": -0.5183417792321199,
+      "delta_frust_site": -0.4897675973472231,
+      "delta_rho": -7.789335377617057e-05,
+      "delta_unstable": -1,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "G11A",
+      "label": "unknown",
+      "position": 11,
+      "theta_drift_patch": 0.3237487204986763,
+      "theta_drift_site": 1.4621677531354251,
+      "delta_frust_patch": 0.09319804326441927,
+      "delta_frust_site": 0.0051489346592211655,
+      "delta_rho": 4.033883090781565e-05,
+      "delta_unstable": 1,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "G11P",
+      "label": "unknown",
+      "position": 11,
+      "theta_drift_patch": 0.2821677558901672,
+      "theta_drift_site": 1.2660122284007598,
+      "delta_frust_patch": 0.05827312433520859,
+      "delta_frust_site": 0.0002402919506682246,
+      "delta_rho": 5.6598338837643425e-05,
+      "delta_unstable": 1,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "F10A",
+      "label": "unknown",
+      "position": 10,
+      "theta_drift_patch": 0.1367473151492461,
+      "theta_drift_site": 0.5596340382133012,
+      "delta_frust_patch": -0.014703128547282951,
+      "delta_frust_site": -0.011802722332951862,
+      "delta_rho": 4.0545074460496267e-05,
+      "delta_unstable": 0,
+      "patch_size": 20,
+      "converged": false
+    },
+    {
+      "mutation": "L1A",
+      "label": "unknown",
+      "position": 1,
+      "theta_drift_patch": 0.2962217937210334,
+      "theta_drift_site": 0.9680256605917819,
+      "delta_frust_patch": -0.08032411139670392,
+      "delta_frust_site": -0.09508529200375442,
+      "delta_rho": -1.0939023288969452e-05,
+      "delta_unstable": 0,
+      "patch_size": 11,
+      "converged": false
+    },
+    {
+      "mutation": "F35A",
+      "label": "unknown",
+      "position": 35,
+      "theta_drift_patch": 0.23989537278112583,
+      "theta_drift_site": 0.7651881545002274,
+      "delta_frust_patch": -0.0041154962226710445,
+      "delta_frust_site": -0.0005748039291717819,
+      "delta_rho": -4.196449854276807e-10,
+      "delta_unstable": 0,
+      "patch_size": 11,
+      "converged": false
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+mutation,label,significance,review_status
+S94L,benign,likely benign,"criteria provided, single submitter"
+S94A,benign,likely benign,"criteria provided, single submitter"
+S95T,benign,likely benign,"criteria provided, single submitter"
+G105R,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+G105S,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+S106R,pathogenic,pathogenic,reviewed by expert panel
+Y107H,benign,benign,reviewed by expert panel
+G108S,benign,likely benign,reviewed by expert panel
+F109C,pathogenic,likely pathogenic,"criteria provided, single submitter"
+F109I,pathogenic,likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R110H,benign,likely benign,reviewed by expert panel
+R110P,pathogenic,pathogenic,"criteria provided, single submitter"
+R110L,pathogenic,pathogenic,reviewed by expert panel
+R110G,pathogenic,likely pathogenic,reviewed by expert panel
+L111P,pathogenic,pathogenic,reviewed by expert panel
+L111R,pathogenic,pathogenic,reviewed by expert panel
+L111Q,pathogenic,pathogenic,reviewed by expert panel
+L111V,benign,likely benign,reviewed by expert panel
+F113C,pathogenic,pathogenic,"criteria provided, single submitter"
+F113I,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+F113L,pathogenic,pathogenic,"criteria provided, single submitter"
+H115R,benign,likely benign,reviewed by expert panel
+T118I,benign,likely benign,reviewed by expert panel
+V122M,benign,likely benign,reviewed by expert panel
+C124S,benign,likely benign,reviewed by expert panel
+C124W,benign,likely benign,"criteria provided, single submitter"
+C124R,pathogenic,likely pathogenic,"criteria provided, single submitter"
+T125K,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+T125R,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+S127F,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+S127C,pathogenic,pathogenic,"criteria provided, single submitter"
+S127Y,pathogenic,pathogenic,reviewed by expert panel
+S127T,pathogenic,likely pathogenic,reviewed by expert panel
+S127P,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+A129D,benign,benign,"criteria provided, single submitter"
+L130P,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+L130H,pathogenic,pathogenic,"criteria provided, single submitter"
+N131I,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+N131H,pathogenic,likely pathogenic,"criteria provided, single submitter"
+K132N,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+K132R,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+M133T,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+F134C,pathogenic,likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+F134I,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C135F,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C135R,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C135G,pathogenic,pathogenic,reviewed by expert panel
+C135S,pathogenic,likely pathogenic,"criteria provided, single submitter"
+A138P,pathogenic,likely pathogenic,reviewed by expert panel
+A138V,pathogenic,likely pathogenic,reviewed by expert panel
+C141Y,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C141W,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+V143M,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+V143A,pathogenic,pathogenic,reviewed by expert panel
+V147G,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+P151T,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+P151S,pathogenic,pathogenic,"criteria provided, single submitter"
+P151R,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+P151A,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+P151F,pathogenic,likely pathogenic,"criteria provided, single submitter"
+P152L,pathogenic,pathogenic,reviewed by expert panel
+P152R,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+T155N,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R156P,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+V157F,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+V157I,benign,likely benign,reviewed by expert panel
+V157G,pathogenic,likely pathogenic,"criteria provided, single submitter"
+R158H,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R158P,pathogenic,pathogenic,reviewed by expert panel
+R158L,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R158G,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+R158S,pathogenic,pathogenic,"criteria provided, single submitter"
+A159V,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+A159D,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+M160I,benign,likely benign,reviewed by expert panel
+A161T,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y163C,pathogenic,pathogenic,reviewed by expert panel
+Y163H,pathogenic,pathogenic,reviewed by expert panel
+K164E,pathogenic,pathogenic,reviewed by expert panel
+S166T,benign,likely benign,"criteria provided, single submitter"
+H168L,pathogenic,pathogenic,"criteria provided, single submitter"
+H168P,pathogenic,likely pathogenic,"criteria provided, single submitter"
+T170M,benign,likely benign,reviewed by expert panel
+E171K,benign,likely benign,reviewed by expert panel
+E171G,pathogenic,pathogenic,"criteria provided, single submitter"
+V173M,pathogenic,pathogenic,reviewed by expert panel
+V173A,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+V173L,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R174K,benign,likely benign,"criteria provided, multiple submitters, no conflicts"
+R175H,pathogenic,pathogenic,reviewed by expert panel
+R175L,pathogenic,likely pathogenic,reviewed by expert panel
+R175G,pathogenic,pathogenic,reviewed by expert panel
+C176Y,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+C176F,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+P177R,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+H178D,pathogenic,pathogenic,reviewed by expert panel
+H178Q,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+H179Y,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+H179Q,pathogenic,pathogenic,reviewed by expert panel
+H179D,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+E180K,pathogenic,likely pathogenic,reviewed by expert panel
+R181H,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R181C,pathogenic,likely pathogenic,reviewed by expert panel
+R181P,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+S183P,benign,likely benign,"criteria provided, single submitter"
+S185N,benign,likely benign,reviewed by expert panel
+S185R,benign,likely benign,"criteria provided, single submitter"
+D186E,benign,likely benign,"criteria provided, multiple submitters, no conflicts"
+D186N,benign,likely benign,reviewed by expert panel
+P190L,pathogenic,likely pathogenic,reviewed by expert panel
+P191R,benign,likely benign,reviewed by expert panel
+Q192H,benign,likely benign,"criteria provided, single submitter"
+H193R,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+H193Y,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+H193P,pathogenic,pathogenic,reviewed by expert panel
+H193N,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+L194F,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+L194R,pathogenic,pathogenic,reviewed by expert panel
+I195T,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+R196P,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+V197M,pathogenic,likely pathogenic,reviewed by expert panel
+G199V,pathogenic,likely pathogenic,"criteria provided, single submitter"
+E204D,benign,likely benign,"criteria provided, single submitter"
+Y205C,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y205H,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y205D,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+D207E,benign,likely benign,"criteria provided, single submitter"
+D208N,benign,likely benign,"criteria provided, single submitter"
+N210S,benign,likely benign,"criteria provided, single submitter"
+F212S,benign,likely benign,"criteria provided, single submitter"
+R213Q,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R213P,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R213W,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+H214R,pathogenic,pathogenic,reviewed by expert panel
+H214L,pathogenic,likely pathogenic,reviewed by expert panel
+V216M,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+V218E,pathogenic,likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y220S,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y220C,pathogenic,pathogenic,reviewed by expert panel
+Y220H,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+D228Y,benign,likely benign,"criteria provided, single submitter"
+I232T,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+I232S,pathogenic,pathogenic,"criteria provided, single submitter"
+I232N,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y234C,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y234D,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y234H,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y234N,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+N235S,benign,benign,reviewed by expert panel
+Y236H,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+Y236C,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+M237I,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+M237K,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C238W,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C238Y,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C238F,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C238S,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C238R,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C238G,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+N239S,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+N239K,pathogenic,pathogenic,"criteria provided, single submitter"
+S240G,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+S240C,pathogenic,likely pathogenic,"criteria provided, single submitter"
+S241F,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+S241C,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+S241Y,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+S241A,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+S241T,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C242Y,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C242W,pathogenic,pathogenic,"criteria provided, single submitter"
+G244D,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+G244S,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+G244V,pathogenic,likely pathogenic,"criteria provided, single submitter"
+G244A,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+G245C,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+G245D,pathogenic,pathogenic,"criteria provided, single submitter"
+G245S,pathogenic,pathogenic,reviewed by expert panel
+G245V,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+M246V,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+M246K,pathogenic,likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+M246I,pathogenic,likely pathogenic,"criteria provided, single submitter"
+R248W,pathogenic,likely pathogenic,"criteria provided, single submitter"
+R248Q,pathogenic,pathogenic,reviewed by expert panel
+R248L,pathogenic,pathogenic,reviewed by expert panel
+R248P,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R248G,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R249S,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R249T,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+P250L,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+I251L,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+I251F,pathogenic,likely pathogenic,"criteria provided, single submitter"
+T253A,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+I254V,benign,likely benign,reviewed by expert panel
+I254N,pathogenic,pathogenic,"criteria provided, single submitter"
+I254T,pathogenic,pathogenic,reviewed by expert panel
+E258K,pathogenic,likely pathogenic,"criteria provided, single submitter"
+S260Y,benign,likely benign,reviewed by expert panel
+G262S,benign,likely benign,reviewed by expert panel
+N263S,benign,likely benign,"criteria provided, single submitter"
+L265P,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+L265Q,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+G266E,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+G266R,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+R267Q,pathogenic,likely pathogenic,reviewed by expert panel
+R267W,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R267P,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+R267G,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+F270S,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+F270C,pathogenic,likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+F270V,pathogenic,pathogenic,"criteria provided, single submitter"
+E271V,pathogenic,likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+V272L,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+V272M,pathogenic,pathogenic,reviewed by expert panel
+R273H,pathogenic,pathogenic,reviewed by expert panel
+R273C,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R273P,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R273L,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+R273S,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+R273G,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+V274I,benign,benign,"criteria provided, single submitter"
+C275Y,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C275F,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+C275W,pathogenic,likely pathogenic,"criteria provided, single submitter"
+A276G,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+C277G,pathogenic,likely pathogenic,reviewed by expert panel
+P278L,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+P278S,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+P278T,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R280T,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R280S,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+D281G,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+D281V,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+D281Y,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+D281N,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+D281H,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+D281A,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+D281E,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R282W,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R282G,pathogenic,pathogenic,"criteria provided, multiple submitters, no conflicts"
+R282P,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+R283C,benign,likely benign,reviewed by expert panel
+T284I,benign,likely benign,reviewed by expert panel
+E285V,pathogenic,pathogenic,"criteria provided, single submitter"
+E285K,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+E286K,pathogenic,pathogenic/likely pathogenic,"criteria provided, multiple submitters, no conflicts"
+E286A,pathogenic,likely pathogenic,"criteria provided, single submitter"
+E287G,benign,likely benign,"criteria provided, single submitter"
+L289P,benign,likely benign,reviewed by expert panel

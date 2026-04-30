@@ -1,0 +1,102 @@
+{
+  "wt": {
+    "pdb": "1YRF.pdb",
+    "chain": "A",
+    "sequence": "LSDEDFKAVFGMTRSAFANLPLWKQQHLKKEKGLF",
+    "rho": 1.0131228360266258,
+    "n_unstable": 14,
+    "frust_max": 1.0
+  },
+  "mutations": [
+    {
+      "mutation": "M12A",
+      "label": "unknown",
+      "delta_rho": -0.01079191260367729,
+      "delta_unstable": -8,
+      "delta_frust_max": 0.0,
+      "delta_frust_local": -0.9318686810768959,
+      "mut_rho": 1.0023309234229485,
+      "position": 12
+    },
+    {
+      "mutation": "M12G",
+      "label": "unknown",
+      "delta_rho": -0.011393481349331935,
+      "delta_unstable": -11,
+      "delta_frust_max": 0.0,
+      "delta_frust_local": -0.9999973781948488,
+      "mut_rho": 1.0017293546772938,
+      "position": 12
+    },
+    {
+      "mutation": "M12W",
+      "label": "unknown",
+      "delta_rho": -0.0113897149201998,
+      "delta_unstable": -9,
+      "delta_frust_max": 0.0,
+      "delta_frust_local": -0.9988810233103426,
+      "mut_rho": 1.001733121106426,
+      "position": 12
+    },
+    {
+      "mutation": "P21A",
+      "label": "unknown",
+      "delta_rho": -0.01077917287267538,
+      "delta_unstable": -7,
+      "delta_frust_max": 0.0,
+      "delta_frust_local": -0.4892992010302942,
+      "mut_rho": 1.0023436631539504,
+      "position": 21
+    },
+    {
+      "mutation": "P21G",
+      "label": "unknown",
+      "delta_rho": -0.009804834481023539,
+      "delta_unstable": -7,
+      "delta_frust_max": 0.0,
+      "delta_frust_local": -0.48988399555044104,
+      "mut_rho": 1.0033180015456022,
+      "position": 21
+    },
+    {
+      "mutation": "A8V",
+      "label": "unknown",
+      "delta_rho": -0.011117776786737421,
+      "delta_unstable": -9,
+      "delta_frust_max": 0.0,
+      "delta_frust_local": -0.0026108005222601023,
+      "mut_rho": 1.0020050592398884,
+      "position": 8
+    },
+    {
+      "mutation": "G11A",
+      "label": "unknown",
+      "delta_rho": -0.008650958664930819,
+      "delta_unstable": -6,
+      "delta_frust_max": 0.0,
+      "delta_frust_local": 0.0038315724892946205,
+      "mut_rho": 1.004471877361695,
+      "position": 11
+    },
+    {
+      "mutation": "G11P",
+      "label": "unknown",
+      "delta_rho": -0.011366472973317832,
+      "delta_unstable": -8,
+      "delta_frust_max": 0.0,
+      "delta_frust_local": -0.00025460801525031357,
+      "mut_rho": 1.001756363053308,
+      "position": 11
+    },
+    {
+      "mutation": "F10A",
+      "label": "unknown",
+      "delta_rho": -0.008433978760806982,
+      "delta_unstable": -7,
+      "delta_frust_max": 0.0,
+      "delta_frust_local": -0.006419163973336356,
+      "mut_rho": 1.0046888572658188,
+      "position": 10
+    }
+  ]
+}

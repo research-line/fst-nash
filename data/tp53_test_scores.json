@@ -1,0 +1,142 @@
+{
+  "wt": {
+    "pdb": "2XWR.pdb",
+    "chain": "A",
+    "sequence": "WPLSSSVPSQKTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRRCPHHERCSDSDGLAPPQHLIRVEGNLRVEYLDDRNTFRHSVVVPYEPPEVGSDCTTIHYNYMCNSSCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCACPGRDRRTEEENL",
+    "rho": 1.0075994884015729,
+    "n_unstable": 245,
+    "frust_max": 1.0
+  },
+  "mutations": [
+    {
+      "mutation": "G105R",
+      "label": "pathogenic",
+      "position": 15,
+      "theta_drift_patch": 0.09356627548283146,
+      "theta_drift_site": 0.005693709336278772,
+      "delta_frust_patch": -0.20801787574832176,
+      "delta_frust_site": -0.04217099543146077,
+      "delta_rho": 0.0,
+      "delta_unstable": 0,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "G105S",
+      "label": "pathogenic",
+      "position": 15,
+      "theta_drift_patch": 0.09557153584051639,
+      "theta_drift_site": 0.08854420401599823,
+      "delta_frust_patch": -0.2212914600401792,
+      "delta_frust_site": -0.05915278437192792,
+      "delta_rho": 0.0,
+      "delta_unstable": 0,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "S106R",
+      "label": "pathogenic",
+      "position": 16,
+      "theta_drift_patch": 0.0947696619434223,
+      "theta_drift_site": 0.08954696348697207,
+      "delta_frust_patch": -0.11059307597529866,
+      "delta_frust_site": 0.051141392441087175,
+      "delta_rho": 0.0,
+      "delta_unstable": 0,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "F109C",
+      "label": "pathogenic",
+      "position": 19,
+      "theta_drift_patch": 0.10150548786540932,
+      "theta_drift_site": 0.14752152244489744,
+      "delta_frust_patch": -0.36753225088233865,
+      "delta_frust_site": -0.23373978268099932,
+      "delta_rho": 0.0,
+      "delta_unstable": 0,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "F109I",
+      "label": "pathogenic",
+      "position": 19,
+      "theta_drift_patch": 0.12750455365374014,
+      "theta_drift_site": 0.38420610738939204,
+      "delta_frust_patch": 0.10080629838471644,
+      "delta_frust_site": 0.21798597863491487,
+      "delta_rho": 0.0,
+      "delta_unstable": 0,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "S94L",
+      "label": "benign",
+      "position": 4,
+      "theta_drift_patch": 0.1073649355480013,
+      "theta_drift_site": 0.12636068474284137,
+      "delta_frust_patch": 0.029727559903601097,
+      "delta_frust_site": 0.0961689369708928,
+      "delta_rho": -0.0001179460041491609,
+      "delta_unstable": 0,
+      "patch_size": 14,
+      "converged": false
+    },
+    {
+      "mutation": "S94A",
+      "label": "benign",
+      "position": 4,
+      "theta_drift_patch": 0.10205276347867716,
+      "theta_drift_site": 0.01734639177788517,
+      "delta_frust_patch": 0.09858047483144272,
+      "delta_frust_site": 0.17015633109335715,
+      "delta_rho": -0.0001179460041491609,
+      "delta_unstable": 0,
+      "patch_size": 14,
+      "converged": false
+    },
+    {
+      "mutation": "S95T",
+      "label": "benign",
+      "position": 5,
+      "theta_drift_patch": 0.10291414085599404,
+      "theta_drift_site": 0.10748107940951093,
+      "delta_frust_patch": 0.033185079231471626,
+      "delta_frust_site": 0.10410029882973923,
+      "delta_rho": -0.0001179460041491609,
+      "delta_unstable": 0,
+      "patch_size": 15,
+      "converged": false
+    },
+    {
+      "mutation": "Y107H",
+      "label": "benign",
+      "position": 17,
+      "theta_drift_patch": 0.09036208261517684,
+      "theta_drift_site": 0.13858211746140806,
+      "delta_frust_patch": -0.07537992984782971,
+      "delta_frust_site": 0.07317251530027649,
+      "delta_rho": 0.0,
+      "delta_unstable": 0,
+      "patch_size": 21,
+      "converged": false
+    },
+    {
+      "mutation": "G108S",
+      "label": "benign",
+      "position": 18,
+      "theta_drift_patch": 0.09859839051767247,
+      "theta_drift_site": 0.11539028023862966,
+      "delta_frust_patch": -0.11949207720217903,
+      "delta_frust_site": 0.012786423694009843,
+      "delta_rho": 0.0,
+      "delta_unstable": 1,
+      "patch_size": 21,
+      "converged": false
+    }
+  ]
+}

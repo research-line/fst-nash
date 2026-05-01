@@ -13,18 +13,39 @@ venv/
 # Research-internal notes and work packages
 Plan.txt
 PLAN.txt
+KONZEPT.md
+AKTIONSPLAN.md
+PUBLIKATIONSPLAN.md
+POSTRELEASE-PR.md
+TODO.md
 BEWEISNOTIZ.md
+BEWEISNOTIZ*.md
 REVISE.txt
 SOLVED*.txt
+SESSION_HANDOFF.md
+GAPS.md
 *_submission/
 *_SUBMISSION/
 _archive/
+_reviews/
+reviews/
 _partners/
 _private/
 _copilot/
+proof-notes/
 removed_sections/
 *BRIEFING*
 CORE.txt
+REVIEW_CHAIN*.md
+REVIEW_*.md
+
+# Paper build artifacts if manuscript files are copied locally
+*.aux
+*.bbl
+*.blg
+*.out
+*.synctex*
+*.toc
 
 # Credentials and local configuration
 .env

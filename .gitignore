@@ -20,6 +20,9 @@ POSTRELEASE-PR.md
 TODO.md
 BEWEISNOTIZ.md
 BEWEISNOTIZ*.md
+OUTLINE*.md
+STATUS_UEBERSICHT*.md
+QUELLEN_*_Verifikation.md
 REVISE.txt
 SOLVED*.txt
 SESSION_HANDOFF.md
@@ -27,6 +30,7 @@ GAPS.md
 *_submission/
 *_SUBMISSION/
 _archive/
+_results/
 _reviews/
 reviews/
 _partners/
@@ -38,6 +42,7 @@ removed_sections/
 CORE.txt
 REVIEW_CHAIN*.md
 REVIEW_*.md
+papers/
 
 # Paper build artifacts if manuscript files are copied locally
 *.aux
@@ -63,7 +68,7 @@ data/variant_summary.txt
 
 # Runtime logs
 *.log
-!results/server_logs/*.log
+results/server_logs/
 
 # OS
 .DS_Store

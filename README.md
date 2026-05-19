@@ -19,7 +19,7 @@ The companion paper is also linked from [research-line/functional-stability-theo
 
 ## Method
 
-Each residue is treated as a player choosing backbone angles (phi, psi). The protein folds to a Nash equilibrium where no residue can unilaterally improve its local energy.
+Each residue is treated as a player choosing backbone angles (phi, psi). The fitted model probes whether local best-response dynamics approach Nash-style fixed points where no residue can unilaterally improve its local score.
 
 **Potential function:**
 
@@ -30,18 +30,18 @@ Each residue is treated as a player choosing backbone angles (phi, psi). The pro
 
 1. **Reverse engineering** — Learn interaction parameters from known structures (PDB).
 2. **Stability analysis** — Hessian eigenvalue analysis at native state.
-3. **Prediction** — Multi-start gradient descent to find Nash equilibria.
+3. **Convergence diagnostics** — Multi-start gradient descent to probe fitted Nash equilibria.
 4. **Best-response dynamics** — True game-theoretic convergence analysis.
-5. **Mutation scoring** — Predict pathogenicity via frustration changes (TP53 ClinVar).
+5. **Mutation scoring** — Exploratory pathogenicity scoring via frustration changes (TP53 ClinVar).
 
-The framework introduces **Nash frustration**, a game-theoretic complement to energetic frustration (Ferreiro et al.), and validates it against NMR chemical-shift perturbation data (Spearman rho_S = 0.44, p = 0.033, n = 24).
+The framework introduces **Nash frustration**, a game-theoretic complement to energetic frustration (Ferreiro et al.). The current paper reports a preliminary, self-parametrized single-protein consistency check against NMR chemical-shift perturbation data (Spearman rho_S = 0.44, p = 0.033, n = 24), not an externally calibrated predictor.
 
 ## Data
 
 - `data/1PGA.pdb`, `data/1YRF.pdb`, `data/2XWR.pdb` — Training/test protein structures.
 - `data/tp53_clinvar_dbd.csv` — TP53 DNA-binding-domain mutations with ClinVar annotations.
 - `data/tp53_full_scores.json` — Mutation pathogenicity predictions.
-- `results/` — Current benchmark, eta-calibration, eta-scan, extended-analysis, and server-log outputs.
+- `results/` — Current benchmark, eta/absolute-scale sensitivity, eta-scan, extended-analysis, and server-log outputs.
 - Root-level `*.pdb` / `*.json` / `*.csv` files are kept for backward compatibility with the initial scripts.
 
 The local raw ClinVar dump `data/variant_summary.txt` is intentionally not tracked because it is about 3.86 GB and can be regenerated with `code/fetch_clinvar_variants.py`.
@@ -60,7 +60,7 @@ pip install -r requirements.txt
 python scripts/protein_fold_nash_pdb.py    # Main folding + reverse engineering
 python scripts/nash_mutation_score.py      # TP53 mutation pathogenicity scoring
 python scripts/run_extended_analysis.py    # Batch analysis for current result set
-python scripts/eta_calibration_bmrb.py     # eta-calibration against BMRB chemical shifts
+python scripts/eta_calibration_bmrb.py     # rank-invariance and absolute-scale checks against BMRB chemical shifts
 python scripts/eta_scan.py                 # eta-scan over the canonical grid
 python scripts/frustration_benchmark.py    # Frustration benchmark on the curated set
 ```
@@ -72,7 +72,7 @@ python scripts/frustration_benchmark.py    # Frustration benchmark on the curate
 
 ## Status
 
-The FST-III paper is on Zenodo at v1.1 (Concept-DOI [10.5281/zenodo.20130573](https://doi.org/10.5281/zenodo.20130573)). Open follow-ups for v1.2+ (η-calibration refinement, TP53 reanalysis with calibrated η, additional proteins, falsifiable predictions with quantitative thresholds) are tracked in the main FST programme TODO. Internal-only research notes (BEWEISNOTIZ, KONZEPT, AKTIONSPLAN, review chains) remain out of this repository.
+The FST-III paper is on Zenodo at v1.2 (Concept-DOI [10.5281/zenodo.20130573](https://doi.org/10.5281/zenodo.20130573)). Open follow-ups for v1.3+ (absolute score/threshold calibration, TP53 reanalysis with calibrated score logic, additional proteins, falsifiable predictions with quantitative thresholds, 2XWR provenance cleanup) are tracked in the main FST programme TODO. Internal-only research notes (BEWEISNOTIZ, KONZEPT, AKTIONSPLAN, review chains) remain out of this repository.
 
 ## License
 

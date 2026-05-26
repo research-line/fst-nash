@@ -1,68 +1,69 @@
-# FST-Nash: Protein Folding via Nash Equilibrium
+# FST-Nash: Game-Theoretic Diagnostics for Chaperone Systems
 
-Game-theoretic approach to protein structure prediction using continuous potential games. Companion code repository for the **Functional Stability Theory III: Biological Stability and Nash Frustration** paper.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20402752.svg)](https://doi.org/10.5281/zenodo.20402752)
+
+A potential-game test maps the Goloubinoff symmetry landscape: sub-classifying non-equilibrium chaperones into kinetic and thermodynamic regimes.
+
+## Paper
+
+**Game-Theoretic Diagnostics for Chaperone Systems: A Potential-Game Test Maps the Goloubinoff Symmetry Landscape**
+
+- Zenodo DOI: [10.5281/zenodo.20402752](https://doi.org/10.5281/zenodo.20402752)
+- Concept-DOI: [10.5281/zenodo.20402751](https://doi.org/10.5281/zenodo.20402751)
+- Status: Preprint v1.0 (May 2026)
+
+This paper supersedes Section 3 ("Game-Theoretic Stability") of FST-III Biological ([10.5281/zenodo.20130573](https://doi.org/10.5281/zenodo.20130573)).
 
 ## Programme context
-
-This repository is the computational arm of **FST-III**, one of four application-scale companions in the **Functional Stability Theory (FST)** programme:
 
 | Paper | Concept-DOI |
 |---|---|
 | FST Hub (programme umbrella) | [10.5281/zenodo.20130499](https://doi.org/10.5281/zenodo.20130499) |
-| FST-I — Thermodynamic Stability of Fundamental Parameters | [10.5281/zenodo.20130544](https://doi.org/10.5281/zenodo.20130544) |
-| FST-II — Chemical Stability and Autocatalytic Selection | [10.5281/zenodo.20130563](https://doi.org/10.5281/zenodo.20130563) |
-| **FST-III — Biological Stability and Nash Frustration** | [**10.5281/zenodo.20130573**](https://doi.org/10.5281/zenodo.20130573) |
-| FST-IV — Cosmological Stability (collector slot) | *forthcoming* |
-| FST-DE — Dark Energy as Residual Vacuum Free Energy | [10.5281/zenodo.19036235](https://doi.org/10.5281/zenodo.19036235) |
-
-The companion paper is also linked from [research-line/functional-stability-theory](https://github.com/research-line/functional-stability-theory) (the LaTeX sources for the entire FST programme).
+| FST-I Thermodynamic Stability | [10.5281/zenodo.20130544](https://doi.org/10.5281/zenodo.20130544) |
+| FST-II Chemical Stability | [10.5281/zenodo.20130563](https://doi.org/10.5281/zenodo.20130563) |
+| **FST-III Biological Stability** | [**10.5281/zenodo.20130573**](https://doi.org/10.5281/zenodo.20130573) |
+| **FST-Nash (this paper)** | [**10.5281/zenodo.20402751**](https://doi.org/10.5281/zenodo.20402751) |
 
 ## Method
 
-Each residue is treated as a player choosing backbone angles (phi, psi). The fitted model probes whether local best-response dynamics approach Nash-style fixed points where no residue can unilaterally improve its local score.
+We construct 2x2 games from chaperone-substrate interactions and apply the potential-game (PG) test of Monderer & Shapley (1996). The fourth symmetry condition (S4) of Xu (2022) corresponds to the PG property, yielding a **regime trinity**:
 
-**Potential function:**
-
-- Single-residue terms: amino-acid-specific preferences for (phi, psi) angles
-- Pairwise coupling: contact-dependent angular correlation via RBF-weighted interactions
-
-**Pipeline:**
-
-1. **Reverse engineering** — Learn interaction parameters from known structures (PDB).
-2. **Stability analysis** — Hessian eigenvalue analysis at native state.
-3. **Convergence diagnostics** — Multi-start gradient descent to probe fitted Nash equilibria.
-4. **Best-response dynamics** — True game-theoretic convergence analysis.
-5. **Mutation scoring** — Exploratory pathogenicity scoring via frustration changes (TP53 ClinVar).
-
-The framework introduces **Nash frustration**, a game-theoretic complement to energetic frustration (Ferreiro et al.). The current paper reports a preliminary, self-parametrized single-protein consistency check against NMR chemical-shift perturbation data (Spearman rho_S = 0.44, p = 0.033, n = 24), not an externally calibrated predictor.
-
-## Data
-
-- `data/1PGA.pdb`, `data/1YRF.pdb`, `data/2XWR.pdb` — Training/test protein structures.
-- `data/tp53_clinvar_dbd.csv` — TP53 DNA-binding-domain mutations with ClinVar annotations.
-- `data/tp53_full_scores.json` — Mutation pathogenicity predictions.
-- `results/` — Current benchmark, eta/absolute-scale sensitivity, eta-scan, extended-analysis, and server-log outputs.
-- Root-level `*.pdb` / `*.json` / `*.csv` files are kept for backward compatibility with the initial scripts.
-
-The local raw ClinVar dump `data/variant_summary.txt` is intentionally not tracked because it is about 3.86 GB and can be regenerated with `code/fetch_clinvar_variants.py`.
+| Regime | S3 | S4 | PG | Example |
+|--------|----|----|-----|---------|
+| Equilibrium (GG) | intact | intact | True | XCL1, Prefoldin |
+| Kinetic NGG | broken | intact | True | Hsp70/DnaJ, SecA |
+| Thermodynamic NGG | broken | broken | False | GroEL, Hsp90, ClpB, p97 |
 
 ## Repository layout
 
-- `code/` — exploratory and validation scripts plus intermediate JSON outputs.
-- `scripts/` — reproducible analysis entry points used for the current result set.
-- `data/` — compact input data and derived ClinVar tables.
-- `results/` — generated figures, JSON summaries, LaTeX tables, and run logs.
+```
+scripts/                    26 calibration/diagnostic scripts
+  extension_B/              5 hold-out scripts + pre-registration
+  results/                  Extension B hold-out results (JSON)
+results/                    Main atlas results (JSON)
+data/                       PDB structures (25 benchmark + 5 original)
+code/                       Legacy protein-folding scripts
+```
 
-## Usage
+## Key scripts
 
 ```bash
-pip install -r requirements.txt
-python scripts/protein_fold_nash_pdb.py    # Main folding + reverse engineering
-python scripts/nash_mutation_score.py      # TP53 mutation pathogenicity scoring
-python scripts/run_extended_analysis.py    # Batch analysis for current result set
-python scripts/eta_calibration_bmrb.py     # rank-invariance and absolute-scale checks against BMRB chemical shifts
-python scripts/eta_scan.py                 # eta-scan over the canonical grid
-python scripts/frustration_benchmark.py    # Frustration benchmark on the curated set
+# Core chaperone calibrations (one per system)
+python scripts/hsp70_calibrated.py
+python scripts/groel_calibrated.py
+python scripts/xcl1_fold_switching_calibrated.py
+
+# Cross-system analysis
+python scripts/chaperone_cross_validation.py
+python scripts/goloubinoff_symmetry_mapping.py
+python scripts/fold_switching_diagnostic.py
+
+# Extension B: hold-out validation
+python scripts/extension_B/dnaj_holdout.py
+python scripts/extension_B/thermosome_holdout.py
+
+# Legacy protein-folding pipeline
+python scripts/protein_fold_nash_pdb.py
 ```
 
 ## Requirements
@@ -70,10 +71,6 @@ python scripts/frustration_benchmark.py    # Frustration benchmark on the curate
 - Python 3.10+
 - See `requirements.txt` (`numpy`, `scipy`, `biopython`, `matplotlib`, `mpmath`).
 
-## Status
-
-The FST-III paper is on Zenodo at v1.2 (Concept-DOI [10.5281/zenodo.20130573](https://doi.org/10.5281/zenodo.20130573)). Open follow-ups for v1.3+ (absolute score/threshold calibration, TP53 reanalysis with calibrated score logic, additional proteins, falsifiable predictions with quantitative thresholds, 2XWR provenance cleanup) are tracked in the main FST programme TODO. Internal-only research notes (BEWEISNOTIZ, KONZEPT, AKTIONSPLAN, review chains) remain out of this repository.
-
 ## License
 
-MIT — see [LICENSE](./LICENSE).
+MIT -- see [LICENSE](./LICENSE).

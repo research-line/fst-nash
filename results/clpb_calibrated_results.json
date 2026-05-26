@@ -1,0 +1,74 @@
+{
+  "modell": "ClpB/Hsp104 Disaggregase",
+  "regime": 3,
+  "regime_name": "Thermodynamisches Nicht-Gleichgewicht",
+  "experimentelle_parameter": {
+    "kcat_basal_per_min": 3.9,
+    "kcat_casein_per_min": 6.2,
+    "stimulation_factor": 1.5897435897435899,
+    "kcat_hsp104_per_min": 72.0,
+    "nbd_asymmetry_factor": 10.0,
+    "translocation_aa_per_s": 0.9,
+    "dnak_required": true
+  },
+  "abgeleitete_groessen": {
+    "S3_ratio": 1.59,
+    "ddG_S3_kcal": 0.27,
+    "NBD_asymmetry": 10.0,
+    "ddG_asymmetry_kcal": 1.37,
+    "translocation_aa_per_s": 0.9
+  },
+  "payoff_parameter": {
+    "delta_C": 2.0,
+    "delta_G": 4.0,
+    "asymmetrie_motivation": "delta_C < delta_G weil Substrat ueberproportional von Disaggregation profitiert (kinetisch gefangener Zustand befreit)"
+  },
+  "ergebnisse": {
+    "I_C": -2.0,
+    "I_G": -4.0,
+    "four_cycle_violation": 2.0,
+    "potential_game": false,
+    "nash_equilibria": [
+      {
+        "clpb": "Asymmetric",
+        "aggregat": "Aggregated",
+        "u_C": 3.37,
+        "u_G": 4.0
+      }
+    ]
+  },
+  "kalibrierungsstatus": {
+    "clpb_atpase": {
+      "status": "KALIBRIERT",
+      "quelle": "Werbeck 2011"
+    },
+    "nbd_asymmetrie": {
+      "status": "KALIBRIERT",
+      "quelle": "Mogk-Gruppe (~10x)"
+    },
+    "s3_brechung": {
+      "status": "KALIBRIERT",
+      "quelle": "1.6x Casein (moderat)"
+    },
+    "delta_C": {
+      "status": "GESCHAETZT",
+      "quelle": "2.0 kcal/mol (Translokation)"
+    },
+    "delta_G": {
+      "status": "GESCHAETZT",
+      "quelle": "4.0 kcal/mol (Disaggregation)"
+    },
+    "pg_verletzung": {
+      "status": "FOLGT AUS KONSTRUKTION",
+      "erklaerung": "PG=False folgt aus delta_C != delta_G"
+    }
+  },
+  "schlussfolgerung": {
+    "s3_gebrochen": true,
+    "s4_pg_gebrochen": true,
+    "regime": 3,
+    "besonderheit": "DnaK/DnaJ/GrpE obligat; ClpB allein inaktiv",
+    "vergleich_groel": "Aehnlich GroEL: asymmetrische Kopplung bricht PG. Aber: GroEL hat cis/trans-Ring-Asymmetrie, ClpB hat NBD1/NBD2-Ring-Asymmetrie.",
+    "einschraenkung": "delta_C und delta_G sind geschaetzt. Die Asymmetrie ist experimentell belegt (NBD1/NBD2 ~10x), aber die genauen Kopplungsenergien zum Substrat sind nicht gemessen."
+  }
+}

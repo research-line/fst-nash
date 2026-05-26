@@ -37,12 +37,16 @@ _partners/
 _private/
 _copilot/
 proof-notes/
+_proof-notes/
 removed_sections/
 *BRIEFING*
 CORE.txt
+QUESTIONS.md
+DONE.md
 REVIEW_CHAIN*.md
 REVIEW_*.md
 papers/
+paper/
 
 # Paper build artifacts if manuscript files are copied locally
 *.aux

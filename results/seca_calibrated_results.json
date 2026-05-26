@@ -1,0 +1,75 @@
+{
+  "modell": "SecA Protein-Translokase",
+  "regime": 2,
+  "regime_name": "Kinetisches Nicht-Gleichgewicht",
+  "experimentelle_parameter": {
+    "kcat_basal_per_min": 0.5,
+    "kcat_secyeg_per_min": 8.5,
+    "kcat_coupled_per_min": 50.0,
+    "stimulation_factor": 100.0,
+    "kd_signal_peptide_uM": 1.0,
+    "k_adp_release_basal_per_s": 0.008,
+    "k_adp_release_secyeg_per_s": 0.14
+  },
+  "abgeleitete_groessen": {
+    "S3_ratio": 100.0,
+    "ddG_S3_kcal": 2.73,
+    "SecYEG_factor": 17.0,
+    "ddG_SecYEG_kcal": 1.68,
+    "ADP_release_acceleration": 17.5,
+    "ddG_ADP_release_kcal": 1.7
+  },
+  "payoff_parameter": {
+    "delta_H": 3.0,
+    "delta_S": 3.0,
+    "delta_quelle": "ANGENOMMEN (reziproke Kopplung: gleiche Translokation)"
+  },
+  "ergebnisse": {
+    "I_H": -3.0,
+    "I_S": -3.0,
+    "four_cycle_violation": 0.0,
+    "potential_game": true,
+    "nash_equilibria": [
+      {
+        "seca": "Active",
+        "preprotein": "Folded",
+        "u_H": 1.68,
+        "u_S": 4.0
+      }
+    ]
+  },
+  "kalibrierungsstatus": {
+    "seca_atpase_basal": {
+      "status": "KALIBRIERT",
+      "quelle": "Robson 2009"
+    },
+    "seca_atpase_secyeg": {
+      "status": "KALIBRIERT",
+      "quelle": "Robson 2009"
+    },
+    "seca_atpase_coupled": {
+      "status": "KALIBRIERT",
+      "quelle": "Robson 2009, Cunningham 1989"
+    },
+    "s3_brechung": {
+      "status": "KALIBRIERT",
+      "quelle": "100x Stimulation"
+    },
+    "delta_reziprozitaet": {
+      "status": "ANGENOMMEN",
+      "quelle": "Physikalische Motivation"
+    },
+    "pg_ergebnis": {
+      "status": "FOLGT AUS KONSTRUKTION",
+      "erklaerung": "PG=True folgt aus Delta_H = Delta_S"
+    }
+  },
+  "schlussfolgerung": {
+    "s3_gebrochen": true,
+    "s4_pg_erhalten": true,
+    "regime": 2,
+    "konsistent_mit_goloubinoff": true,
+    "vergleich_hsp70": "Gleiche Symmetriebrechung wie Hsp70/DnaJ (S3 gebrochen, S4 erhalten). S3-Faktor: SecA 100x vs Hsp70 3000x. Beide treiben kinetisches Nicht-GG durch substratselektive ATPase.",
+    "einschraenkung": "PG=True folgt aus der Payoff-Konstruktion (Delta_H = Delta_S). Volle Kalibrierung erfordert unabhaengige Messung der Translokationskopplung von beiden Seiten."
+  }
+}

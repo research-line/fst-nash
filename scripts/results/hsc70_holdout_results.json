@@ -1,0 +1,373 @@
+{
+  "experiment": "Hsc70 allein — Extension B Hold-Out #4",
+  "committed_prediction": {
+    "PG": true,
+    "NE": 1,
+    "Regime": "GG"
+  },
+  "diskriminierender_test": "R1 Zeile 2: ATP ohne Substrat-Stimulation → PG möglich",
+  "referenzen": {
+    "hsp70_review": "Mayer & Bukau (2005) CMLS 62:670",
+    "ATPase_kinetik": "Ha & McKay (1994) Biochemistry 33:14625",
+    "J_domain_review": "Kampinga & Craig (2010) Nat Rev Mol Cell Biol 11:579",
+    "substratspezifitaet": "Rüdiger et al. (1997) EMBO J 16:1501"
+  },
+  "parameter": {
+    "experimentell": {
+      "kcat_basal_per_min": 0.02,
+      "Km_ATP_uM": 1.5,
+      "Ea_ATPase_kcal": 26.2,
+      "KD_peptid_strong_uM": 5.0,
+      "KD_peptid_weak_uM": 50.0,
+      "stimulation_DnaJ_fold": 1000,
+      "ATP_Verbrauch": "basal (nicht substrat-stimuliert)"
+    },
+    "modell": {
+      "Delta_kcal": 3.0,
+      "delta_quelle": "ANGENOMMEN (reziproke Kopplung, Atlas-Konvention)",
+      "dG_atp_cost_kcal": -1.0,
+      "dG_fold_kcal": -5.0
+    },
+    "abgeleitet": {
+      "dG_peptid_strong_kcal": -7.52,
+      "dG_peptid_weak_kcal": -6.1,
+      "dG_peptid_typical_kcal": -6.85,
+      "tau_basal_min": 50.0,
+      "kcat_basal_per_min": 0.02,
+      "stimulation_with_DnaJ": 1000
+    }
+  },
+  "payoffs": {
+    "u_Hsc70": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        2.0,
+        -1.0
+      ]
+    ],
+    "u_Sub": [
+      [
+        0.0,
+        3.0
+      ],
+      [
+        5.0,
+        5.0
+      ]
+    ],
+    "strategien_Hsc70": [
+      "ATP-bound",
+      "ADP-bound"
+    ],
+    "strategien_Sub": [
+      "Unfolded",
+      "Folded"
+    ]
+  },
+  "pg_test": {
+    "I_1": -3.0,
+    "I_2": -3.0,
+    "violation": 0.0,
+    "is_PG": true
+  },
+  "nash_gleichgewichte": [
+    {
+      "player_1": "ATP-bound",
+      "player_2": "Folded",
+      "u_1": 0.0,
+      "u_2": 5.0,
+      "u_total": 5.0
+    }
+  ],
+  "symmetriebrechung": {
+    "S1_gebrochen": true,
+    "S4_PG": true
+  },
+  "robustheit": [
+    {
+      "Delta": 1.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 1.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 1.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 1.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ],
+        [
+          "ADP-bound",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ],
+        [
+          "ADP-bound",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ],
+        [
+          "ADP-bound",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ],
+        [
+          "ADP-bound",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-bound",
+          "Folded"
+        ]
+      ]
+    }
+  ],
+  "vorhersage_vergleich": {
+    "PG_konvention_konsistent": true,
+    "NE_hit": true,
+    "overall_hit": true,
+    "R1_Zeile2_test": "bestätigt"
+  }
+}

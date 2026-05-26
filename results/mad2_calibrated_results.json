@@ -1,0 +1,220 @@
+{
+  "system": "MAD2 (Spindle Assembly Checkpoint)",
+  "type": "metamorphic_regulated",
+  "temperature_C": 30.0,
+  "RT_kcal_mol": 0.6024,
+  "experimental_parameters": {
+    "K_eq_CO": 8.0,
+    "dG_O_to_C_kcal_mol": -1.2526,
+    "K_D_CDC20_nM": 100.0,
+    "dG_bind_total_kcal_mol": -9.5,
+    "dH_bind_kcal_mol": -13.9,
+    "TdS_bind_kcal_mol": -4.4,
+    "O_MAD2_CDC20_binding": "none (Safety Belt requires Closed)",
+    "ATP_per_recycling": 9,
+    "TRIP13_rate_per_min": 1.9,
+    "t_half_spontaneous_h": 9.0,
+    "t_half_catalyzed_min": 10.8
+  },
+  "references": {
+    "Luo_2004": "Luo et al. 2004, Nat Struct Mol Biol 11:338",
+    "Sironi_2002": "Sironi et al. 2002, EMBO J 21:2496",
+    "Simonetta_2009": "Simonetta et al. 2009, PLoS Biol 7:e10",
+    "Skinner_2008": "Skinner et al. 2008, J Cell Biol 183:761",
+    "Ye_2015": "Ye et al. 2015, eLife 4:e07367"
+  },
+  "payoff_matrices": {
+    "u_MAD2": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.2525704315768014,
+        6.477570431576802
+      ]
+    ],
+    "u_CDC20": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        4.2749999999999995
+      ]
+    ],
+    "states_MAD2": [
+      "Open",
+      "Closed"
+    ],
+    "states_CDC20": [
+      "Free",
+      "Bound"
+    ]
+  },
+  "four_cycle_test": {
+    "I_1": 5.225,
+    "I_2": 4.275,
+    "violation": 0.95,
+    "is_PG": false
+  },
+  "nash_equilibria": [
+    {
+      "player_1": "Closed",
+      "player_2": "Bound",
+      "u_1": 6.4776,
+      "u_2": 4.275,
+      "u_total": 10.7526
+    }
+  ],
+  "n_NE": 1,
+  "goloubinoff_symmetry": {
+    "S1_player_symmetry": {
+      "max_diff": 2.2026,
+      "broken": true
+    },
+    "S4_potential_game": {
+      "is_PG": false,
+      "violation": 0.95
+    }
+  },
+  "stability_scan": [
+    {
+      "dG_O_to_C": 2.0,
+      "K_eq_CO": 0.04,
+      "n_NE": 2,
+      "is_PG": false,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_O_to_C": 1.5,
+      "K_eq_CO": 0.08,
+      "n_NE": 2,
+      "is_PG": false,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_O_to_C": 1.0,
+      "K_eq_CO": 0.19,
+      "n_NE": 2,
+      "is_PG": false,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_O_to_C": 0.5,
+      "K_eq_CO": 0.44,
+      "n_NE": 2,
+      "is_PG": false,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_O_to_C": 0.0,
+      "K_eq_CO": 1.0,
+      "n_NE": 2,
+      "is_PG": false,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_O_to_C": -0.5,
+      "K_eq_CO": 2.29,
+      "n_NE": 1,
+      "is_PG": false,
+      "profiles": "(Closed,Bound)"
+    },
+    {
+      "dG_O_to_C": -1.0,
+      "K_eq_CO": 5.26,
+      "n_NE": 1,
+      "is_PG": false,
+      "profiles": "(Closed,Bound)"
+    },
+    {
+      "dG_O_to_C": -1.5,
+      "K_eq_CO": 12.06,
+      "n_NE": 1,
+      "is_PG": false,
+      "profiles": "(Closed,Bound)"
+    },
+    {
+      "dG_O_to_C": -2.0,
+      "K_eq_CO": 27.67,
+      "n_NE": 1,
+      "is_PG": false,
+      "profiles": "(Closed,Bound)"
+    },
+    {
+      "dG_O_to_C": -2.5,
+      "K_eq_CO": 63.46,
+      "n_NE": 1,
+      "is_PG": false,
+      "profiles": "(Closed,Bound)"
+    }
+  ],
+  "split_scan": [
+    {
+      "f_mad2": 0.3,
+      "violation": 3.8,
+      "n_NE": 1,
+      "is_PG": false
+    },
+    {
+      "f_mad2": 0.35,
+      "violation": 2.85,
+      "n_NE": 1,
+      "is_PG": false
+    },
+    {
+      "f_mad2": 0.4,
+      "violation": 1.9,
+      "n_NE": 1,
+      "is_PG": false
+    },
+    {
+      "f_mad2": 0.45,
+      "violation": 0.95,
+      "n_NE": 1,
+      "is_PG": false
+    },
+    {
+      "f_mad2": 0.5,
+      "violation": 0.0,
+      "n_NE": 1,
+      "is_PG": true
+    },
+    {
+      "f_mad2": 0.55,
+      "violation": 0.95,
+      "n_NE": 1,
+      "is_PG": false
+    },
+    {
+      "f_mad2": 0.6,
+      "violation": 1.9,
+      "n_NE": 1,
+      "is_PG": false
+    },
+    {
+      "f_mad2": 0.65,
+      "violation": 2.85,
+      "n_NE": 1,
+      "is_PG": false
+    },
+    {
+      "f_mad2": 0.7,
+      "violation": 3.8,
+      "n_NE": 1,
+      "is_PG": false
+    }
+  ],
+  "interpretation": {
+    "is_metamorphic": true,
+    "is_regulated": true,
+    "regulator": "TRIP13 + p31comet (ATP-driven C->O recycling, 8-10 ATP)",
+    "NE_count": 1,
+    "NE_profile": "(Closed, Bound)",
+    "comparison_XCL1": "XCL1: dG~0 (50:50, unreguliert) -> 2 NE. MAD2: dG=-1.25 (89:11, TRIP13-reguliert) -> 1 NE. Intrinsische Stabilitaets-Asymmetrie eliminiert 2. NE.",
+    "key_insight": "MAD2 ist strukturell metamorph (zwei stabile Folds), aber funktionell reguliert (TRIP13 recycelt C-MAD2 aktiv). C-MAD2 dominiert intrinsisch (8:1) -> nur 1 NE. Stabilitaetsscan zeigt: 2 NE erst bei dG(O->C) > 0 (O muesste stabiler sein). Checkpoint-Silencing = TRIP13 treibt System WEG vom NE.",
+    "hypothesis_update": "Revidierte NE-Hypothese bestaetigt: reguliert/asymmetrisch -> 1 NE (MAD2, TF, alle Chaperone); unreguliert/symmetrisch -> 2 NE (XCL1). Trennfaktor ist Stabilitaets-Symmetrie, nicht ATP per se."
+  }
+}

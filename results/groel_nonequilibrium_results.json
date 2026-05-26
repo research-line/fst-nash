@@ -1,0 +1,109 @@
+{
+  "symmetric": {
+    "description": "Symmetric coupling (equilibrium, J_ct = J_tc^T)",
+    "is_potential_game": true,
+    "max_violation": 0.0,
+    "n_violations": 0,
+    "nash_equilibria": [
+      {
+        "profile": [
+          "T",
+          "T"
+        ],
+        "u_cis": 3.0,
+        "u_trans": 3.0,
+        "u_total": 6.0
+      },
+      {
+        "profile": [
+          "R''",
+          "R''"
+        ],
+        "u_cis": 6.0,
+        "u_trans": 6.0,
+        "u_total": 12.0
+      }
+    ]
+  },
+  "asymmetric": {
+    "description": "Asymmetric coupling (non-equilibrium, ATP-driven, J_ct != J_tc^T)",
+    "is_potential_game": false,
+    "max_violation": 5.2,
+    "n_violations": 36,
+    "violations_sample": [
+      {
+        "s1": "T",
+        "s1'": "R",
+        "s2": "T",
+        "s2'": "R",
+        "lhs": 7.0,
+        "rhs": 2.5999999999999996,
+        "violation": 4.4
+      },
+      {
+        "s1": "T",
+        "s1'": "R",
+        "s2": "T",
+        "s2'": "R''",
+        "lhs": 6.0,
+        "rhs": 2.3,
+        "violation": 3.7
+      },
+      {
+        "s1": "T",
+        "s1'": "R",
+        "s2": "R",
+        "s2'": "T",
+        "lhs": -7.0,
+        "rhs": -2.5999999999999996,
+        "violation": 4.4
+      }
+    ],
+    "nash_equilibria": [
+      {
+        "profile": [
+          "T",
+          "T"
+        ],
+        "u_cis": 3.0,
+        "u_trans": 2.0,
+        "u_total": 5.0
+      },
+      {
+        "profile": [
+          "R''",
+          "R''"
+        ],
+        "u_cis": 6.0,
+        "u_trans": 3.3,
+        "u_total": 9.3
+      }
+    ]
+  },
+  "cycle_analysis": {
+    "observed_cycle": [
+      [
+        "T",
+        "T"
+      ],
+      [
+        "R''",
+        "T"
+      ],
+      [
+        "R''",
+        "R"
+      ],
+      [
+        "T",
+        "R''"
+      ]
+    ],
+    "cycle_is_nash": [
+      true,
+      false,
+      false,
+      false
+    ]
+  }
+}

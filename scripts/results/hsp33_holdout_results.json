@@ -1,0 +1,364 @@
+{
+  "experiment": "Hsp33 (Redox-Holdase) — Extension B Hold-Out #3",
+  "committed_prediction": {
+    "PG": true,
+    "NE": 1,
+    "Regime": "GG"
+  },
+  "referenzen": {
+    "zwei_schritt_aktivierung": "Graumann et al. (2001) Structure 9:377",
+    "SUPREX_KD": "Xu et al. (2010) Biochemistry 49:1346",
+    "arbeitszyklus": "Reichmann et al. (2012) Cell 148:947",
+    "oxidativer_stress": "Winter et al. (2008) Mol Cell 29:545"
+  },
+  "parameter": {
+    "experimentell": {
+      "KD_CS_nM": 3.0,
+      "KD_Luc_nM": 300.0,
+      "KD_MDH_nM": 30.0,
+      "KD_inactive_uM": 500.0,
+      "ATP_Verbrauch": 0
+    },
+    "modell": {
+      "Delta_kcal": 3.0,
+      "delta_quelle": "ANGENOMMEN (reziproke Kopplung, Atlas-Konvention)",
+      "dG_redox_switch_kcal": -2.0,
+      "dG_fold_kcal": -5.0
+    },
+    "abgeleitet": {
+      "dG_Hsp33_CS_kcal": -12.33,
+      "dG_Hsp33_Luc_kcal": -9.44,
+      "dG_Hsp33_MDH_kcal": -10.88,
+      "selectivity_CS_vs_Luc": 100.0,
+      "KD_range_nM": "3-300"
+    }
+  },
+  "payoffs": {
+    "u_Hsp33": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        -2.0
+      ]
+    ],
+    "u_Sub": [
+      [
+        0.0,
+        3.0
+      ],
+      [
+        5.0,
+        5.0
+      ]
+    ],
+    "strategien_Hsp33": [
+      "Reduced",
+      "Oxidized"
+    ],
+    "strategien_Sub": [
+      "Unfolded",
+      "Folded"
+    ]
+  },
+  "pg_test": {
+    "I_1": -3.0,
+    "I_2": -3.0,
+    "violation": 0.0,
+    "is_PG": true
+  },
+  "nash_gleichgewichte": [
+    {
+      "player_1": "Reduced",
+      "player_2": "Folded",
+      "u_1": 0.0,
+      "u_2": 5.0,
+      "u_total": 5.0
+    }
+  ],
+  "robustheit": [
+    {
+      "Delta": 1.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 1.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 1.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 1.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ],
+        [
+          "Oxidized",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ],
+        [
+          "Oxidized",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ],
+        [
+          "Oxidized",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ],
+        [
+          "Oxidized",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Reduced",
+          "Folded"
+        ]
+      ]
+    }
+  ],
+  "vorhersage_vergleich": {
+    "PG_konvention_konsistent": true,
+    "NE_hit": true,
+    "overall_hit": true
+  }
+}

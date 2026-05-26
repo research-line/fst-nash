@@ -348,6 +348,8 @@ def fold_protein(seq: str, edges: np.ndarray, r: np.ndarray, params: LearnedPara
                                             params.r_centers, sigma)
             phi -= lr * gphi
             psi -= lr * gpsi
+            phi = (phi + np.pi) % (2 * np.pi) - np.pi
+            psi = (psi + np.pi) % (2 * np.pi) - np.pi
 
         F, gphi, gpsi = energy_and_grad(phi, psi, aa_idx, edges, r,
                                         params.mu_phi, params.mu_psi,
@@ -436,9 +438,9 @@ def best_response_dynamics(seq: str, edges: np.ndarray, r: np.ndarray, params: L
                 phi[i] -= lr * gphi[i]
                 psi[i] -= lr * gpsi[i]
 
-            # Track max update
-            dphi = abs(phi[i] - phi_old)
-            dpsi = abs(psi[i] - psi_old)
+            # Track max update (torus geodesic)
+            dphi = abs(math.atan2(math.sin(phi[i] - phi_old), math.cos(phi[i] - phi_old)))
+            dpsi = abs(math.atan2(math.sin(psi[i] - psi_old), math.cos(psi[i] - psi_old)))
             max_update = max(max_update, dphi, dpsi)
 
         # Wrap angles to [-pi, pi]
@@ -516,8 +518,10 @@ def validate_nash_stability(seq: str, edges: np.ndarray, r: np.ndarray, params: 
     psi_init = psi_native + perturbation * rng.standard_normal(len(psi_native))
 
     if verbose:
-        print(f"  Initial perturbation: phi_rms={np.sqrt(np.mean((phi_init - phi_native)**2)):.4f}, "
-              f"psi_rms={np.sqrt(np.mean((psi_init - psi_native)**2)):.4f}")
+        d_phi_init = np.arctan2(np.sin(phi_init - phi_native), np.cos(phi_init - phi_native))
+        d_psi_init = np.arctan2(np.sin(psi_init - psi_native), np.cos(psi_init - psi_native))
+        print(f"  Initial perturbation: phi_rms={np.sqrt(np.mean(d_phi_init**2)):.4f}, "
+              f"psi_rms={np.sqrt(np.mean(d_psi_init**2)):.4f}")
 
     # Run best-response dynamics
     result = best_response_dynamics(

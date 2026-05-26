@@ -1,0 +1,57 @@
+{
+  "description": "FST-Nash Protein Folding — 28-protein benchmark dataset",
+  "version": "1.0",
+  "created": "2026-05-25",
+  "selection_criteria": {
+    "residues": "30-205",
+    "resolution_max_angstrom": 2.5,
+    "monomer_single_chain": true,
+    "standard_aa_only": true,
+    "xray_only": true
+  },
+  "proteins": {
+    "all_alpha": [
+      {"pdb": "1YRF", "chain": "A", "name": "Villin Headpiece HP35",     "res": 35,  "resolution": 1.07, "split": "train"},
+      {"pdb": "1YU5", "chain": "X", "name": "Villin Headpiece HP67",     "res": 67,  "resolution": 1.40, "split": "train"},
+      {"pdb": "1ENH", "chain": "A", "name": "Engrailed Homeodomain",     "res": 54,  "resolution": 2.10, "split": "train"},
+      {"pdb": "1R69", "chain": "A", "name": "434 Repressor DBD",         "res": 69,  "resolution": 2.00, "split": "train"},
+      {"pdb": "1CEI", "chain": "A", "name": "Im7 Colicin Immunity",      "res": 94,  "resolution": 1.80, "split": "test"},
+      {"pdb": "1M6T", "chain": "A", "name": "B562RIL 4-Helix Bundle",    "res": 106, "resolution": 1.81, "split": "test"}
+    ],
+    "all_beta": [
+      {"pdb": "1SHG", "chain": "A", "name": "Spectrin SH3 Domain",       "res": 62,  "resolution": 1.80, "split": "train"},
+      {"pdb": "1TEN", "chain": "A", "name": "Tenascin Fn3 Domain",       "res": 90,  "resolution": 1.80, "split": "train"},
+      {"pdb": "1FNA", "chain": "A", "name": "Fibronectin Fn3 D10",       "res": 91,  "resolution": 1.80, "split": "train"},
+      {"pdb": "1CSP", "chain": "A", "name": "CspB Cold Shock Protein",   "res": 67,  "resolution": 2.45, "split": "train"},
+      {"pdb": "1BFG", "chain": "A", "name": "FGF-2 beta-Trefoil",        "res": 126, "resolution": 1.60, "split": "test"},
+      {"pdb": "1HOE", "chain": "A", "name": "Tendamistat",               "res": 74,  "resolution": 2.00, "split": "test"}
+    ],
+    "alpha_beta": [
+      {"pdb": "3CHY", "chain": "A", "name": "CheY Chemotaxis",           "res": 128, "resolution": 1.66, "split": "train"},
+      {"pdb": "1ERU", "chain": "A", "name": "Thioredoxin (human)",       "res": 105, "resolution": 2.10, "split": "train"},
+      {"pdb": "1ABA", "chain": "A", "name": "Glutaredoxin (T4 Phage)",   "res": 87,  "resolution": 1.45, "split": "train"},
+      {"pdb": "1CTF", "chain": "A", "name": "Ribosomal L7/L12 C-term",   "res": 74,  "resolution": 1.70, "split": "test"}
+    ],
+    "alpha_plus_beta": [
+      {"pdb": "1PGA", "chain": "A", "name": "Protein G B1 Domain",       "res": 56,  "resolution": 2.07, "split": "train"},
+      {"pdb": "2XWR", "chain": "A", "name": "p53 DNA-Binding Domain",    "res": 205, "resolution": 1.68, "split": "test"},
+      {"pdb": "1UBQ", "chain": "A", "name": "Ubiquitin",                 "res": 76,  "resolution": 1.80, "split": "train"},
+      {"pdb": "2CI2", "chain": "I", "name": "Chymotrypsin Inhibitor 2",  "res": 65,  "resolution": 2.00, "split": "train"},
+      {"pdb": "2PPN", "chain": "A", "name": "FKBP12 apo",                "res": 107, "resolution": 0.92, "split": "train"},
+      {"pdb": "1A2P", "chain": "A", "name": "Barnase",                   "res": 110, "resolution": 1.50, "split": "train"},
+      {"pdb": "2ACY", "chain": "A", "name": "Acylphosphatase",           "res": 98,  "resolution": 1.80, "split": "test"},
+      {"pdb": "1RIS", "chain": "A", "name": "Ribosomal S6",              "res": 101, "resolution": 2.00, "split": "test"}
+    ],
+    "small": [
+      {"pdb": "1CRN", "chain": "A", "name": "Crambin",                   "res": 46,  "resolution": 1.50, "split": "train"},
+      {"pdb": "5PTI", "chain": "A", "name": "BPTI Aprotinin",            "res": 58,  "resolution": 1.00, "split": "train"},
+      {"pdb": "1AHO", "chain": "A", "name": "Scorpion Toxin II",         "res": 64,  "resolution": 0.96, "split": "train"},
+      {"pdb": "1NXB", "chain": "A", "name": "Neurotoxin B",              "res": 62,  "resolution": 1.38, "split": "test"}
+    ]
+  },
+  "split_summary": {
+    "train": 19,
+    "test": 9,
+    "ratio": "68/32"
+  }
+}

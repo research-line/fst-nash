@@ -1,0 +1,435 @@
+{
+  "experiment": "KaiB/KaiC kalibriertes Fold-Switching/Circadiane-Uhr-Spiel",
+  "referenzen": {
+    "thermodynamik": "Zhang et al. (2024) PNAS 121:e2412327121",
+    "kinetik": "Wayment-Steele et al. (2024) PNAS 121:e2412293121",
+    "ATPase": "Terauchi et al. (2007) PNAS 104:16377",
+    "struktur_komplex": "Snijder et al. (2017) Science 355:1181",
+    "fold_switch": "Chang et al. (2015) Science 349:324",
+    "CI_struktur": "Tseng et al. (2017) Science 355:1174"
+  },
+  "parameter": {
+    "experimentell": {
+      "DeltaH_gs_fs_kcal": -19.6,
+      "DeltaS_gs_fs_kcal_K": -0.066,
+      "k_gs_to_fs_per_h": 0.09,
+      "k_fs_to_gs_per_h": 0.36,
+      "Keq_Rsphaeroides_20C": 0.25,
+      "KaiC_ATPase_per_day": 14.5
+    },
+    "geschaetzt": {
+      "dG_bind_fsKaiB_KaiC": -6.0,
+      "delta_KaiC": 1.0
+    },
+    "abgeleitet": {
+      "dG_gs_fs_20C_kcal": -0.252,
+      "dG_gs_fs_30C_kcal": 0.408,
+      "dG_gs_fs_37C_kcal": 0.87,
+      "Keq_Rsphaeroides_20C": 0.25,
+      "f_fs_Rsphaeroides_20C": 0.2,
+      "Keq_from_dG_30C": 0.5081,
+      "tau_gs_h": 11.1,
+      "tau_fs_h": 2.8,
+      "KaiC_ATP_per_hour": 0.6
+    }
+  },
+  "payoffs": {
+    "u_KaiB": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        -6.407899999999998,
+        -0.40789999999999793
+      ]
+    ],
+    "u_KaiC": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        -7.3,
+        -7.3
+      ]
+    ],
+    "strategien_KaiB": [
+      "GS",
+      "FS"
+    ],
+    "strategien_KaiC": [
+      "ADP",
+      "ATP"
+    ]
+  },
+  "pg_test": {
+    "I_1": 6.0,
+    "I_2": -1.0,
+    "violation": 7.0,
+    "is_PG": false
+  },
+  "asymmetrie": {
+    "I_KaiB": 6.0,
+    "I_KaiC": -1.0,
+    "Delta_I": 7.0,
+    "interpretation": "KaiB spürt KaiC-Zustand mit 6.0 kcal/mol (Bindung nur an ADP-KaiC). KaiC spürt KaiB-Zustand mit 1.0 kcal/mol (Rückwirkung). Asymmetrie = 7.0 kcal/mol."
+  },
+  "nash_gleichgewichte": [
+    {
+      "player_1": "GS",
+      "player_2": "ADP",
+      "u_1": 0.0,
+      "u_2": 0.0,
+      "u_total": 0.0
+    }
+  ],
+  "robustheit": [
+    {
+      "dG_bind": -4.0,
+      "delta_KaiC": 0.0,
+      "is_PG": false,
+      "violation": 4.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -4.0,
+      "delta_KaiC": 0.5,
+      "is_PG": false,
+      "violation": 4.5,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -4.0,
+      "delta_KaiC": 1.0,
+      "is_PG": false,
+      "violation": 5.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -4.0,
+      "delta_KaiC": 2.0,
+      "is_PG": false,
+      "violation": 6.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -4.0,
+      "delta_KaiC": 3.0,
+      "is_PG": false,
+      "violation": 7.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -6.0,
+      "delta_KaiC": 0.0,
+      "is_PG": false,
+      "violation": 6.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -6.0,
+      "delta_KaiC": 0.5,
+      "is_PG": false,
+      "violation": 6.5,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -6.0,
+      "delta_KaiC": 1.0,
+      "is_PG": false,
+      "violation": 7.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -6.0,
+      "delta_KaiC": 2.0,
+      "is_PG": false,
+      "violation": 8.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -6.0,
+      "delta_KaiC": 3.0,
+      "is_PG": false,
+      "violation": 9.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -8.0,
+      "delta_KaiC": 0.0,
+      "is_PG": false,
+      "violation": 8.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -8.0,
+      "delta_KaiC": 0.5,
+      "is_PG": false,
+      "violation": 8.5,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -8.0,
+      "delta_KaiC": 1.0,
+      "is_PG": false,
+      "violation": 9.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -8.0,
+      "delta_KaiC": 2.0,
+      "is_PG": false,
+      "violation": 10.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -8.0,
+      "delta_KaiC": 3.0,
+      "is_PG": false,
+      "violation": 11.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -10.0,
+      "delta_KaiC": 0.0,
+      "is_PG": false,
+      "violation": 10.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -10.0,
+      "delta_KaiC": 0.5,
+      "is_PG": false,
+      "violation": 10.5,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -10.0,
+      "delta_KaiC": 1.0,
+      "is_PG": false,
+      "violation": 11.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -10.0,
+      "delta_KaiC": 2.0,
+      "is_PG": false,
+      "violation": 12.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "dG_bind": -10.0,
+      "delta_KaiC": 3.0,
+      "is_PG": false,
+      "violation": 13.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    }
+  ],
+  "temperatur": [
+    {
+      "T_C": 15,
+      "dG_gs_fs": -0.582,
+      "is_PG": false,
+      "violation": 7.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "T_C": 20,
+      "dG_gs_fs": -0.252,
+      "is_PG": false,
+      "violation": 7.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "T_C": 25,
+      "dG_gs_fs": 0.078,
+      "is_PG": false,
+      "violation": 7.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "T_C": 30,
+      "dG_gs_fs": 0.408,
+      "is_PG": false,
+      "violation": 7.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "T_C": 35,
+      "dG_gs_fs": 0.738,
+      "is_PG": false,
+      "violation": 7.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    },
+    {
+      "T_C": 40,
+      "dG_gs_fs": 1.068,
+      "is_PG": false,
+      "violation": 7.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "GS",
+          "ADP"
+        ]
+      ]
+    }
+  ],
+  "schlussfolgerung": {
+    "is_PG": false,
+    "n_NE": 1,
+    "regime": "Nicht-GG (ATP-indirekt)",
+    "vergleich_XCL1": "XCL1=PG/2NE/GG vs KaiB/KaiC=non-PG/1NE/non-GG"
+  }
+}

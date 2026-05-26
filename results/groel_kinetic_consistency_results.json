@@ -1,0 +1,109 @@
+{
+  "description": "Konsistenzcheck des kalibrierten GroEL-Spielmodells gegen experimentelle Kinetik-Daten",
+  "framing": "Qualitative Konsistenz, keine quantitative Validierung. Δu (thermodynamische Utility-Differenz) ≠ ΔG‡ (Aktivierungsbarriere).",
+  "check_1_atp_pattern": {
+    "matches": 3,
+    "total": 4,
+    "details": [
+      {
+        "transition": "('T', 'T')→(\"R''\", 'T')",
+        "model_needs_atp": true,
+        "experiment_needs_atp": true,
+        "experiment_note": "ATP-Bindung Cis (7 ATP)",
+        "match": true
+      },
+      {
+        "transition": "(\"R''\", 'T')→(\"R''\", 'R')",
+        "model_needs_atp": true,
+        "experiment_needs_atp": true,
+        "experiment_note": "Cis-Hydrolyse → Trans-Signal",
+        "match": true
+      },
+      {
+        "transition": "(\"R''\", 'R')→('T', \"R''\")",
+        "model_needs_atp": false,
+        "experiment_needs_atp": false,
+        "experiment_note": "GroES-Transfer (konformationell)",
+        "match": true
+      },
+      {
+        "transition": "('T', \"R''\")→('T', 'T')",
+        "model_needs_atp": false,
+        "experiment_needs_atp": true,
+        "experiment_note": "Trans-Hydrolyse + Reset",
+        "match": false
+      }
+    ]
+  },
+  "check_2_cycle_time": {
+    "n_atp_steps": 2,
+    "conditions": [
+      {
+        "condition": "Basal",
+        "kcat": 0.04,
+        "tau_cycle_s": 350.0,
+        "in_experimental_range": false,
+        "order_of_magnitude_ok": false
+      },
+      {
+        "condition": "Single-Ring",
+        "kcat": 0.11,
+        "tau_cycle_s": 127.3,
+        "in_experimental_range": false,
+        "order_of_magnitude_ok": false
+      },
+      {
+        "condition": "+ Substrat",
+        "kcat": 0.16,
+        "tau_cycle_s": 87.5,
+        "in_experimental_range": false,
+        "order_of_magnitude_ok": false
+      }
+    ],
+    "experimental_range_s": [
+      15.0,
+      20.0
+    ]
+  },
+  "check_3_timescale_separation": {
+    "fret_microstates": [
+      {
+        "E": 0.85,
+        "assignment": "T (kompakt, Substratbindung)"
+      },
+      {
+        "E": 0.608,
+        "assignment": "R (intermediär, ATP-gebunden)"
+      },
+      {
+        "E": 0.419,
+        "assignment": "R'/R'' Übergang"
+      },
+      {
+        "E": 0.213,
+        "assignment": "R'' (GroES-capped, erweitert)"
+      }
+    ],
+    "timescale_separation_consistent": true,
+    "model_limitation": "4 FRET-Mikrozustände → 3 Modell-Zustände: das 3-Strategien-Modell fasst R' und R'' zusammen. Eine Erweiterung auf 4 Strategien (T, R, R', R'') wäre möglich, erhöht aber die Parameterzahl."
+  },
+  "robustness_test": {
+    "n_trials": 200,
+    "noise_fraction": 0.5,
+    "not_potential_game_fraction": 1.0,
+    "same_atp_pattern_fraction": 0.56,
+    "robust_not_pg": true,
+    "robust_pattern": false
+  },
+  "summary": {
+    "checks_passed": 2,
+    "total_checks": 3,
+    "qualitatively_consistent": true
+  },
+  "experimental_references": {
+    "allosteric_constants": "Yifrach & Horovitz (1995) Biochemistry",
+    "cycle_timing": "Todd et al. (2010) PNAS",
+    "fret_microstates": "Sharma et al. (2023) J Phys Chem Lett",
+    "atp_hydrolysis": "Rye et al. (1997) Nature"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "modell": "p97/VCP AAA+ ATPase",
+  "regime": 3,
+  "regime_name": "Thermodynamisches Nicht-Gleichgewicht",
+  "experimentelle_parameter": {
+    "kcat_D2_per_min": 7.5,
+    "kcat_D2_mutant_per_min": 0.29,
+    "D1_D2_coupling_factor": 280,
+    "D1_kcat_factor": 7,
+    "D1_KM_factor": 40,
+    "p47_inhibition": 0.3,
+    "ufd1_npl4_effect": 1.0
+  },
+  "abgeleitete_groessen": {
+    "D1_D2_coupling_factor": 280,
+    "ddG_D1_D2_coupling_kcal": 3.34,
+    "cofactor_selectivity": 0.3,
+    "ddG_cofactor_kcal": 0.71,
+    "D2_kcat_per_min": 7.5
+  },
+  "payoff_parameter": {
+    "delta_P": 1.5,
+    "delta_U": 3.5,
+    "asymmetrie_motivation": "Cofaktor-Selektion (p47 vs Ufd1-Npl4) macht Substratbindung konformationsabhaengig (S2-Brechung). p97 profitiert weniger von Substrat als Substrat von p97 => delta_P < delta_U."
+  },
+  "ergebnisse": {
+    "I_P": -1.5,
+    "I_U": -3.5,
+    "four_cycle_violation": 2.0,
+    "potential_game": false,
+    "nash_equilibria": [
+      {
+        "p97": "D2-dominant",
+        "substrat": "Bound",
+        "u_P": 4.84,
+        "u_U": 3.5
+      }
+    ]
+  },
+  "kalibrierungsstatus": {
+    "p97_D2_atpase": {
+      "status": "KALIBRIERT",
+      "quelle": "Chou 2014"
+    },
+    "D1_D2_coupling": {
+      "status": "KALIBRIERT",
+      "quelle": "Chou 2014 (280x)"
+    },
+    "cofaktor_modulation": {
+      "status": "KALIBRIERT",
+      "quelle": "Bhatt 2015"
+    },
+    "s2_brechung": {
+      "status": "GESCHAETZT",
+      "quelle": "Cofaktor-Selektivitaet als Proxy"
+    },
+    "delta_P": {
+      "status": "GESCHAETZT",
+      "quelle": "1.5 kcal/mol"
+    },
+    "delta_U": {
+      "status": "GESCHAETZT",
+      "quelle": "3.5 kcal/mol"
+    },
+    "pg_verletzung": {
+      "status": "FOLGT AUS KONSTRUKTION",
+      "erklaerung": "PG=False folgt aus delta_P != delta_U"
+    }
+  },
+  "schlussfolgerung": {
+    "s2_gebrochen": true,
+    "s4_pg_gebrochen": true,
+    "regime": 3,
+    "vergleich_hsp90": "Aehnlich Hsp90/Cdc37: Cofaktor-gesteuerte S2-Brechung. Aber: bei Hsp90 ist es ein einzelner Cofaktor (Cdc37), bei p97 sind es multiple Cofaktoren mit verschiedenen Selektivitaeten.",
+    "einschraenkung": "delta_P und delta_U sind geschaetzt. Die Cofaktor-Selektivitaet ist experimentell belegt, aber die genauen Kopplungsenergien zum Substrat sind nicht direkt gemessen."
+  }
+}

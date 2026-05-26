@@ -1,0 +1,67 @@
+{
+  "description": "Kreuzvalidierung: Diskriminiert das spieltheoretische Framework zwischen verschiedenen Symmetriebrechungen (Goloubinoff 2022)?",
+  "hsp70": {
+    "name": "Hsp70 + Hsp40 (erwartet: S3 gebrochen, S4 intakt = PG)",
+    "S3_player1_broken": true,
+    "S3_player1_contrast": 6.0,
+    "S3_player2_broken": true,
+    "S3_player2_contrast": 6.0,
+    "S4_potential_game": true,
+    "S4_max_asymmetry": 0.0,
+    "n_nash": 2,
+    "nash_equilibria": [
+      [
+        "Open",
+        "Native"
+      ],
+      [
+        "Closed",
+        "Misfolded"
+      ]
+    ]
+  },
+  "groel": {
+    "name": "GroEL/GroES (erwartet: S3+S4 gebrochen = Nicht-PG)",
+    "S3_player1_broken": true,
+    "S3_player1_contrast": 10.1005,
+    "S3_player2_broken": true,
+    "S3_player2_contrast": 10.1005,
+    "S4_potential_game": false,
+    "S4_max_asymmetry": 10.7011,
+    "n_nash": 1,
+    "nash_equilibria": [
+      [
+        "T",
+        "T"
+      ]
+    ]
+  },
+  "control": {
+    "name": "Kontrolle: Separables Spiel (erwartet: S3+S4 intakt = PG)",
+    "S3_player1_broken": false,
+    "S3_player1_contrast": 0.0,
+    "S3_player2_broken": false,
+    "S3_player2_contrast": 0.0,
+    "S4_potential_game": true,
+    "S4_max_asymmetry": 0.0,
+    "n_nash": 1,
+    "nash_equilibria": [
+      [
+        "A",
+        "X"
+      ]
+    ]
+  },
+  "discrimination_passed": true,
+  "key_insight": "S3-Brechung (nicht-separable Kopplung) ist NOTWENDIG aber NICHT HINREICHEND für S4-Brechung (Nicht-PG). S4 misst die ASYMMETRIE der Nicht-Separabilität. Reziproke Nicht-Separabilität (Hsp70) = PG. Asymmetrische Nicht-Separabilität (GroEL) = Nicht-PG.",
+  "three_regimes": {
+    "equilibrium": "S3+S4 intakt → Ising/statmech reicht",
+    "kinetic_non_eq": "S3 gebrochen, S4 intakt → substratabhängige Raten, GG unverändert",
+    "thermodynamic_non_eq": "S3+S4 gebrochen → GG verschoben, gerichteter Zyklus"
+  },
+  "references": {
+    "goloubinoff_2022": "Biomolecules 12:832",
+    "de_los_rios_2014": "eLife 3:e02218 — Hsp70 ultra-affinity",
+    "monderer_shapley_1996": "Games & Econ Behavior 14:124"
+  }
+}

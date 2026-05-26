@@ -1,0 +1,263 @@
+{
+  "system": "Prefoldin (PFD, ATP-freier Holdase)",
+  "type": "holdase_atp_free",
+  "temperature_C": 25.0,
+  "RT_kcal_mol": 0.5924,
+  "experimental_parameters": {
+    "K_D_substrate_nM": 100,
+    "K_D_substrate_nM_status": "GESCHAETZT (kein publizierter Wert)",
+    "K_D_substrate_nM_range": "10-300 nM (aus k_off Zako 2005 + typischem k_on)",
+    "dG_bind_total_kcal_mol": -9.55,
+    "dG_open_to_closed_kcal_mol": 2.0,
+    "dG_open_to_closed_status": "GESCHAETZT (kein publizierter Wert)",
+    "dG_open_to_closed_basis": "12 Grad Tentakelrotation (Lundin 2004), typisch 1-3 kcal/mol",
+    "ATP_per_cycle": 0,
+    "K_D_cpn_nM": 50,
+    "dG_bind_cpn_kcal_mol": -9.96
+  },
+  "references": {
+    "Zako_2005": "Zako et al. 2005, FEBS Lett 579:3718 (k_off PFD:CS/GFP)",
+    "Lundin_2004": "Lundin et al. 2004, PNAS 101:15524 (Tentakelrotation SAXS)",
+    "Sahlan_2010": "Sahlan et al. 2010, J Mol Biol 399:628 (K_D PFD:CPN SPR)",
+    "Gestaut_2019": "Gestaut et al. 2019, Science 366:1190 (Cryo-EM PFD-TRiC)",
+    "Siegert_2000": "Siegert et al. 2000, Cell 103:621 (PFD-Struktur)",
+    "Vainberg_1998": "Vainberg et al. 1998, Cell 93:863 (PFD-Funktion)"
+  },
+  "payoff_matrices": {
+    "u_PFD": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        -2.0,
+        2.774373751914057
+      ]
+    ],
+    "u_Sub": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        4.774373751914057
+      ]
+    ],
+    "states_PFD": [
+      "Open",
+      "Closed"
+    ],
+    "states_Sub": [
+      "Free",
+      "Bound"
+    ]
+  },
+  "four_cycle_test": {
+    "I_1": 4.7744,
+    "I_2": 4.7744,
+    "violation": 0.0,
+    "is_PG": true
+  },
+  "nash_equilibria": [
+    {
+      "player_1": "Open",
+      "player_2": "Free",
+      "u_1": 0.0,
+      "u_2": 0.0,
+      "u_total": 0.0
+    },
+    {
+      "player_1": "Closed",
+      "player_2": "Bound",
+      "u_1": 2.7744,
+      "u_2": 4.7744,
+      "u_total": 7.5487
+    }
+  ],
+  "n_NE": 2,
+  "goloubinoff_symmetry": {
+    "S1_player_symmetry": {
+      "max_diff": 2.0,
+      "broken": true
+    },
+    "S4_potential_game": {
+      "is_PG": true,
+      "violation": 0.0
+    }
+  },
+  "stability_scan": [
+    {
+      "dG_open_to_closed": -2.0,
+      "dG_conf": 2.0,
+      "n_NE": 1,
+      "is_PG": true,
+      "profiles": "(Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": -1.5,
+      "dG_conf": 1.5,
+      "n_NE": 1,
+      "is_PG": true,
+      "profiles": "(Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": -1.0,
+      "dG_conf": 1.0,
+      "n_NE": 1,
+      "is_PG": true,
+      "profiles": "(Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": -0.5,
+      "dG_conf": 0.5,
+      "n_NE": 1,
+      "is_PG": true,
+      "profiles": "(Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 0.0,
+      "dG_conf": -0.0,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 0.5,
+      "dG_conf": -0.5,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 1.0,
+      "dG_conf": -1.0,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 1.5,
+      "dG_conf": -1.5,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 2.0,
+      "dG_conf": -2.0,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 2.5,
+      "dG_conf": -2.5,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 3.0,
+      "dG_conf": -3.0,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 3.5,
+      "dG_conf": -3.5,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 4.0,
+      "dG_conf": -4.0,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 4.5,
+      "dG_conf": -4.5,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Closed,Bound)"
+    },
+    {
+      "dG_open_to_closed": 5.0,
+      "dG_conf": -5.0,
+      "n_NE": 2,
+      "is_PG": true,
+      "profiles": "(Open,Free), (Open,Bound)"
+    }
+  ],
+  "split_scan": [
+    {
+      "f_pfd": 0.3,
+      "violation": 3.819499,
+      "n_NE": 2,
+      "is_PG": false
+    },
+    {
+      "f_pfd": 0.35,
+      "violation": 2.864624,
+      "n_NE": 2,
+      "is_PG": false
+    },
+    {
+      "f_pfd": 0.4,
+      "violation": 1.90975,
+      "n_NE": 2,
+      "is_PG": false
+    },
+    {
+      "f_pfd": 0.45,
+      "violation": 0.954875,
+      "n_NE": 2,
+      "is_PG": false
+    },
+    {
+      "f_pfd": 0.5,
+      "violation": 0.0,
+      "n_NE": 2,
+      "is_PG": true
+    },
+    {
+      "f_pfd": 0.55,
+      "violation": 0.954875,
+      "n_NE": 2,
+      "is_PG": false
+    },
+    {
+      "f_pfd": 0.6,
+      "violation": 1.90975,
+      "n_NE": 2,
+      "is_PG": false
+    },
+    {
+      "f_pfd": 0.65,
+      "violation": 2.864624,
+      "n_NE": 2,
+      "is_PG": false
+    },
+    {
+      "f_pfd": 0.7,
+      "violation": 3.819499,
+      "n_NE": 2,
+      "is_PG": false
+    }
+  ],
+  "interpretation": {
+    "is_holdase": true,
+    "has_ATP": false,
+    "NE_count": 2,
+    "NE_profiles": [
+      "(Open, Free)",
+      "(Closed, Bound)"
+    ],
+    "key_finding": "PFD zeigt 2 NE bei geschaetztem dG_conf < 0 (Open intrinsisch stabil). Dies waere das ZWEITE 2-NE-System neben XCL1 — aber haengt vollstaendig vom Vorzeichen eines NICHT gemessenen Parameters ab. Der Stabilitaetsscan zeigt die 2->1 NE Transition bei dG_conf = 0.",
+    "honesty_caveat": "BEIDE zentralen Parameter (K_D, dG_conf) sind geschaetzt. Das Modell formalisiert die Holdase-Biologie spieltheoretisch, sagt aber nichts vorher, was nicht bereits aus den Inputs folgt. 2 NE iff Open intrinsisch stabil — das ist die Input-Annahme, nicht ein emergentes Ergebnis."
+  }
+}

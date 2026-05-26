@@ -1,0 +1,360 @@
+{
+  "experiment": "DnaJ allein — Extension B Hold-Out #1",
+  "committed_prediction": {
+    "PG": true,
+    "NE": 1,
+    "Regime": "GG"
+  },
+  "referenzen": {
+    "substratspezifitaet": "Rüdiger et al. (2001) EMBO J 20:1042",
+    "KD_sigma32": "Suh et al. (1998) PNAS 95:15223",
+    "J_domain_review": "Kampinga & Craig (2010) Nat Rev Mol Cell Biol 11:579",
+    "kein_ATP": "Liberek et al. (1991) PNAS 88:2874"
+  },
+  "parameter": {
+    "experimentell": {
+      "KD_sigma32_nM": 20.0,
+      "KD_peptid_uM": 2.0,
+      "ATP_Verbrauch": 0
+    },
+    "modell": {
+      "Delta_kcal": 3.0,
+      "delta_quelle": "ANGENOMMEN (reziproke Kopplung, Atlas-Konvention)",
+      "dG_conf_kcal": -0.5,
+      "dG_fold_kcal": -5.0
+    },
+    "abgeleitet": {
+      "dG_DnaJ_sigma32_kcal": -10.92,
+      "dG_DnaJ_peptid_kcal": -8.09,
+      "selectivity_sigma32_vs_peptid": 100.0
+    }
+  },
+  "payoffs": {
+    "u_DnaJ": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        2.5,
+        -0.5
+      ]
+    ],
+    "u_Sub": [
+      [
+        0.0,
+        3.0
+      ],
+      [
+        5.0,
+        5.0
+      ]
+    ],
+    "strategien_DnaJ": [
+      "Free",
+      "Bound"
+    ],
+    "strategien_Sub": [
+      "Unfolded",
+      "Folded"
+    ]
+  },
+  "pg_test": {
+    "I_1": -3.0,
+    "I_2": -3.0,
+    "violation": 0.0,
+    "is_PG": true
+  },
+  "nash_gleichgewichte": [
+    {
+      "player_1": "Free",
+      "player_2": "Folded",
+      "u_1": 0.0,
+      "u_2": 5.0,
+      "u_total": 5.0
+    }
+  ],
+  "robustheit": [
+    {
+      "Delta": 1.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 1.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 1.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 1.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 2.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ],
+        [
+          "Bound",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 3.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ],
+        [
+          "Bound",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 4.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -3.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ],
+        [
+          "Bound",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -5.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ],
+        [
+          "Bound",
+          "Unfolded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -7.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "Delta": 5.0,
+      "dG_fold": -10.0,
+      "is_PG": true,
+      "violation": 0.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Free",
+          "Folded"
+        ]
+      ]
+    }
+  ],
+  "vorhersage_vergleich": {
+    "PG_konvention_konsistent": true,
+    "NE_hit": true,
+    "overall_hit": true
+  }
+}

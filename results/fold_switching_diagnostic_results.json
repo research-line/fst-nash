@@ -1,0 +1,85 @@
+{
+  "systems": [
+    {
+      "name": "XCL1/Lymphotactin — Gleichgewichts-Fold-Switcher",
+      "s3": {
+        "N-term_max_interaction": 6.1,
+        "C-term_max_interaction": 6.1,
+        "s3_broken": true
+      },
+      "s4": {
+        "is_potential_game": true,
+        "max_asymmetry": 0.0,
+        "violations": 0,
+        "total_cycles": 1
+      },
+      "nash_equilibria": [
+        {
+          "profile": [
+            "Chemokine",
+            "Chemokine"
+          ],
+          "u1": 0.0,
+          "u2": 0.0
+        },
+        {
+          "profile": [
+            "Beta",
+            "Beta"
+          ],
+          "u1": 0.1,
+          "u2": 0.1
+        }
+      ],
+      "regime": "Gleichgewichts-Bistabilität",
+      "expected_pg": true,
+      "match": true,
+      "alphafold_implication": "AlphaFold KÖNNTE beide Folds finden (Gleichgewichts-Ensemble)"
+    },
+    {
+      "name": "KaiB/KaiC — ATP-getriebener Fold-Switcher",
+      "s3": {
+        "KaiB_max_interaction": 8.0,
+        "KaiC_max_interaction": 6.0,
+        "s3_broken": true
+      },
+      "s4": {
+        "is_potential_game": false,
+        "max_asymmetry": 2.0,
+        "violations": 1,
+        "total_cycles": 1
+      },
+      "nash_equilibria": [
+        {
+          "profile": [
+            "GS",
+            "Active"
+          ],
+          "u1": 0.0,
+          "u2": 0.0
+        },
+        {
+          "profile": [
+            "FS",
+            "Inactive"
+          ],
+          "u1": 2.0,
+          "u2": 1.0
+        }
+      ],
+      "regime": "ATP-getriebenes Switching",
+      "expected_pg": false,
+      "match": true,
+      "alphafold_implication": "AlphaFold KANN NICHT den Switch vorhersagen (Nicht-GG nicht modelliert)"
+    }
+  ],
+  "classification_passed": true,
+  "description": "Fold-Switching-Diagnostik: Klassifiziert das Framework Fold-Switcher in Gleichgewichts- vs. ATP-getriebene Regime?",
+  "references": {
+    "xcl1_tuinstra_2008": "Tuinstra et al. (2008) PNAS 105:5057",
+    "kaib_chang_2015": "Chang et al. (2015) Science 349:324",
+    "alphafold_failure": "Chakravarty, Lee & Porter (2025) Protein Science",
+    "alphafold2_fails": "Porter & Looger (2022) Protein Science 31:e4353",
+    "monderer_shapley_1996": "Games & Econ Behavior 14:124"
+  }
+}

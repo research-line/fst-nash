@@ -1,0 +1,327 @@
+{
+  "experiment": "Hsp70/DnaK kalibriertes spieltheoretisches Modell",
+  "datum": "2026-05-26",
+  "referenzen": {
+    "kinetik": "De Los Rios & Barducci (2014) eLife 3:e02218",
+    "symmetrien": "Goloubinoff et al. (2022) Biomolecules 12:832",
+    "illustrativ": "chaperone_cross_validation.py (Hsp70 Toy-Modell)"
+  },
+  "parameter": {
+    "experimentell": {
+      "k_on_ATP_per_s_M": 450000.0,
+      "k_off_ATP_per_s": 2.0,
+      "k_on_ADP_per_s_M": 1000.0,
+      "k_off_ADP_per_s": 0.00047,
+      "k_h_basal_per_s": 0.0006,
+      "k_h_stimulated_per_s": 1.8,
+      "k_NEF_per_s": 0.022,
+      "K_eff_neq_nM": 0.22
+    },
+    "abgeleitet": {
+      "KD_ATP_uM": 4.44,
+      "KD_ADP_uM": 0.47,
+      "S3_ratio": 3000.0,
+      "dG_bind_ATP_kcal": -7.31,
+      "dG_bind_ADP_kcal": -8.64,
+      "ddG_bind_kcal": -1.33,
+      "ddG_S3_kinetic_kcal": 4.75,
+      "K_eq_OC_reversible": 0.00605,
+      "dG_OC_reversible_kcal": 3.03,
+      "ddG_ultra_affinity_kcal": -4.55
+    },
+    "modell": {
+      "Delta_kcal": 3.0,
+      "dG_fold_kcal": -5.0,
+      "RT_kcal": 0.593,
+      "temperatur": "25 C (Messtemperatur)"
+    }
+  },
+  "payoffs": {
+    "u_H": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.3000000000000003,
+        -1.6999999999999997
+      ]
+    ],
+    "u_S": [
+      [
+        0.0,
+        3.0
+      ],
+      [
+        5.0,
+        5.0
+      ]
+    ],
+    "konvention": "u[strategie_eigener_spieler, strategie_anderer_spieler]",
+    "strategien_H": [
+      "Open (ATP)",
+      "Closed (ADP)"
+    ],
+    "strategien_S": [
+      "Unfolded",
+      "Folded"
+    ]
+  },
+  "pg_test": {
+    "I_H": -3.0,
+    "I_S": -3.0,
+    "violation": 0.0,
+    "is_PG": true
+  },
+  "potential_funktion": {
+    "values": {
+      "(O,U)": 0.0,
+      "(C,U)": 1.3,
+      "(O,F)": 5.0,
+      "(C,F)": 3.3
+    },
+    "argmax": "(O,F)",
+    "argmax_value": 5.0,
+    "consistency_check": 0.0
+  },
+  "nash_gleichgewichte": [
+    {
+      "Hsp70": "Open",
+      "Substrat": "Folded",
+      "u_H": 0.0,
+      "u_S": 5.0
+    }
+  ],
+  "detailed_balance": {
+    "cycle": "(O,U) -> (C,U) -> (C,F) -> (O,F) -> (O,U)",
+    "forward_backward_ratio": 3000.0,
+    "dG_cycle_kcal": -4.75,
+    "violated": true,
+    "erklaerung": "DB-Verletzung kommt ausschliesslich aus S3-Brechung: k_h(U)/k_h(F) = 3000. Andere Raten sind substratunabhaengig (S1+S2 bewahrt). Zyklus-Energiebeitrag: -4.75 kcal/mol aus ATP-Hydrolyse."
+  },
+  "s3_brechung": {
+    "k_h_U_per_s": 1.8,
+    "k_h_F_per_s": 0.0006,
+    "ratio": 3000.0,
+    "ddG_S3_kcal": 4.75,
+    "mechanismus": "DnaJ (Hsp40) bindet exponierte hydrophobe Reste ungefalteter Substrate. Gleichzeitige Bindung von DnaJ und Substrat an Hsp70 stimuliert die ATPase um Faktor 3000x (Goloubinoff 2022: S3-Brechung). GrpE-katalysierter Nukleotid-Austausch bleibt substratunabhaengig."
+  },
+  "vergleich_illustrativ": {
+    "illustrativ": {
+      "u_H": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -2.0,
+          4.0
+        ]
+      ],
+      "u_S": [
+        [
+          5.0,
+          2.0
+        ],
+        [
+          0.0,
+          3.0
+        ]
+      ],
+      "I_H": 6.0,
+      "I_S": 6.0,
+      "is_PG": true,
+      "Nash_GG": [
+        {
+          "Hsp70": "Open",
+          "Substrat": "Unfolded",
+          "u_H": 0.0,
+          "u_S": 5.0
+        },
+        {
+          "Hsp70": "Closed",
+          "Substrat": "Folded",
+          "u_H": 4.0,
+          "u_S": 3.0
+        }
+      ]
+    },
+    "kalibriert": {
+      "u_H": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.3000000000000003,
+          -1.6999999999999997
+        ]
+      ],
+      "u_S": [
+        [
+          0.0,
+          3.0
+        ],
+        [
+          5.0,
+          5.0
+        ]
+      ],
+      "I_H": -3.0,
+      "I_S": -3.0,
+      "is_PG": true,
+      "Nash_GG": [
+        {
+          "Hsp70": "Open",
+          "Substrat": "Folded",
+          "u_H": 0.0,
+          "u_S": 5.0
+        }
+      ]
+    },
+    "uebereinstimmung": {
+      "PG_gleich": true,
+      "Nash_GG_gleich": false,
+      "NE_divergenz": "Illustrativ: 2 NE, Kalibriert: 1 NE. Illustratives Modell hat 2 NE (Open+Native, Closed+Misfolded), kalibriertes nur 1 NE (Open+Folded). Biologisch korrekt: Hsp70 hat keinen stabilen (Closed,Unfolded)-Zustand — Substrat praeferiert immer Folded bei physiologischem dG_fold."
+    }
+  },
+  "robustheit": {
+    "strukturell": [
+      {
+        "Delta": 0.0,
+        "I_H": 0.0,
+        "I_S": 0.0,
+        "violation": 0.0,
+        "is_PG": true
+      },
+      {
+        "Delta": 0.5,
+        "I_H": -0.5,
+        "I_S": -0.5,
+        "violation": 0.0,
+        "is_PG": true
+      },
+      {
+        "Delta": 1.0,
+        "I_H": -1.0,
+        "I_S": -1.0,
+        "violation": 0.0,
+        "is_PG": true
+      },
+      {
+        "Delta": 2.0,
+        "I_H": -2.0,
+        "I_S": -2.0,
+        "violation": 0.0,
+        "is_PG": true
+      },
+      {
+        "Delta": 3.0,
+        "I_H": -3.0,
+        "I_S": -3.0,
+        "violation": 0.0,
+        "is_PG": true
+      },
+      {
+        "Delta": 5.0,
+        "I_H": -5.0,
+        "I_S": -5.0,
+        "violation": 0.0,
+        "is_PG": true
+      },
+      {
+        "Delta": 8.0,
+        "I_H": -8.0,
+        "I_S": -8.0,
+        "violation": 0.0,
+        "is_PG": true
+      },
+      {
+        "Delta": 10.0,
+        "I_H": -10.0,
+        "I_S": -10.0,
+        "violation": 0.0,
+        "is_PG": true
+      }
+    ],
+    "asymmetrie": {
+      "n_trials": 200,
+      "noise_sigma_kcal": 1.0,
+      "mean_violation": 1.421,
+      "max_violation": 5.8277,
+      "pg_maintained_strict": 0,
+      "violation_vs_asymmetry_slope": 1.0,
+      "interpretation": "PG-Verletzung skaliert linear mit Asymmetrie (Steigung = 1.00). Biologisch ist die Asymmetrie nahe Null, weil beide Effekte (DnaJ-Stimulation fuer Hsp70, Aggregationsschutz fuer Substrat) aus derselben physikalischen Interaktion stammen."
+    },
+    "substrat_variation": [
+      {
+        "dG_fold_kcal": -3.0,
+        "is_PG": true,
+        "n_Nash_GG": 2,
+        "Nash_GG": [
+          "Open+Folded",
+          "Closed+Unfolded"
+        ]
+      },
+      {
+        "dG_fold_kcal": -5.0,
+        "is_PG": true,
+        "n_Nash_GG": 1,
+        "Nash_GG": [
+          "Open+Folded"
+        ]
+      },
+      {
+        "dG_fold_kcal": -7.0,
+        "is_PG": true,
+        "n_Nash_GG": 1,
+        "Nash_GG": [
+          "Open+Folded"
+        ]
+      },
+      {
+        "dG_fold_kcal": -10.0,
+        "is_PG": true,
+        "n_Nash_GG": 1,
+        "Nash_GG": [
+          "Open+Folded"
+        ]
+      },
+      {
+        "dG_fold_kcal": -15.0,
+        "is_PG": true,
+        "n_Nash_GG": 1,
+        "Nash_GG": [
+          "Open+Folded"
+        ]
+      }
+    ]
+  },
+  "biologische_interpretation": {
+    "regime": "Regime 2: Kinetisches Nicht-GG (S3 gebrochen, S4 intakt)",
+    "Nash_GG_bedeutung": "Einziges Nash-GG: (Open, Folded) = biologischer Ruhezustand. Substrat ist gefaltet, Hsp70 im ATP/Open-Zustand (leer). Dies ist das thermodynamische Gleichgewicht.",
+    "Nicht_GG_Zyklus": "Der Hsp70-Faltungszyklus (C,U → Release → Fold → O,F) ist KEIN Nash-GG — Substrat praeferiert immer F ueber U. Der Zyklus wird kinetisch durch S3-Brechung getrieben: DnaJ beschleunigt die Hydrolyse 3000x fuer ungefaltetes Substrat. Dies erzeugt Ultra-Affinitaet (K_eff = 0.22 nM vs K_D = 0.47 uM).",
+    "PG_bedeutung": "PG bewahrt (S4 intakt): Die Kopplung zwischen Hsp70 und Substrat ist REZIPROK. Beide profitieren gleich vom DnaJ-Ternaerkomplex. Physikalische Ursache: Es ist dieselbe Interaktion (DnaJ bindet exponierte hydrophobe Reste UND stimuliert Hsp70-ATPase), von zwei Seiten betrachtet.",
+    "unterschied_zu_GroEL": "GroEL bricht S4 (nicht-PG): Die Kopplung zwischen cis- und trans-Ring ist ASYMMETRISCH (ATP-Hydrolyse im cis erzwingt trans-Konformation, aber nicht umgekehrt). Bei Hsp70 gibt es keine solche Asymmetrie — DnaJ verknuepft Hsp70 und Substrat symmetrisch."
+  },
+  "schlussfolgerung": {
+    "hsp70_ist_PG": true,
+    "hsp70_bricht_S3": true,
+    "hsp70_bewahrt_S4_angenommen": true,
+    "regime": "Regime 2: Kinetisches Nicht-GG",
+    "kalibrierungsstatus": {
+      "kalibriert": [
+        "K_D(ATP), K_D(ADP) aus De Los Rios 2014",
+        "S3-Ratio (3000x) aus De Los Rios 2014",
+        "dG(O->C) aus NEF/Hydrolyse-Raten"
+      ],
+      "angenommen": [
+        "Delta_H = Delta_S (Reziprozitaet) — konsistent mit Goloubinoff S4, aber nicht unabhaengig gemessen",
+        "Delta = 3.0 kcal/mol (Schaetzwert, Bereich 2-5 kcal/mol)",
+        "dG_fold = -5.0 kcal/mol (typisch fuer globulaere Proteine)"
+      ]
+    },
+    "NE_divergenz": "Kalibriertes Modell: 1 NE (Open, Folded). Illustratives: 2 NE. NE-Struktur NICHT identisch. Kalibriertes Modell biologisch praeziser: (Closed,Unfolded) ist kinetischer Transit, kein stabiles GG.",
+    "PG_status": "PG folgt algebraisch aus Delta_H = Delta_S. Dies ist eine ANNAHME (gleiche physikalische Interaktion), keine unabhaengige Messung. Volle Kalibrierung erfordert separate Bestimmung von I_H (Ternaerkomplex-Thermodynamik) und I_S (Aggregationsschutz-Assays)."
+  }
+}

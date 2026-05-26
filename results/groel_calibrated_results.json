@@ -1,0 +1,68 @@
+{
+  "experimental_parameters": {
+    "L2": 2e-09,
+    "L2_prime": 4e-05,
+    "dG_TR_alone_kcal": 12.34,
+    "dG_TR_groes_kcal": 6.24,
+    "dG_ATP_kcal": -7.3,
+    "RT_kcal": 0.616
+  },
+  "potential_game_test": {
+    "is_potential_game": false,
+    "max_violation_kcal": 10.7011,
+    "n_violations": 36
+  },
+  "nash_equilibria": [
+    {
+      "cis": "T",
+      "trans": "T",
+      "u_cis": 0.0,
+      "u_trans": 0.0,
+      "u_total": 0.0
+    }
+  ],
+  "social_optimum": {
+    "cis": "T",
+    "trans": "T",
+    "total": 0.0,
+    "nash_is_optimum": true
+  },
+  "cycle_analysis": {
+    "phases": [
+      {
+        "phase": 1,
+        "cis": "T",
+        "trans": "T",
+        "u_cis": 0.0,
+        "u_trans": 0.0,
+        "is_nash": true
+      },
+      {
+        "phase": 2,
+        "cis": "R''",
+        "trans": "T",
+        "u_cis": -10.54,
+        "u_trans": 2.0,
+        "is_nash": false
+      },
+      {
+        "phase": 3,
+        "cis": "R''",
+        "trans": "R",
+        "u_cis": -12.54,
+        "u_trans": -6.24,
+        "is_nash": false
+      },
+      {
+        "phase": 4,
+        "cis": "T",
+        "trans": "R''",
+        "u_cis": -2.0,
+        "u_trans": -15.34,
+        "is_nash": false
+      }
+    ],
+    "nash_stable_phases": 1,
+    "atp_driven_phases": 3
+  }
+}

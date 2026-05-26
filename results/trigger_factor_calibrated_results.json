@@ -1,0 +1,347 @@
+{
+  "experiment": "Trigger Factor — ATP-freier Chaperon-Kontrollfall",
+  "referenzen": {
+    "thermodynamik": "Tetter et al. (2024) Sci Adv DOI:10.1126/sciadv.adn4824",
+    "KD_ribosom": "Patzelt et al. (2002) Biol Chem 383:1611",
+    "holdase_foldase": "Naqvi et al. (2022) Nat Commun 13:4051",
+    "mech_foldase": "Haldar et al. (2017) Nat Commun 8:668",
+    "realtime": "Kaiser et al. (2006) Nature 444:455",
+    "synthetische_letalitat": "Deuerling et al. (1999) Nature 400:693"
+  },
+  "parameter": {
+    "experimentell": {
+      "KD_TF_70S_22C_uM": 2.71,
+      "KD_TF_70S_37C_uM": 11.1,
+      "KD_TF_RNC_22C_nM": 482.0,
+      "KD_TF_GAPDH_4C_uM": 0.32,
+      "DH_TF_70S_kcal": -16.7,
+      "DS_TF_70S_kcal_K": -0.0316,
+      "ATP_Verbrauch": 0
+    },
+    "geschaetzt": {
+      "dG_open_kcal": -1.5,
+      "dG_fold_kcal": -5.0
+    },
+    "abgeleitet": {
+      "dG_TF_70S_22C_kcal": -7.52,
+      "dG_TF_70S_37C_kcal": -7.03,
+      "dG_TF_RNC_22C_kcal": -8.53,
+      "dG_TF_GAPDH_4C_kcal": -8.24,
+      "dG_TF_peptid_37C_kcal": -5.56,
+      "selectivity_RNC_vs_70S": 5.6,
+      "ddG_RNC_vs_70S_kcal": -1.1
+    }
+  },
+  "payoffs": {
+    "u_TF": [
+      [
+        -5.2,
+        0.0
+      ],
+      [
+        -10.1,
+        -1.5
+      ]
+    ],
+    "u_S": [
+      [
+        -2.6,
+        -2.5799999999999996
+      ],
+      [
+        5.0,
+        4.5
+      ]
+    ],
+    "strategien_TF": [
+      "Compact",
+      "Open"
+    ],
+    "strategien_S": [
+      "Unfolded",
+      "Folded"
+    ]
+  },
+  "pg_test": {
+    "I_1": 3.4,
+    "I_2": -0.52,
+    "violation": 3.92,
+    "is_PG": false
+  },
+  "nash_gleichgewichte": [
+    {
+      "player_1": "Compact",
+      "player_2": "Folded",
+      "u_1": 0.0,
+      "u_2": 5.0,
+      "u_total": 5.0
+    }
+  ],
+  "robustheit": [
+    {
+      "dG_open": -0.5,
+      "dG_fold": -3.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -0.5,
+      "dG_fold": -5.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -0.5,
+      "dG_fold": -7.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -0.5,
+      "dG_fold": -10.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -1.0,
+      "dG_fold": -3.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -1.0,
+      "dG_fold": -5.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -1.0,
+      "dG_fold": -7.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -1.0,
+      "dG_fold": -10.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -1.5,
+      "dG_fold": -3.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -1.5,
+      "dG_fold": -5.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -1.5,
+      "dG_fold": -7.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -1.5,
+      "dG_fold": -10.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -2.0,
+      "dG_fold": -3.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -2.0,
+      "dG_fold": -5.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -2.0,
+      "dG_fold": -7.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -2.0,
+      "dG_fold": -10.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -3.0,
+      "dG_fold": -3.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -3.0,
+      "dG_fold": -5.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -3.0,
+      "dG_fold": -7.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    },
+    {
+      "dG_open": -3.0,
+      "dG_fold": -10.0,
+      "is_PG": false,
+      "violation": 3.92,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "Compact",
+          "Folded"
+        ]
+      ]
+    }
+  ],
+  "Q10_kontrolltest": {
+    "n_NE": 1,
+    "ATP_frei": true,
+    "interpretation": "NE=1: ATP nicht ursächlich für NE-Eindeutigkeit"
+  }
+}

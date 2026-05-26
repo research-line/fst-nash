@@ -1,0 +1,372 @@
+{
+  "experiment": "Hsp70→Hsp90 Client-Handoff — 3-Spieler Nash-Modell",
+  "referenzen": {
+    "Hsp70_ultraaffinity": "De Los Rios & Barducci (2014) eLife 3:e02218",
+    "Hsp90_activation": "Boysen et al. (2020) Biophys J",
+    "Hop_binding": "Assimon et al. (2015) PMC4714923",
+    "cryo_EM": "Wang et al. (2022) Nature 601:460",
+    "deadlock": "Morán Luengo et al. (2018) Mol Cell 70:545",
+    "coord_cycles": "Kirschke et al. (2014) Cell 158:434"
+  },
+  "parameter": {
+    "KD_Hsp70_ATP_uM": 1.5,
+    "KD_Hsp70_ADP_nM": 64.4,
+    "Keff_nonequil_nM": 0.3,
+    "KA_Hsp90_Cdc37_uM": 0.23,
+    "KD_Hop_Hsp70_uM": 3.0,
+    "KD_Hop_Hsp90_uM": 7.0,
+    "ATP_per_vSrc": 29
+  },
+  "pg_test": {
+    "is_PG": false,
+    "max_violation": 2.0,
+    "pairwise_tests": [
+      {
+        "fixed": "Hsp90=Open",
+        "I_Hsp70": -6.0,
+        "I_Client": -7.0,
+        "violation": 1.0,
+        "is_PG": false
+      },
+      {
+        "fixed": "Hsp90=Closed",
+        "I_Hsp70": -3.5,
+        "I_Client": -4.0,
+        "violation": 0.5,
+        "is_PG": false
+      },
+      {
+        "fixed": "Client=Unreif",
+        "I_Hsp70": -3.5,
+        "I_Hsp90": -1.5,
+        "violation": 2.0,
+        "is_PG": false
+      },
+      {
+        "fixed": "Client=Reif",
+        "I_Hsp70": -1.0,
+        "I_Hsp90": -1.5,
+        "violation": 0.5,
+        "is_PG": false
+      }
+    ]
+  },
+  "nash_gleichgewichte": [
+    {
+      "Hsp70": "ATP-Open",
+      "Client": "Reif",
+      "Hsp90": "Closed",
+      "u_Hsp70": 2.0,
+      "u_Client": 4.5,
+      "u_Hsp90": 3.0,
+      "u_total": 9.5
+    }
+  ],
+  "robustheit": [
+    {
+      "hop_bridge": 0.0,
+      "hsp90_reifung": 1.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 0.0,
+      "hsp90_reifung": 3.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 0.0,
+      "hsp90_reifung": 5.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 0.0,
+      "hsp90_reifung": 8.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 1.0,
+      "hsp90_reifung": 1.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 1.0,
+      "hsp90_reifung": 3.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 1.0,
+      "hsp90_reifung": 5.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 1.0,
+      "hsp90_reifung": 8.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 2.0,
+      "hsp90_reifung": 1.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 2.0,
+      "hsp90_reifung": 3.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 2.0,
+      "hsp90_reifung": 5.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 2.0,
+      "hsp90_reifung": 8.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 3.0,
+      "hsp90_reifung": 1.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 3.0,
+      "hsp90_reifung": 3.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 3.0,
+      "hsp90_reifung": 5.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 3.0,
+      "hsp90_reifung": 8.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 1,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 5.0,
+      "hsp90_reifung": 1.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ],
+        [
+          "ADP-Closed",
+          "Unreif",
+          "Open"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 5.0,
+      "hsp90_reifung": 3.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ],
+        [
+          "ADP-Closed",
+          "Unreif",
+          "Open"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 5.0,
+      "hsp90_reifung": 5.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ],
+        [
+          "ADP-Closed",
+          "Unreif",
+          "Open"
+        ]
+      ]
+    },
+    {
+      "hop_bridge": 5.0,
+      "hsp90_reifung": 8.0,
+      "is_PG": false,
+      "max_violation": 2.0,
+      "n_NE": 2,
+      "NE_profiles": [
+        [
+          "ATP-Open",
+          "Reif",
+          "Closed"
+        ],
+        [
+          "ADP-Closed",
+          "Unreif",
+          "Open"
+        ]
+      ]
+    }
+  ],
+  "schlussfolgerung": {
+    "n_NE": 1,
+    "is_PG": false,
+    "max_violation": 2.0
+  }
+}

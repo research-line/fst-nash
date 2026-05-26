@@ -1,0 +1,71 @@
+{
+  "modell": "Hsp90/Cdc37 S2-Brechung",
+  "regime": 3,
+  "regime_name": "Thermodynamisches Nicht-Gleichgewicht",
+  "experimentelle_parameter": {
+    "hsp90_kcat_min": 0.09,
+    "cdc37_kd_inactive_uM": 0.5,
+    "cdc37_kd_active_uM": 50.0,
+    "selectivity_factor": 100.00000000000001,
+    "ddG_cdc37_kcal": 2.730865920290938,
+    "braf_wt_frac_active_free": 0.5,
+    "braf_v600e_frac_active_free": 0.9
+  },
+  "payoff_parameter": {
+    "delta_H": 2.730865920290938,
+    "delta_S": 0.5,
+    "delta_H_quelle": "ddG_Cdc37 (Sreeramulu 2009)",
+    "delta_S_quelle": "GESCHAETZT (nicht gemessen)"
+  },
+  "ergebnisse": {
+    "I_H": -2.730865920290938,
+    "I_S": -0.5,
+    "four_cycle_violation": 2.230865920290938,
+    "potential_game": false,
+    "nash_equilibria": [
+      {
+        "hsp90": "Closed",
+        "substrat": "Inactive",
+        "u_H": 3.3823430074711274,
+        "u_S": 0.5
+      }
+    ]
+  },
+  "kalibrierungsstatus": {
+    "hsp90_atpase": {
+      "status": "KALIBRIERT",
+      "quelle": "Prodromou 2000"
+    },
+    "cdc37_selektivitaet": {
+      "status": "GESCHAETZT",
+      "quelle": "Sreeramulu 2009 (CDK4); 100x fuer DFG-in/out extrapoliert aus Strukturdaten"
+    },
+    "s2_brechung": {
+      "status": "KALIBRIERT",
+      "quelle": "Goloubinoff 2022"
+    },
+    "delta_H": {
+      "status": "KALIBRIERT",
+      "quelle": "ddG aus K_D-Ratio"
+    },
+    "delta_S": {
+      "status": "ANGENOMMEN",
+      "quelle": "Schaetzung 0.5 kcal/mol"
+    },
+    "pg_verletzung": {
+      "status": "FOLGT AUS KONSTRUKTION",
+      "erklaerung": "PG=False folgt algebraisch aus Delta_H != Delta_S"
+    }
+  },
+  "vorhersage": {
+    "beschreibung": "B-Raf aktive Fraktion unter Hsp90/Cdc37",
+    "braf_wt_cdc37_saturated_frac_active": 0.009900990099009898,
+    "braf_v600e_cdc37_saturated_frac_active": 0.08256880733944952
+  },
+  "schlussfolgerung": {
+    "s2_gebrochen": true,
+    "s4_pg_gebrochen": true,
+    "konsistent_mit_goloubinoff": true,
+    "einschraenkung": "PG-Verletzung folgt aus der Payoff-Konstruktion (Delta_H != Delta_S), nicht aus unabhaengiger Messung. Fuer volle Kalibrierung muesste Delta_S experimentell bestimmt werden."
+  }
+}

@@ -1,0 +1,461 @@
+{
+  "params_source": "C:\\Users\\User\\OneDrive\\.TOPICS\\.RESEARCH\\.LAB\\.ZETA-ZOO\\FST_PRACTICAL\\FST-III_Biological\\fst_nash\\results\\joint_training_v2_results.json",
+  "model": "v2",
+  "lr": 0.05,
+  "results": [
+    {
+      "pdb_id": "1YRF",
+      "name": "Villin Headpiece HP35",
+      "fold_class": "all_alpha",
+      "split": "train",
+      "n_residues": 35,
+      "nash_vs_bfactor": {
+        "n": 35,
+        "pearson_r": -0.1417,
+        "pearson_p": 0.4169,
+        "spearman_rho": -0.1501,
+        "spearman_p": 0.3893
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 5
+    },
+    {
+      "pdb_id": "1YU5",
+      "name": "Villin Headpiece HP67",
+      "fold_class": "all_alpha",
+      "split": "train",
+      "n_residues": 67,
+      "nash_vs_bfactor": {
+        "n": 67,
+        "pearson_r": 0.147,
+        "pearson_p": 0.2353,
+        "spearman_rho": 0.1685,
+        "spearman_p": 0.173
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 6
+    },
+    {
+      "pdb_id": "1ENH",
+      "name": "Engrailed Homeodomain",
+      "fold_class": "all_alpha",
+      "split": "train",
+      "n_residues": 54,
+      "nash_vs_bfactor": {
+        "n": 54,
+        "pearson_r": 0.0359,
+        "pearson_p": 0.7966,
+        "spearman_rho": -0.1114,
+        "spearman_p": 0.4225
+      },
+      "top_k_overlap_bfactor": 0.2,
+      "top_k": 5
+    },
+    {
+      "pdb_id": "1R69",
+      "name": "434 Repressor DBD",
+      "fold_class": "all_alpha",
+      "split": "train",
+      "n_residues": 63,
+      "nash_vs_bfactor": {
+        "n": 63,
+        "pearson_r": 0.0273,
+        "pearson_p": 0.8317,
+        "spearman_rho": 0.0937,
+        "spearman_p": 0.4651
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 6
+    },
+    {
+      "pdb_id": "1CEI",
+      "name": "Im7 Colicin Immunity",
+      "fold_class": "all_alpha",
+      "split": "test",
+      "n_residues": 85,
+      "nash_vs_bfactor": {
+        "n": 85,
+        "pearson_r": 0.163,
+        "pearson_p": 0.1361,
+        "spearman_rho": 0.1228,
+        "spearman_p": 0.2628
+      },
+      "top_k_overlap_bfactor": 0.25,
+      "top_k": 8
+    },
+    {
+      "pdb_id": "1M6T",
+      "name": "B562RIL 4-Helix Bundle",
+      "fold_class": "all_alpha",
+      "split": "test",
+      "n_residues": 106,
+      "nash_vs_bfactor": {
+        "n": 106,
+        "pearson_r": 0.15,
+        "pearson_p": 0.1249,
+        "spearman_rho": -0.0146,
+        "spearman_p": 0.8823
+      },
+      "top_k_overlap_bfactor": 0.1,
+      "top_k": 10
+    },
+    {
+      "pdb_id": "1SHG",
+      "name": "Spectrin SH3 Domain",
+      "fold_class": "all_beta",
+      "split": "train",
+      "n_residues": 57,
+      "nash_vs_bfactor": {
+        "n": 57,
+        "pearson_r": -0.2417,
+        "pearson_p": 0.0701,
+        "spearman_rho": -0.1825,
+        "spearman_p": 0.1742
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 5
+    },
+    {
+      "pdb_id": "1TEN",
+      "name": "Tenascin Fn3 Domain",
+      "fold_class": "all_beta",
+      "split": "train",
+      "n_residues": 89,
+      "nash_vs_bfactor": {
+        "n": 89,
+        "pearson_r": -0.1085,
+        "pearson_p": 0.3114,
+        "spearman_rho": -0.0963,
+        "spearman_p": 0.3695
+      },
+      "top_k_overlap_bfactor": 0.25,
+      "top_k": 8
+    },
+    {
+      "pdb_id": "1FNA",
+      "name": "Fibronectin Fn3 D10",
+      "fold_class": "all_beta",
+      "split": "train",
+      "n_residues": 91,
+      "nash_vs_bfactor": {
+        "n": 91,
+        "pearson_r": -0.2449,
+        "pearson_p": 0.0193,
+        "spearman_rho": -0.0724,
+        "spearman_p": 0.495
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 9
+    },
+    {
+      "pdb_id": "1CSP",
+      "name": "CspB Cold Shock Protein",
+      "fold_class": "all_beta",
+      "split": "train",
+      "n_residues": 67,
+      "nash_vs_bfactor": {
+        "n": 67,
+        "pearson_r": -0.3106,
+        "pearson_p": 0.0105,
+        "spearman_rho": -0.2507,
+        "spearman_p": 0.0407
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 6
+    },
+    {
+      "pdb_id": "1BFG",
+      "name": "FGF-2 beta-Trefoil",
+      "fold_class": "all_beta",
+      "split": "test",
+      "n_residues": 126,
+      "nash_vs_bfactor": {
+        "n": 126,
+        "pearson_r": -0.038,
+        "pearson_p": 0.6731,
+        "spearman_rho": -0.0484,
+        "spearman_p": 0.5905
+      },
+      "top_k_overlap_bfactor": 0.167,
+      "top_k": 12
+    },
+    {
+      "pdb_id": "1HOE",
+      "name": "Tendamistat",
+      "fold_class": "all_beta",
+      "split": "test",
+      "n_residues": 74,
+      "nash_vs_bfactor": {
+        "n": 74,
+        "pearson_r": -0.134,
+        "pearson_p": 0.2549,
+        "spearman_rho": -0.0777,
+        "spearman_p": 0.5105
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 7
+    },
+    {
+      "pdb_id": "3CHY",
+      "name": "CheY Chemotaxis",
+      "fold_class": "alpha_beta",
+      "split": "train",
+      "n_residues": 128,
+      "nash_vs_bfactor": {
+        "n": 128,
+        "pearson_r": -0.2054,
+        "pearson_p": 0.02,
+        "spearman_rho": -0.2581,
+        "spearman_p": 0.0033
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 12
+    },
+    {
+      "pdb_id": "1ERU",
+      "name": "Thioredoxin (human)",
+      "fold_class": "alpha_beta",
+      "split": "train",
+      "n_residues": 105,
+      "nash_vs_bfactor": {
+        "n": 105,
+        "pearson_r": -0.1237,
+        "pearson_p": 0.2088,
+        "spearman_rho": -0.183,
+        "spearman_p": 0.0617
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 10
+    },
+    {
+      "pdb_id": "1ABA",
+      "name": "Glutaredoxin (T4 Phage)",
+      "fold_class": "alpha_beta",
+      "split": "train",
+      "n_residues": 87,
+      "nash_vs_bfactor": {
+        "n": 87,
+        "pearson_r": -0.0494,
+        "pearson_p": 0.6496,
+        "spearman_rho": -0.0898,
+        "spearman_p": 0.4081
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 8
+    },
+    {
+      "pdb_id": "1CTF",
+      "name": "Ribosomal L7/L12 C-term",
+      "fold_class": "alpha_beta",
+      "split": "test",
+      "n_residues": 68,
+      "nash_vs_bfactor": {
+        "n": 68,
+        "pearson_r": 0.0357,
+        "pearson_p": 0.7727,
+        "spearman_rho": 0.1796,
+        "spearman_p": 0.1427
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 6
+    },
+    {
+      "pdb_id": "1PGA",
+      "name": "Protein G B1 Domain",
+      "fold_class": "alpha_plus_beta",
+      "split": "train",
+      "n_residues": 56,
+      "nash_vs_bfactor": {
+        "n": 56,
+        "pearson_r": 0.0213,
+        "pearson_p": 0.876,
+        "spearman_rho": 0.0244,
+        "spearman_p": 0.8583
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 5
+    },
+    {
+      "pdb_id": "2XWR",
+      "name": "p53 DNA-Binding Domain",
+      "fold_class": "alpha_plus_beta",
+      "split": "test",
+      "n_residues": 199,
+      "nash_vs_bfactor": {
+        "n": 199,
+        "pearson_r": -0.1451,
+        "pearson_p": 0.0409,
+        "spearman_rho": -0.1811,
+        "spearman_p": 0.0105
+      },
+      "top_k_overlap_bfactor": 0.105,
+      "top_k": 19
+    },
+    {
+      "pdb_id": "1UBQ",
+      "name": "Ubiquitin",
+      "fold_class": "alpha_plus_beta",
+      "split": "train",
+      "n_residues": 76,
+      "nash_vs_bfactor": {
+        "n": 76,
+        "pearson_r": -0.143,
+        "pearson_p": 0.2179,
+        "spearman_rho": -0.0871,
+        "spearman_p": 0.4546
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 7
+    },
+    {
+      "pdb_id": "2CI2",
+      "name": "Chymotrypsin Inhibitor 2",
+      "fold_class": "alpha_plus_beta",
+      "split": "train",
+      "n_residues": 65,
+      "nash_vs_bfactor": {
+        "n": 65,
+        "pearson_r": -0.0159,
+        "pearson_p": 0.9002,
+        "spearman_rho": -0.1321,
+        "spearman_p": 0.2943
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 6
+    },
+    {
+      "pdb_id": "2PPN",
+      "name": "FKBP12 apo",
+      "fold_class": "alpha_plus_beta",
+      "split": "train",
+      "n_residues": 107,
+      "nash_vs_bfactor": {
+        "n": 107,
+        "pearson_r": -0.3081,
+        "pearson_p": 0.0012,
+        "spearman_rho": -0.2543,
+        "spearman_p": 0.0082
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 10
+    },
+    {
+      "pdb_id": "1A2P",
+      "name": "Barnase",
+      "fold_class": "alpha_plus_beta",
+      "split": "train",
+      "n_residues": 108,
+      "nash_vs_bfactor": {
+        "n": 108,
+        "pearson_r": -0.1314,
+        "pearson_p": 0.1752,
+        "spearman_rho": -0.1626,
+        "spearman_p": 0.0927
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 10
+    },
+    {
+      "pdb_id": "2ACY",
+      "name": "Acylphosphatase",
+      "fold_class": "alpha_plus_beta",
+      "split": "test",
+      "n_residues": 98,
+      "nash_vs_bfactor": {
+        "n": 98,
+        "pearson_r": -0.1726,
+        "pearson_p": 0.0892,
+        "spearman_rho": -0.202,
+        "spearman_p": 0.0461
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 9
+    },
+    {
+      "pdb_id": "1RIS",
+      "name": "Ribosomal S6",
+      "fold_class": "alpha_plus_beta",
+      "split": "test",
+      "n_residues": 97,
+      "nash_vs_bfactor": {
+        "n": 97,
+        "pearson_r": -0.2908,
+        "pearson_p": 0.0039,
+        "spearman_rho": -0.3246,
+        "spearman_p": 0.0012
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 9
+    },
+    {
+      "pdb_id": "1CRN",
+      "name": "Crambin",
+      "fold_class": "small",
+      "split": "train",
+      "n_residues": 46,
+      "nash_vs_bfactor": {
+        "n": 46,
+        "pearson_r": 0.1786,
+        "pearson_p": 0.2349,
+        "spearman_rho": 0.1864,
+        "spearman_p": 0.2148
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 5
+    },
+    {
+      "pdb_id": "5PTI",
+      "name": "BPTI Aprotinin",
+      "fold_class": "small",
+      "split": "train",
+      "n_residues": 58,
+      "nash_vs_bfactor": {
+        "n": 58,
+        "pearson_r": -0.2254,
+        "pearson_p": 0.0889,
+        "spearman_rho": -0.2236,
+        "spearman_p": 0.0916
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 5
+    },
+    {
+      "pdb_id": "1AHO",
+      "name": "Scorpion Toxin II",
+      "fold_class": "small",
+      "split": "train",
+      "n_residues": 64,
+      "nash_vs_bfactor": {
+        "n": 64,
+        "pearson_r": -0.3369,
+        "pearson_p": 0.0065,
+        "spearman_rho": -0.3726,
+        "spearman_p": 0.0024
+      },
+      "top_k_overlap_bfactor": 0.0,
+      "top_k": 6
+    },
+    {
+      "pdb_id": "1NXB",
+      "name": "Neurotoxin B",
+      "fold_class": "small",
+      "split": "test",
+      "n_residues": 62,
+      "nash_vs_bfactor": {
+        "n": 62,
+        "pearson_r": -0.1265,
+        "pearson_p": 0.3273,
+        "spearman_rho": -0.1419,
+        "spearman_p": 0.2711
+      },
+      "top_k_overlap_bfactor": 0.167,
+      "top_k": 6
+    }
+  ],
+  "summary": {
+    "bf_pearson_mean": -0.0977,
+    "bf_spearman_mean": -0.1015,
+    "bf_overlap_mean": 0.0443,
+    "n_proteins": 28
+  }
+}

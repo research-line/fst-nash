@@ -1,0 +1,187 @@
+{
+  "description": "Mapping der Goloubinoff-Symmetrien (2022) auf das GroEL-Spielmodell. Zentrale Erkenntnis: S4 (Reversibilität) = Potential-Game-Test.",
+  "symmetry_S1_preference_robustness": {
+    "cis": {
+      "max_violation_kcal": 10.1005,
+      "broken": true,
+      "rank_reversals": 1,
+      "player": "Cis"
+    },
+    "trans": {
+      "max_violation_kcal": 10.1005,
+      "broken": true,
+      "rank_reversals": 0,
+      "player": "Trans"
+    }
+  },
+  "symmetry_S2_state_independence": {
+    "cis": {
+      "max_dependence_kcal": 6.1005,
+      "broken": true,
+      "per_state": {
+        "T": {
+          "payoffs": {
+            "T": 0.0,
+            "R": -1.5,
+            "R''": -2.0
+          },
+          "spread_kcal": 2.0
+        },
+        "R": {
+          "payoffs": {
+            "T": -19.64,
+            "R": -13.54,
+            "R''": -14.54
+          },
+          "spread_kcal": 6.1
+        },
+        "R''": {
+          "payoffs": {
+            "T": -10.54,
+            "R": -12.54,
+            "R''": -15.54
+          },
+          "spread_kcal": 5.0
+        }
+      },
+      "player": "Cis"
+    },
+    "trans": {
+      "max_dependence_kcal": 6.1005,
+      "broken": true,
+      "per_state": {
+        "T": {
+          "payoffs": {
+            "T": 0.0,
+            "R": 0.5,
+            "R''": 2.0
+          },
+          "spread_kcal": 2.0
+        },
+        "R": {
+          "payoffs": {
+            "T": -12.34,
+            "R": -10.34,
+            "R''": -6.24
+          },
+          "spread_kcal": 6.1
+        },
+        "R''": {
+          "payoffs": {
+            "T": -15.34,
+            "R": -12.54,
+            "R''": -18.54
+          },
+          "spread_kcal": 6.0
+        }
+      },
+      "player": "Trans"
+    }
+  },
+  "symmetry_S3_coupling_separability": {
+    "cis": {
+      "max_contrast_kcal": 10.1005,
+      "broken": true,
+      "player": "Cis"
+    },
+    "trans": {
+      "max_contrast_kcal": 10.1005,
+      "broken": true,
+      "player": "Trans"
+    }
+  },
+  "symmetry_S4_cycle_reversibility": {
+    "is_potential_game": false,
+    "max_asymmetry_kcal": 10.7011,
+    "n_violations": 36,
+    "total_cycles": 36,
+    "top_3_violations": [
+      {
+        "cis": "R↔R''",
+        "trans": "T↔R",
+        "I_cis": -8.1005,
+        "I_trans": 2.6005,
+        "asymmetry_kcal": 10.7011
+      },
+      {
+        "cis": "R↔R''",
+        "trans": "R↔T",
+        "I_cis": 8.1005,
+        "I_trans": -2.6005,
+        "asymmetry_kcal": 10.7011
+      },
+      {
+        "cis": "R''↔R",
+        "trans": "T↔R",
+        "I_cis": 8.1005,
+        "I_trans": -2.6005,
+        "asymmetry_kcal": 10.7011
+      }
+    ]
+  },
+  "coupling_decomposition": {
+    "interaction_matrix_cis": [
+      [
+        1.245,
+        -1.122,
+        -0.122
+      ],
+      [
+        -3.656,
+        1.578,
+        2.078
+      ],
+      [
+        2.411,
+        -0.456,
+        -1.956
+      ]
+    ],
+    "interaction_matrix_trans": [
+      [
+        0.3,
+        -0.967,
+        0.666
+      ],
+      [
+        -1.567,
+        -1.334,
+        2.9
+      ],
+      [
+        1.266,
+        2.3,
+        -3.567
+      ]
+    ],
+    "asymmetry_matrix": [
+      [
+        0.944,
+        0.444,
+        -1.389
+      ],
+      [
+        -2.689,
+        2.911,
+        -0.222
+      ],
+      [
+        1.745,
+        -3.356,
+        1.611
+      ]
+    ],
+    "frobenius_asymmetry": 5.973,
+    "interpretation": "J_cis und J_trans sind die reinen Interaktionsterme (nach Abzug der Haupteffekte). Die Differenz J_cis - J_trans^T misst die nicht-reziproke Kopplung. Frobenius-Norm > 0 → S4 gebrochen."
+  },
+  "summary": {
+    "all_four_broken": true,
+    "hierarchy_confirmed": "S2 ⊂ S3 ⊂ S4 — strengere Bedingung impliziert schwächere",
+    "key_result": "S4-Brechung (Goloubinoff) = Potential-Game-Verletzung (Monderer & Shapley). Spieltheorie quantifiziert die Symmetriebrechung und identifiziert, welche Konformationsübergänge ATP-Antrieb benötigen."
+  },
+  "references": {
+    "goloubinoff_2022": "Biomolecules 12:832 — vier Symmetriebedingungen",
+    "monderer_shapley_1996": "Games & Econ Behavior 14:124 — Potential Games",
+    "yifrach_horovitz_1995": "Biochemistry 34:5303 — GroEL allosterische Konstanten"
+  }
+}

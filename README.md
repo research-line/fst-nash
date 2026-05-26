@@ -1,6 +1,6 @@
 # FST-Nash: Game-Theoretic Diagnostics for Chaperone Systems
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20402752.svg)](https://doi.org/10.5281/zenodo.20402752)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20403840.svg)](https://doi.org/10.5281/zenodo.20403840)
 
 A potential-game test maps the Goloubinoff symmetry landscape: sub-classifying non-equilibrium chaperones into kinetic and thermodynamic regimes.
 
@@ -8,9 +8,9 @@ A potential-game test maps the Goloubinoff symmetry landscape: sub-classifying n
 
 **Game-Theoretic Diagnostics for Chaperone Systems: A Potential-Game Test Maps the Goloubinoff Symmetry Landscape**
 
-- Zenodo DOI: [10.5281/zenodo.20402752](https://doi.org/10.5281/zenodo.20402752)
+- Zenodo DOI: [10.5281/zenodo.20403840](https://doi.org/10.5281/zenodo.20403840)
 - Concept-DOI: [10.5281/zenodo.20402751](https://doi.org/10.5281/zenodo.20402751)
-- Status: Preprint v1.0 (May 2026)
+- Status: Preprint v1.1 (May 2026; English, German, and combined PDFs)
 
 This paper supersedes Section 3 ("Game-Theoretic Stability") of FST-III Biological ([10.5281/zenodo.20130573](https://doi.org/10.5281/zenodo.20130573)).
 

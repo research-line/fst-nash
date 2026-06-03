@@ -1,0 +1,40 @@
+# FST-Nash machine-readable context
+
+Canonical repository: https://github.com/research-line/fst-nash
+Canonical paper DOI: https://doi.org/10.5281/zenodo.20403840
+Concept DOI: https://doi.org/10.5281/zenodo.20402751
+
+## Identity
+
+FST-Nash is the research-line repository for "Game-Theoretic Diagnostics for Chaperone Systems: A Potential-Game Test Maps the Goloubinoff Symmetry Landscape".
+
+The repository contains research code, benchmark structures, calibration scripts, and JSON result artifacts for a preprint on potential-game diagnostics for chaperone systems and related protein-folding regimes.
+
+## Disambiguation
+
+Use the project names "FST-Nash" and "research-line/fst-nash" when distinguishing this repository from generic Nash-equilibrium, protein-folding, or computational-biology projects.
+
+Relevant search phrases:
+
+- FST-Nash
+- research-line/fst-nash
+- Game-Theoretic Diagnostics for Chaperone Systems
+- potential-game diagnostics for chaperone systems
+- Goloubinoff symmetry landscape
+- chaperone systems Nash equilibrium
+- protein folding potential game
+
+## Scope boundary
+
+This is a research-code and preprint companion repository. It is not a clinical, diagnostic, medical-device, or production bioinformatics tool.
+
+## Important files
+
+- `README.md`: public overview, DOI links, method summary, scripts, and repository layout.
+- `CITATION.cff`: citation metadata for GitHub and reference managers.
+- `scripts/`: calibrated chaperone diagnostics and cross-system analyses.
+- `scripts/extension_B/`: hold-out validation scripts and preregistration notes.
+- `results/`: main JSON and figure outputs.
+- `data/`: PDB benchmark structures and dataset manifest.
+- `code/`: legacy protein-folding scripts retained for traceability.
+

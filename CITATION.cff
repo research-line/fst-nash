@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the Zenodo preprint."
+title: "Game-Theoretic Diagnostics for Chaperone Systems: A Potential-Game Test Maps the Goloubinoff Symmetry Landscape"
+authors:
+  - family-names: "Geiger"
+    given-names: "Lukas"
+    orcid: "https://orcid.org/0009-0005-7296-1534"
+doi: "10.5281/zenodo.20403840"
+version: "1.1"
+date-released: "2026-05-27"
+url: "https://github.com/research-line/fst-nash"
+repository-code: "https://github.com/research-line/fst-nash"
+license: "MIT"
+preferred-citation:
+  type: article
+  title: "Game-Theoretic Diagnostics for Chaperone Systems: A Potential-Game Test Maps the Goloubinoff Symmetry Landscape"
+  authors:
+    - family-names: "Geiger"
+      given-names: "Lukas"
+      orcid: "https://orcid.org/0009-0005-7296-1534"
+  doi: "10.5281/zenodo.20403840"
+  date-released: "2026-05-27"
+  version: "1.1"

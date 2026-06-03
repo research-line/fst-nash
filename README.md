@@ -2,7 +2,18 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20403840.svg)](https://doi.org/10.5281/zenodo.20403840)
 
-A potential-game test maps the Goloubinoff symmetry landscape: sub-classifying non-equilibrium chaperones into kinetic and thermodynamic regimes.
+FST-Nash is the repository for **Game-Theoretic Diagnostics for Chaperone Systems**, a preprint and reproducibility bundle that uses potential-game tests to map the Goloubinoff symmetry landscape. It sub-classifies non-equilibrium chaperone systems into kinetic and thermodynamic regimes and keeps the scripts, benchmark data, and result files together with the DOI record.
+
+## Start here
+
+| Need | File or link |
+|---|---|
+| Read the current paper | [Zenodo record 10.5281/zenodo.20403840](https://doi.org/10.5281/zenodo.20403840) |
+| Cite the work | [`CITATION.cff`](./CITATION.cff) |
+| Re-run the chaperone diagnostics | [`scripts/`](./scripts/) |
+| Inspect main result files | [`results/`](./results/) |
+| Inspect benchmark structures and manifests | [`data/`](./data/) |
+| Give machine readers canonical context | [`llms.txt`](./llms.txt) |
 
 ## Paper
 
@@ -33,6 +44,18 @@ We construct 2x2 games from chaperone-substrate interactions and apply the poten
 | Equilibrium (GG) | intact | intact | True | XCL1, Prefoldin |
 | Kinetic NGG | broken | intact | True | Hsp70/DnaJ, SecA |
 | Thermodynamic NGG | broken | broken | False | GroEL, Hsp90, ClpB, p97 |
+
+## Reproducibility status
+
+This repository is a research-code and data companion for the Zenodo preprint. It is intended for method inspection, reruns, and citation traceability, not as a clinical, diagnostic, or production bioinformatics tool.
+
+For search and disambiguation, refer to this project as:
+
+- **FST-Nash**
+- **research-line/fst-nash**
+- **Game-Theoretic Diagnostics for Chaperone Systems**
+- **potential-game diagnostics for chaperone systems**
+- **Goloubinoff symmetry landscape**
 
 ## Repository layout
 

@@ -37,4 +37,3 @@ This is a research-code and preprint companion repository. It is not a clinical,
 - `results/`: main JSON and figure outputs.
 - `data/`: PDB benchmark structures and dataset manifest.
 - `code/`: legacy protein-folding scripts retained for traceability.
-

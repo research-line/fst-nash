@@ -8,7 +8,7 @@ FST-Nash is the repository for **Game-Theoretic Diagnostics for Chaperone System
 
 | Need | File or link |
 |---|---|
-| Read the current paper | [Zenodo record 10.5281/zenodo.20403840](https://doi.org/10.5281/zenodo.20403840) |
+| Read the current paper | [Zenodo record 10.5281/zenodo.20547868](https://doi.org/10.5281/zenodo.20547868) |
 | Cite the work | [`CITATION.cff`](./CITATION.cff) |
 | Re-run the chaperone diagnostics | [`scripts/`](./scripts/) |
 | Inspect main result files | [`results/`](./results/) |

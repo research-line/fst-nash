@@ -1,7 +1,7 @@
 # FST-Nash machine-readable context
 
 Canonical repository: https://github.com/research-line/fst-nash
-Canonical paper DOI: https://doi.org/10.5281/zenodo.20403840
+Canonical paper DOI: https://doi.org/10.5281/zenodo.20547868
 Concept DOI: https://doi.org/10.5281/zenodo.20402751
 
 ## Identity

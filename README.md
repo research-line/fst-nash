@@ -60,7 +60,7 @@ For search and disambiguation, refer to this project as:
 ## Repository layout
 
 ```
-scripts/                    26 calibration/diagnostic scripts
+scripts/                    30 calibration/diagnostic scripts
   extension_B/              5 hold-out scripts + pre-registration
   results/                  Extension B hold-out results (JSON)
 results/                    Main atlas results (JSON)

@@ -1,7 +1,7 @@
 # FST-Nash machine-readable context
 
 Canonical repository: https://github.com/research-line/fst-nash
-Canonical paper DOI: https://doi.org/10.5281/zenodo.20547868
+Canonical paper DOI: https://doi.org/10.5281/zenodo.21014120
 Concept DOI: https://doi.org/10.5281/zenodo.20402751
 
 ## Identity
@@ -49,4 +49,4 @@ This is a research-code and preprint companion repository. It is not a clinical,
 - `data/`: PDB benchmark structures and dataset manifest.
 - `code/`: legacy protein-folding scripts retained for traceability.
 
-## Last-checked: 2026-06-11
+## Last-checked: 2026-06-28

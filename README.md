@@ -49,6 +49,8 @@ We construct 2x2 games from chaperone-substrate interactions and apply the poten
 
 This repository is a research-code and data companion for the Zenodo preprint. It is intended for method inspection, reruns, and citation traceability, not as a clinical, diagnostic, or production bioinformatics tool.
 
+The pre-review validation ledger (`scripts/validation_evidence_ledger.py`) keeps the current claim boundary explicit: 8/8 audited routes are construction-conditioned, no route has both a computed AlphaFold and energetic-frustration baseline, and 0/8 pass the full evidence stack. The supported waterline remains diagnostic classification, not a validated mechanistic model.
+
 For search and disambiguation, refer to this project as:
 
 - **FST-Nash**
@@ -60,7 +62,7 @@ For search and disambiguation, refer to this project as:
 ## Repository layout
 
 ```
-scripts/                    30 calibration/diagnostic scripts
+scripts/                    36 calibration/diagnostic scripts
   extension_B/              5 hold-out scripts + pre-registration
   results/                  Extension B hold-out results (JSON)
 results/                    Main atlas results (JSON)
@@ -80,6 +82,7 @@ python scripts/xcl1_fold_switching_calibrated.py
 python scripts/chaperone_cross_validation.py
 python scripts/goloubinoff_symmetry_mapping.py
 python scripts/fold_switching_diagnostic.py
+python scripts/validation_evidence_ledger.py
 
 # Extension B: hold-out validation
 python scripts/extension_B/dnaj_holdout.py

@@ -1,0 +1,115 @@
+{
+  "schema": "fst-nash-validation-evidence-v1",
+  "run_date": "2026-07-10",
+  "summary": {
+    "row_count": 8,
+    "construction_guardrail_count": 8,
+    "quantitative_but_partially_circular_count": 1,
+    "partial_dynamic_anchor_count": 1,
+    "holdout_convention_consistency_count": 4,
+    "alphafold_computed_count": 0,
+    "energetic_frustration_computed_count": 0,
+    "independent_cycle_quantitative_count": 0,
+    "full_validation_pass_count": 0,
+    "claim_upgrade_allowed": false,
+    "paper_waterline": "Diagnostic classification only; one partially circular quantitative XCL1 check and one partial GroEL cycle anchor do not establish a validated mechanistic model."
+  },
+  "rows": [
+    {
+      "construction_conditioned": true,
+      "alphafold_baseline": "not_computed",
+      "energetic_frustration_baseline": "not_computed",
+      "claim_level": "diagnostic_only",
+      "case": "XCL1 salt shift",
+      "experimental_dynamic_evidence": "quantitative_but_partially_circular",
+      "independent_chaperone_cycle_anchor": "not_applicable_no_chaperone_cycle",
+      "provenance": "results/xcl1_fold_switching_calibrated_results.json",
+      "gate_reason": "The 150 mM population reuses Tyler inputs; the 70/75 mM point is qualitative, and neither requested baseline is computed.",
+      "strong_validation_pass": false
+    },
+    {
+      "construction_conditioned": true,
+      "alphafold_baseline": "not_computed",
+      "energetic_frustration_baseline": "not_computed",
+      "claim_level": "diagnostic_only",
+      "case": "GroEL/GroES cycle",
+      "experimental_dynamic_evidence": "qualitative_partial_2_of_3",
+      "independent_chaperone_cycle_anchor": "partial_qualitative",
+      "provenance": "results/groel_kinetic_consistency_results.json",
+      "gate_reason": "The ATP-pattern/timescale check passes 2/3 categories, but all modeled cycle times miss the stated 15--20 s experimental range.",
+      "strong_validation_pass": false
+    },
+    {
+      "construction_conditioned": true,
+      "alphafold_baseline": "not_computed",
+      "energetic_frustration_baseline": "not_computed",
+      "claim_level": "diagnostic_only",
+      "case": "Hsp90/Cdc37",
+      "experimental_dynamic_evidence": "parameter_partial_delta_s_assumed",
+      "independent_chaperone_cycle_anchor": "source_parameter_only",
+      "provenance": "results/hsp90_calibrated_results.json",
+      "gate_reason": "The non-PG result follows from asymmetric payoffs and delta_S remains assumed rather than independently measured.",
+      "strong_validation_pass": false
+    },
+    {
+      "construction_conditioned": true,
+      "alphafold_baseline": "not_computed",
+      "energetic_frustration_baseline": "not_computed",
+      "claim_level": "diagnostic_only",
+      "case": "DnaJ hold-out",
+      "experimental_dynamic_evidence": "convention_consistency_only",
+      "independent_chaperone_cycle_anchor": "not_present",
+      "provenance": "scripts/results/dnaj_holdout_results.json",
+      "gate_reason": "The hit follows after adopting the shared-delta convention.",
+      "strong_validation_pass": false
+    },
+    {
+      "construction_conditioned": true,
+      "alphafold_baseline": "not_computed",
+      "energetic_frustration_baseline": "not_computed",
+      "claim_level": "diagnostic_only",
+      "case": "Hsp26 hold-out",
+      "experimental_dynamic_evidence": "convention_consistency_only",
+      "independent_chaperone_cycle_anchor": "not_present",
+      "provenance": "scripts/results/hsp26_holdout_results.json",
+      "gate_reason": "The hit follows after adopting the shared-delta convention.",
+      "strong_validation_pass": false
+    },
+    {
+      "construction_conditioned": true,
+      "alphafold_baseline": "not_computed",
+      "energetic_frustration_baseline": "not_computed",
+      "claim_level": "diagnostic_only",
+      "case": "Hsp33 hold-out",
+      "experimental_dynamic_evidence": "convention_consistency_only",
+      "independent_chaperone_cycle_anchor": "not_present",
+      "provenance": "scripts/results/hsp33_holdout_results.json",
+      "gate_reason": "The hit follows after adopting the shared-delta convention.",
+      "strong_validation_pass": false
+    },
+    {
+      "construction_conditioned": true,
+      "alphafold_baseline": "not_computed",
+      "energetic_frustration_baseline": "not_computed",
+      "claim_level": "diagnostic_only",
+      "case": "Hsc70 hold-out",
+      "experimental_dynamic_evidence": "convention_consistency_only",
+      "independent_chaperone_cycle_anchor": "not_present",
+      "provenance": "scripts/results/hsc70_holdout_results.json",
+      "gate_reason": "The R1 row-2 hit is a shared-delta convention-consistency check.",
+      "strong_validation_pass": false
+    },
+    {
+      "construction_conditioned": true,
+      "alphafold_baseline": "not_computed",
+      "energetic_frustration_baseline": "not_computed",
+      "claim_level": "diagnostic_only",
+      "case": "Thermosome dual model",
+      "experimental_dynamic_evidence": "model_choice_demonstration",
+      "independent_chaperone_cycle_anchor": "not_independent",
+      "provenance": "scripts/results/thermosome_holdout_results.json",
+      "gate_reason": "Opposite PG outcomes are intentionally generated by two defensible game constructions; this is a guardrail, not independent validation.",
+      "strong_validation_pass": false
+    }
+  ]
+}

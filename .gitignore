@@ -11,6 +11,7 @@ venv/
 .idea/
 
 # Research-internal notes and work packages
+LOCK*.txt
 Plan.txt
 PLAN.txt
 KONZEPT.md

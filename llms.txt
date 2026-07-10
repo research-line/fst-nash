@@ -39,14 +39,18 @@ FST Nash Zenodo preprint
 
 This is a research-code and preprint companion repository. It is not a clinical, diagnostic, medical-device, or production bioinformatics tool.
 
+The current pre-review evidence waterline is diagnostic classification only. The machine-readable validation ledger has 8 construction-conditioned routes, 0 full-stack validation passes, 0 computed AlphaFold baselines, 0 computed energetic-frustration baselines, and no quantitative independent chaperone-cycle anchor. XCL1 remains a calibrated but partly circular quantitative consistency check; GroEL remains a qualitative partial anchor.
+
 ## Important files
 
 - `README.md`: public overview, DOI links, method summary, scripts, and repository layout.
 - `CITATION.cff`: citation metadata for GitHub and reference managers.
 - `scripts/`: calibrated chaperone diagnostics and cross-system analyses.
+- `scripts/validation_evidence_ledger.py`: reproducible five-axis pre-review evidence gate.
 - `scripts/extension_B/`: hold-out validation scripts and preregistration notes.
+- `results/validation_evidence_ledger.json`: machine-readable gate summary and eight audited routes.
 - `results/`: main JSON and figure outputs.
 - `data/`: PDB benchmark structures and dataset manifest.
 - `code/`: legacy protein-folding scripts retained for traceability.
 
-## Last-checked: 2026-06-28
+## Last-checked: 2026-07-10

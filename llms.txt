@@ -44,7 +44,11 @@ The current pre-review evidence waterline is diagnostic classification only. The
 ## Important files
 
 - `README.md`: public overview, DOI links, method summary, scripts, and repository layout.
+- `pyproject.toml`: PEP 621 package metadata and Pytest configuration.
+- `CHANGELOG.md`: version history and maintenance log.
 - `CITATION.cff`: citation metadata for GitHub and reference managers.
+- `tests/`: automated Pytest test suite for compilation and evidence ledger validation.
+- `.github/workflows/ci.yml`: GitHub Actions CI pipeline testing Python 3.10-3.12.
 - `scripts/`: calibrated chaperone diagnostics and cross-system analyses.
 - `scripts/validation_evidence_ledger.py`: reproducible five-axis pre-review evidence gate.
 - `scripts/extension_B/`: hold-out validation scripts and preregistration notes.
@@ -53,4 +57,4 @@ The current pre-review evidence waterline is diagnostic classification only. The
 - `data/`: PDB benchmark structures and dataset manifest.
 - `code/`: legacy protein-folding scripts retained for traceability.
 
-## Last-checked: 2026-07-22
+## Last-checked: 2026-07-25

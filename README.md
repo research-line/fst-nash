@@ -1,6 +1,13 @@
 # FST-Nash: Game-Theoretic Diagnostics for Chaperone Systems
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21014120.svg)](https://doi.org/10.5281/zenodo.21014120)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
+[![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-brightgreen.svg)](llms.txt)
+[![CI](https://github.com/research-line/fst-nash/actions/workflows/ci.yml/badge.svg)](https://github.org/research-line/fst-nash/actions/workflows/ci.yml)
+
+> [!NOTE]
+> **AI Agent & LLM Context**: This repository provides machine-readable metadata and reproducibility scripts for open-science research. See [`llms.txt`](./llms.txt) for structured indexing, search terms, and claim boundaries.
 
 FST-Nash is the repository for **Game-Theoretic Diagnostics for Chaperone Systems**, a preprint and reproducibility bundle that uses potential-game tests to map the Goloubinoff symmetry landscape. It sub-classifies non-equilibrium chaperone systems into kinetic and thermodynamic regimes and keeps the scripts, benchmark data, and result files together with the DOI record.
 
@@ -68,6 +75,7 @@ scripts/                    36 calibration/diagnostic scripts
 results/                    Main atlas results (JSON)
 data/                       PDB structures (25 benchmark + 5 original)
 code/                       Legacy protein-folding scripts
+tests/                      Pytest verification suite
 ```
 
 ## Key scripts
@@ -90,6 +98,14 @@ python scripts/extension_B/thermosome_holdout.py
 
 # Legacy protein-folding pipeline
 python scripts/protein_fold_nash_pdb.py
+```
+
+## Verification & Testing
+
+To run the automated verification suite:
+
+```bash
+pytest
 ```
 
 ## Requirements

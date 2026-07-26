@@ -218,13 +218,13 @@ def main():
 
     # Payoff-Matrizen anzeigen
     print("\nPayoff-Matrix Cis-Ring (u_cis[s_cis, s_trans]):")
-    print(f"  {'':>8} {'Trans=T':>10} {'Trans=R':>10} {'Trans=R\"':>10}")
+    print("  {:>8} {:>10} {:>10} {:>10}".format("", "Trans=T", "Trans=R", 'Trans=R"'))
     for i, name in enumerate(STATE_NAMES):
         vals = "  ".join(f"{u_cis[i,j]:>8.2f}" for j in range(3))
         print(f"  {f'Cis={name}':<8} {vals}")
 
     print("\nPayoff-Matrix Trans-Ring (u_trans[s_trans, s_cis]):")
-    print(f"  {'':>8} {'Cis=T':>10} {'Cis=R':>10} {'Cis=R\"':>10}")
+    print("  {:>8} {:>10} {:>10} {:>10}".format("", "Cis=T", "Cis=R", 'Cis=R"'))
     for i, name in enumerate(STATE_NAMES):
         vals = "  ".join(f"{u_trans[i,j]:>8.2f}" for j in range(3))
         print(f"  {f'Trans={name}':<8} {vals}")

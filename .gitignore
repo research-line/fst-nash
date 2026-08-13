@@ -160,3 +160,12 @@ credentials.json
 _archive/
 Plan.txt
 # <<< RESEARCH-PIPELINE MANAGED GITIGNORE <<<
+
+# === P-007: Gestufte Proof-Note-Freigabe [U 2026-08-13, E7=B] ===
+# Einzelne abgeschlossene Proof-Notes duerfen nach Kuratierungs-Gate oeffentlich
+# sein. Freigabe-Einheit ist die EINZELNE DATEI, nie der Ordner: Ordner wieder
+# einschliessbar machen, Inhalt pauschal ausschliessen, dann je Datei negieren.
+!supplementary/proof-notes/
+supplementary/proof-notes/*
+!supplementary/proof-notes/README.md
+!supplementary/proof-notes/C2_tautology_proof.md

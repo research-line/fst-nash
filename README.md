@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-brightgreen.svg)](llms.txt)
-[![CI](https://github.com/research-line/fst-nash/actions/workflows/ci.yml/badge.svg)](https://github.org/research-line/fst-nash/actions/workflows/ci.yml)
+[![CI](https://github.com/research-line/fst-nash/actions/workflows/ci.yml/badge.svg)](https://github.com/research-line/fst-nash/actions/workflows/ci.yml)
 
 > [!NOTE]
 > **AI Agent & LLM Context**: This repository provides machine-readable metadata and reproducibility scripts for open-science research. See [`llms.txt`](./llms.txt) for structured indexing, search terms, and claim boundaries.

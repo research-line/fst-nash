@@ -169,3 +169,8 @@ Plan.txt
 supplementary/proof-notes/*
 !supplementary/proof-notes/README.md
 !supplementary/proof-notes/C2_tautology_proof.md
+
+# Private claim registers, review work, and host-specific task lists
+**/_claims/
+**/_review/
+**/TODO-*.md

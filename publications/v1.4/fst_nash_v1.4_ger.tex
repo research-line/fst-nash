@@ -1,0 +1,858 @@
+% =============================================================================
+% FST-Nash: Spieltheoretische Diagnostik von Chaperon-Systemen
+% Version 1.4 -- Zenodo Preprint
+% Autor: Lukas Geiger, unabhängiger Forscher, Bernau
+% =============================================================================
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{needspace}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{xurl}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage[unicode=true,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{
+  pdftitle={Konstruktionsbedingte Potentialspiel-Diagnostik für Chaperon-Modelle},
+  pdfauthor={Lukas Geiger},
+  pdfsubject={Functional Stability Theory; Chaperon-Systeme; Potentialspiel-Diagnostik},
+  pdfkeywords={Chaperon-Systeme, Potentialspiel, Nash-Gleichgewicht, Symmetriebrechung, Proteinfaltung, Nichtgleichgewichtsthermodynamik, Spieltheorie, Faltungswechsel, Functional Stability Theory},
+  pdflang={de-DE},
+  bookmarksnumbered=true,
+  pdfpagemode=UseOutlines
+}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\renewcommand{\proofname}{Beweis}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\emergencystretch=3em
+
+\title{Konstruktionsbedingte Potentialspiel-Diagnostik\\
+für Chaperon-Modelle}
+
+\author{Lukas Geiger\\
+\small Unabhängiger Forscher, Bernau\\
+\small Code: \href{https://github.com/research-line/fst-nash}{research-line/fst-nash}}
+
+\date{Oktober 2026}
+
+\begin{document}
+\maketitle
+
+% =============================================================================
+\begin{abstract}
+Wir untersuchen $2\times 2$-Normalformspiele, die aus ausgewählten
+Chaperon--Substrat- und Faltungswechsel-Beispielen konstruiert wurden,
+mit dem exakten Potentialspiel-Test (PG) von Monderer \& Shapley (1996).
+Unter der hier verwendeten Modellierungskonvention wird ein geteilter
+Interaktionskontrast als PG und ein asymmetrischer Kontrast als non-PG
+kodiert. Diese Konvention ist durch Xus Symmetrierahmen (2022)
+motiviert, wird aber nicht aus einem Chaperon-Reaktionsnetz hergeleitet
+und belegt daher keine $\mathrm{S4}\iff\mathrm{PG}$-Äquivalenz.
+
+Die Tabelle mit 16 Fällen ist folglich ein \emph{Konstruktionsledger},
+kein unabhängig validierter biologischer Atlas. XCL1/\allowbreak
+Lymphotactin ermöglicht eine interne Rekonstruktion der Salzverschiebung
+($23{,}7\,\%$~Ltn40 bei $150$\,mM~NaCl), da derselbe Datensatz von Tyler et~al.\ (2012)
+sowohl die Kalibrierung als auch den Vergleich bereitstellt. Das Thermosom-Beispiel
+zeigt, dass dasselbe biologische System unter verschiedenen
+Spielkonstruktionen entgegengesetzte PG-Labels erhalten kann. Ein
+Validierungsledger mit fünf Achsen ergibt $0/8$ vollständige Pässe.
+Nash-Gleichgewichtsidentitäten und Sensitivitätsgrenzen sind daher
+Kandidaten für künftige vorregistrierte Tests, keine validierten
+Vorhersagen.
+
+\medskip\noindent
+\textbf{Bezug zur Vorarbeit.}
+Die vorliegende Arbeit ersetzt Abschnitt~3 (\glqq Game-Theoretic Stability\grqq{}) des
+Übersichtspapiers \emph{Functional Stability Theory~III: Biological
+Stability and Nash Frustration} (Geiger 2026, DOI:
+10.5281/zenodo.20130573). Die dort berichtete Nash-Frustration-Korrelation
+($\rho_S = 0.44$, $p = 0.033$, $n = 24$) ist unter der früheren
+Minimierungs- und Schrittweitenkonstruktion nicht trennscharf: Für
+eine positiv definite Hesse-Matrix folgt $\rho(I-\eta H)<1$, sofern
+$0<\eta<2/\lambda_{\max}(H)$ gilt. Diese Resultate werden daher hier
+nicht als biologische Evidenz weitergeführt; der vorliegende Rahmen
+verwendet eine andere Konstruktion.
+\end{abstract}
+
+\clearpage
+\begingroup
+\small
+\setlength{\parskip}{0pt}
+\tableofcontents
+\endgroup
+\clearpage
+
+
+% =============================================================================
+\section{Einleitung}
+\label{sec:intro}
+
+Molekulare Chaperone unterstützen Proteinfaltung durch sehr verschiedene
+Mechanismen, von passiver Holdase-Aktivität bis zu ATP-getriebenen
+Konformationszyklen. Xu~\cite{Xu2022}, aufbauend auf Goloubinoff et~al.~\cite{Goloubinoff2018},
+klassifizierte Chaperon-Mechanismen über
+vier Symmetriebedingungen an der Ratenmatrix von Chaperon--Substrat-
+Interaktionen:
+\begin{itemize}
+  \item[\textbf{S1}] detaillierte Bilanz von Bindung und Entbindung
+  \item[\textbf{S2}] substratunabhängige Dissoziation
+  \item[\textbf{S3}] substratunabhängige ATPase-Rate
+  \item[\textbf{S4}] Reversibilität: Jeder geschlossene Chaperon-Zustand
+    hat einen reversiblen Pfad zu einem offenen Zustand, ohne chemische
+    Energie zu verbrauchen
+\end{itemize}
+Wenn alle vier Bedingungen gelten, befindet sich das System im
+Gleichgewicht. Der Bruch einer beliebigen Bedingung führt zu einem
+Nichtgleichgewichtssystem. Wir kürzen diese Klassen im Folgenden als
+Goldilocks~(GG) und Nicht-Goldilocks~(NGG) ab; diese Terminologie ist
+unsere, nicht die von Xu. Den Ausdruck \glqq Goloubinoff-Landschaft\grqq{}
+verwenden wir als Kurzform für das Forschungsprogramm zu Gleichgewicht
+und Nichtgleichgewicht bei Chaperonen, das von Goloubinoff et~al.~\cite{Goloubinoff2018}
+begründet und von Xu~\cite{Xu2022} in die
+S1--S4-Bedingungen formalisiert wurde. Xu unterscheidet Hsp70 und Hsp90
+bereits anhand der verschiedenen Teilmengen gebrochener
+Symmetriebedingungen und ihrer unterschiedlichen
+Nichtgleichgewichtsmechanismen. Unsere konkrete Fragestellung lautet, ob explizit
+festgelegte Spielrepräsentationen solche Symmetriemuster nachvollziehbar
+rekodieren können.
+
+\subsection{Beitrag}
+
+Wir wenden die \emph{Potentialspiel}-Eigenschaft (PG) von Monderer \&
+Shapley~\cite{MondererShapley1996} auf explizit konstruierte
+$2\times 2$-Normalformspiele an. Der Vierzyklus-Test prüft eine
+festgelegte Auszahlungsrepräsentation; er erlaubt jedoch keine unabhängige
+Bestimmung der S4-Bedingung von Xu. Wir verwenden die folgenden vorgeschlagenen Labels
+als beschreibende Unterteilung:
+\begin{enumerate}
+  \item \textbf{Kinetisches NGG} (S3 gebrochen, S4 als intakt behandelt;
+    mit geteiltem Kontrast kodiert, daher PG per Konstruktion):
+    vorgeschlagen für Routen, deren Raten substratabhängig sind, für die
+    aber kein gerichteter Zyklus angenommen wird, der das Gleichgewicht
+    verschiebt.
+  \item \textbf{Thermodynamisches NGG} (S3 und S4 als gebrochen behandelt;
+    mit asymmetrischen Kontrasten kodiert, daher non-PG per Konstruktion):
+    vorgeschlagen für Routen, in denen ein gerichteter thermodynamischer
+    Zyklus angenommen wird, der das Gleichgewicht verschiebt; die
+    vorliegenden Modelle berechnen keine Zyklusaffinitäten.
+\end{enumerate}
+
+Wir dokumentieren 16~Modellkonstruktionen, darunter vier nachträgliche
+Konventions-Konsistenzfälle, rekonstruieren die kalibrierte
+XCL1-Salzantwort und zeigen die Konstruktionsbedingtheit anhand der
+Thermosom-Meta-Demonstration.
+
+\subsection{Bezug zur Vorarbeit}
+
+Die vorliegende Arbeit ersetzt die Nash-Frustration-Analyse in FST-III~\cite{GeigerFSTIII2025}. Dort wurde jeder Rest als Spieler modelliert,
+der Rückgrat-Diederwinkel $(\varphi_i, \psi_i)$ auf dem Torus~$T^2$
+wählt, mit paarweisen Kosinus-Kopplungen. Der Spektralradius
+$\rho(J) < 1$ der Jacobi-Matrix $J = I - \eta H$ wurde als
+\glqq Nash-Stabilität\grqq{} interpretiert. Eine Zufallsparameter-Kontrolle
+(Abschnitt~\ref{sec:tautology}) zeigte jedoch, dass für eine positiv
+definite Hesse-Matrix $\rho(I-\eta H)<1$ unter der
+Schrittweitenbedingung $0<\eta<2/\lambda_{\max}(H)$ folgt. Der Test ist
+unter dieser Minimierungs- und Schrittweitenkonstruktion daher nicht
+trennscharf. Frühere Resultate einschließlich der
+Spearman-Korrelation $\rho_S = 0.44$ gegen B-Faktoren werden hier nicht
+als biologische Evidenz weitergeführt.
+
+Der vorliegende Rahmen gibt den kontinuierlichen Diederwinkel-Ansatz
+vollständig auf und formuliert Chaperon--Substrat-Interaktionen
+stattdessen als diskrete $2\times 2$-Normalformspiele, in denen der PG-Test eine
+wohldefinierte Prüfung der festgelegten Auszahlungsrepräsentation ist.
+
+
+% =============================================================================
+\section{Theorie: Vierzyklus-Test und S4-motivierte Konstruktion}
+\label{sec:theory}
+
+\begin{definition}[Potentialspiel, Monderer \& Shapley 1996]
+Ein endliches $n$-Personen-Spiel ist ein \emph{Potentialspiel}, wenn es
+eine Funktion $\Phi: S_1 \times \cdots \times S_n \to \mathbb{R}$ gibt,
+sodass für jeden Spieler~$k$, jedes Strategieprofil $s_{-k}$ und jedes
+Paar von Strategien $s_k, s_k'$ gilt:
+\begin{equation}
+  u_k(s_k', s_{-k}) - u_k(s_k, s_{-k})
+  = \Phi(s_k', s_{-k}) - \Phi(s_k, s_{-k}).
+  \label{eq:pg_def}
+\end{equation}
+\end{definition}
+
+Für ein $2\times 2$-Spiel mit Spielern $H$ (Chaperon) und $S$
+(Substrat), Strategien $\{0, 1\}$ und Auszahlungsmatrizen $u_H$, $u_S$
+reduziert sich die PG-Bedingung auf einen einzigen skalaren Test:
+
+\begin{proposition}[Vierzyklus-Test für $2\times 2$-Spiele]
+\label{prop:four_cycle}
+Definiere den \emph{Interaktionsindex} für jeden Spieler~$k$:
+\begin{equation}
+  I_k = u_k[0,0] - u_k[0,1] - u_k[1,0] + u_k[1,1].
+  \label{eq:interaction}
+\end{equation}
+Das Spiel ist genau dann ein Potentialspiel, wenn $I_H = I_S$.
+\end{proposition}
+
+\begin{proof}
+Betrachte die beiden unilateralen Pfade von $(0,0)$ nach $(1,1)$. Auf
+dem ersten Pfad wechselt $H$ die Zeile und anschließend $S$ die Spalte;
+auf dem zweiten Pfad wechselt zuerst $S$ die Spalte und dann $H$ die
+Zeile. Ein skalares exaktes Potential ist genau dann pfadunabhängig,
+wenn
+\begin{align}
+ &[u_H(1,0)-u_H(0,0)]+[u_S(1,1)-u_S(1,0)] \nonumber\\
+ ={}&[u_S(0,1)-u_S(0,0)]+[u_H(1,1)-u_H(0,1)].
+\end{align}
+Durch Umstellen folgt $I_H=I_S$, also die Vierzyklusbedingung für diese
+Orientierung. Die Umkehrung folgt durch Konstruktion von $\Phi$ entlang
+eines der beiden Pfade~\cite{MondererShapley1996}.
+\end{proof}
+
+\subsection{Durch Xus S4 motivierte Konstruktionsregel}
+
+Xus vierte Symmetriebedingung~(S4)~\cite{Xu2022} fordert, dass jeder
+geschlossene Chaperon-Zustand einen reversiblen Pfad zu einem offenen
+Zustand hat, ohne chemische Energie zu verbrauchen -- also dass das
+Chaperon--Substrat-Reaktionsnetzwerk mikroskopisch reversibel ist.
+
+In den vorliegenden Modellen wird ein als S4-intakt behandelter Fall mit
+einem geteilten Interaktionskontrast dargestellt; dadurch gilt
+$I_H=I_S$ konstruktionsbedingt. Ein als S4-gebrochen behandelter Fall
+wird mit asymmetrischen Kontrasten dargestellt; dadurch gilt im
+Allgemeinen $I_H\neq I_S$. Dies sind Modellierungsregeln, keine
+Herleitung aus Übergangsraten und kein Beweis biologischer Äquivalenz.
+
+\textbf{Konstruktionsabhängigkeit.} Potentialität ist eine Eigenschaft
+des festgelegten Spiels. Spielerpartition, Grobkörnung,
+Nutzendefinition (\emph{utility}) und kardinale Skala können das PG-Ergebnis ändern.
+Ein grobgekörntes Vierzustandsspiel kann zudem dissipative Zyklen
+verbergen. PG impliziert daher weder biologische Reversibilität noch S4,
+solange keine vollständige Netzwerk-zu-Spiel-Abbildung und unabhängig
+bestimmte Zyklusaffinitäten vorliegen. Die Thermosom-Meta-Demonstration
+(Abschnitt~\ref{sec:thermosome}) zeigt diese Abhängigkeit.
+
+
+% =============================================================================
+\section{Methoden}
+\label{sec:methods}
+
+\subsection{Spielkonstruktion}
+\label{sec:game_construction}
+
+Jedes Chaperon--Substrat-System wird als $2\times 2$-Normalformspiel
+modelliert:
+\begin{itemize}
+  \item \textbf{Spieler~$H$} (Chaperon): Strategien
+    $\{\text{Inaktiv/Ruhezustand}, \text{Aktiv/Gebunden}\}$
+  \item \textbf{Spieler~$S$} (Substrat): Strategien
+    $\{\text{Entfaltet/Frei}, \text{Gefaltet/Gebunden}\}$
+\end{itemize}
+
+Die Auszahlungsmatrix für Spieler~$k \in \{H, S\}$ ist:
+\begin{equation}
+  u_k = \begin{pmatrix}
+    u_k[0,0] & u_k[0,1] \\
+    u_k[1,0] & u_k[1,1]
+  \end{pmatrix},
+\end{equation}
+wobei größere Einträge rechnerisch als bevorzugte Modellscores behandelt
+werden. Einige Terme sind energieabgeleitet und in kcal/mol angegeben;
+andere sind Transformationen kinetischer Verhältnisse oder Annahmen.
+Die gegenwärtigen Fallmodelle liefern keine universelle
+thermodynamische Abbildung von $K_D$, $k_\text{cat}$ und
+Konformationsenergien auf eine gemeinsame kardinale Utility-Skala.
+Exact-PG-Differenzen in kcal/mol sind daher konstruktionsbezogene
+Scorekontraste, keine direkten physikalischen Messungen. Ein
+thermodynamisches Modell mit eigenständigem wissenschaftlichem Anspruch benötigt stattdessen gepaarte
+Vorwärts-/Rückwärtsraten oder ausdrücklich definierte Utilities wie
+$u=-G$ bei fester Temperatur und festem Standardzustand.
+
+Die Kopplungsenergie $\Delta_k$ beschreibt die Änderung der Auszahlung
+von Spieler~$k$, wenn der andere Spieler die Strategie wechselt:
+\begin{equation}
+  \Delta_k = u_k[\text{gekoppelt}] - u_k[\text{ungekoppelt}].
+\end{equation}
+
+\subsection{Vierzyklus-Test (PG-Test)}
+
+Für jedes kalibrierte System berechnen wir $I_H$ und $I_S$ gemäß
+Gl.~\eqref{eq:interaction} und werten aus:
+\begin{equation}
+  \text{PG-Verletzung} = |I_H - I_S|.
+\end{equation}
+Liegt die Verletzung unterhalb einer numerischen Schwelle
+($\varepsilon = 10^{-10}$), wird das festgelegte Spiel als exaktes PG
+klassifiziert. Diese numerische Identität ist keine empirische
+S4-Entscheidung und pflanzt Messunsicherheit nicht fort.
+
+\subsection{Suche nach Nash-Gleichgewichten}
+
+Reine Nash-Gleichgewichte werden identifiziert, indem für alle vier
+Strategieprofile einseitige Abweichungsanreize geprüft werden. Ein Profil
+$(s_H^*, s_S^*)$ ist ein reines NE, wenn gilt:
+\begin{align}
+  u_H(s_H^*, s_S^*) &\geq u_H(s_H', s_S^*) \quad \forall\, s_H', \\
+  u_S(s_H^*, s_S^*) &\geq u_S(s_H^*, s_S') \quad \forall\, s_S'.
+\end{align}
+
+\subsection{Regime-Klassifikation}
+
+Auf Basis des PG-Tests und der Symmetriebedingungen von Xu~\cite{Xu2022}:
+\begin{enumerate}
+  \item \textbf{GG} (Gleichgewicht): S1--S4 als intakt behandelt; die
+    gewählte Repräsentation mit geteiltem Kontrast ist PG; kein ATP oder
+    keine modellierte Substratstimulation
+  \item \textbf{Kinetisches NGG}: S3 gebrochen, S4 als intakt behandelt;
+    die gewählte Repräsentation mit geteiltem Kontrast ist PG
+  \item \textbf{Thermodynamisches NGG}: S3 und S4 als gebrochen
+    behandelt; die gewählte Repräsentation mit asymmetrischem Kontrast
+    ist non-PG
+  \item \textbf{Spezialfälle}: nichtstandardisierte $2\times 2$-
+    Struktur (3-Spieler, oszillatorisch, reguliert)
+\end{enumerate}
+
+\subsection{Symmetrie-Mapping}
+
+Für jedes System bewerten wir S1--S4 anhand publizierter experimenteller
+Daten:
+\begin{itemize}
+  \item S1: Erfüllt das System detaillierte Bilanz für Bindung und
+    Entbindung?
+  \item S2: Ist die Dissoziation substratunabhängig?
+  \item S3: Ist die ATPase-Rate substratunabhängig?
+  \item S4: Erfüllt die zitierte biologische Route Xus
+    Reversibilitätsbedingung? Dieses Label wird getrennt vom
+    Spielergebnis dokumentiert; die vorliegende Konstruktion kodiert ein
+    S4-intaktes Label mit geteiltem Kontrast und damit mit $I_H=I_S$.
+\end{itemize}
+
+
+% =============================================================================
+\section{Ergebnisse}
+
+% --- Result 1 ----------------------------------------------------------------
+\subsection{Konstruktionsbedingter Regime-Vorschlag}
+\label{sec:regime_trinity}
+
+Die 16~Spielkonstruktionen lassen sich in drei vorgeschlagene Labels
+ordnen (Tabelle~\ref{tab:atlas}). Dies ist eine beschreibende Gruppierung
+der gewählten Repräsentationen, keine unabhängig gelernte biologische
+Unterteilung:
+
+\begin{enumerate}
+  \item \textbf{Gleichgewicht (GG):} 6~Systeme. PG $=$ True, kein
+    S3-Bruch. Dazu gehören XCL1 (metamorpher Faltungswechsel),
+    Prefoldin (Holdase) und 4~nachträgliche
+    Konventions-Konsistenzsysteme (DnaJ, Hsp26, Hsp33, Hsc70).
+
+  \item \textbf{Kinetisches NGG:} 2~Systeme (Hsp70/DnaJ, SecA).
+    Xu beschreibt Hsp70-vermittelte Faltung als S3-Bruch. Seine
+    notwendige Bedingung für einen S4-Bruch verlangt mindestens zwei
+    sequenzielle ATP-Hydrolysen pro Zyklus; diese fehlen in der hier
+    betrachteten Hsp70-Route. Das biologische S4-Label ist daher mit Xu
+    vereinbar. Davon getrennt folgt PG$=$True in unserer Matrix aus dem
+    angenommenen geteilten Interaktionskontrast; es ist kein
+    unabhängiger Test dieses Labels.
+
+  \item \textbf{Thermodynamisches NGG:} 4~Systeme (Hsp90/Cdc37,
+    GroEL/GroES, ClpB/Hsp104, p97/VCP). PG $=$ False mit konstruierten
+    Scoreunterschieden von $0{,}5$--$2{,}5$. Diese Systeme werden als Bruch von S3 und S4 dargestellt. Die
+    motivierende Hypothese lautet, dass Co-Chaperone, Mehrringarchitekturen
+    oder Domänenasymmetrien gerichtete thermodynamische Zyklen erzeugen, die
+    das Gleichgewicht verschieben; die vorliegenden $2\times 2$-Scores
+    kodieren diese Annahme und berechnen oder prüfen keine Zyklusaffinitäten. Bei GroEL erfordert die
+    Substratfreisetzung sequenzielle ATP-Hydrolyse im trans-Ring und
+    verletzt damit Xus S4~\cite{Xu2022}.
+\end{enumerate}
+
+Vier zusätzliche Systeme (Trigger Factor, KaiB/KaiC, Hsp70$\to$Hsp90-Handoff,
+MAD2) liegen aufgrund nichtstandardisierter Spielstrukturen
+außerhalb der drei Standardregime (ribosomengekoppelt, oszillatorisch,
+3-Spieler oder reguliert metamorph).
+
+
+% --- Result 2 ----------------------------------------------------------------
+\clearpage
+\subsection{Konstruktionsledger}
+\label{sec:atlas}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{2.8pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}rL{0.23\textwidth}cccL{0.13\textwidth}L{0.33\textwidth}@{}}
+\caption{Konstruktionsledger: 16 festgelegte Spielrepräsentationen,
+geprüft mit dem Exact-PG-Test. Die letzte Spalte dokumentiert
+Eingabestatus und die Konstruktion, die PG oder non-PG bestimmt. Keine
+Zeile validiert unabhängig ein biologisches Label
+(siehe Abschnitt~\ref{sec:thermosome}). NE $=$ Anzahl reiner
+Nash-Gleichgewichte im festgelegten Spiel.}
+\label{tab:atlas}
+\\
+\toprule
+\# & System & ATP? & PG & NE & Regime & Evidenz / PG-Grundlage \\
+\midrule
+\endfirsthead
+\toprule
+\# & System & ATP? & PG & NE & Regime & Evidenz / PG-Grundlage \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+\multicolumn{7}{@{}l}{\textit{Regime 1 -- Gleichgewicht (GG)}} \\
+1  & XCL1 (metamorph) & Nein & $\checkmark$ & \textbf{2} & GG
+   & Symmetrisches Spiel per Konstruktion; kalibriert. \\
+2  & Prefoldin (Holdase) & Nein & $\checkmark$* & \textbf{2}* & GG*
+   & Geschätzte Parameter ($f{=}0{,}5$); nicht unabhängig kalibriert. \\
+3  & DnaJ allein & Nein & $\checkmark$ & 1 & GG
+   & Geteilte-$\Delta$-Konvention; nachträglicher Konsistenzfall. \\
+4  & Hsp26 sHsp & Nein & $\checkmark$ & 1 & GG
+   & Geteilte-$\Delta$-Konvention; nachträglicher Konsistenzfall. \\
+5  & Hsp33 redox & Nein & $\checkmark$ & 1 & GG
+   & Geteilte-$\Delta$-Konvention; nachträglicher Konsistenzfall. \\
+6  & Hsc70 allein & Basal & $\checkmark$ & 1 & GG
+   & Geteilte-$\Delta$-Konvention; nachträglicher Konsistenzfall. \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Regime 2 -- Kinetisches NGG}} \\
+7  & Hsp70/DnaJ & Ja & $\checkmark$ & 1 & kin.\ NGG
+   & Geteiltes $\Delta$ aus experimentellen $K_D$-Werten; kalibriert. \\
+8  & SecA & Ja & $\checkmark$ & 1 & kin.\ NGG
+   & Geteiltes $\Delta$ aus experimentellen $K_D$-Werten; kalibriert. \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Regime 3 -- Thermodynamisches NGG}} \\
+9  & Hsp90/Cdc37 & Ja & $\times$ & 1 & therm.\ NGG
+   & Asymmetrisches $\Delta$ (kalibriert/geschätzt); kalibriert. \\
+10 & GroEL/GroES & Ja & $\times$ & 1 & therm.\ NGG
+   & Experimentell motivierte Ringasymmetrie; kalibriert. \\
+11 & ClpB/Hsp104 & Ja & $\times$ & 1 & therm.\ NGG
+   & Threading-Asymmetrie; kalibriert. \\
+12 & p97/VCP & Ja & $\times$ & 1 & therm.\ NGG
+   & Geschätzte D1/D2-Asymmetrie; kalibriert. \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Spezialfälle (nichtstandardisiertes Regime)}} \\
+13 & Trigger Factor & Nein & $\times$ & 1 & non-GG
+   & Ribosomenasymmetrie mit experimentellem $K_D$; kalibriert. \\
+14 & KaiB/KaiC & Indirekt & $\times$ & 1 & non-GG
+   & Oszillatorisches System mit experimenteller Kinetik; kalibriert. \\
+15 & Hsp70$\to$Hsp90 (3-Spieler) & Ja & $\times$ & 1 & non-PG
+   & Drei-Spieler-Modell, kein $2\times 2$-Spiel; kalibriert. \\
+16 & MAD2 (reguliert metamorph) & Nein$^\ddagger$ & $\times$ & 1 & non-PG
+   & TRIP13-regulierte Asymmetrie; kalibriert. \\
+\end{longtable}
+
+\noindent{\footnotesize
+\textbf{Ehrlichkeitshinweis.} Alle PG$=$True-Systeme haben PG als
+algebraische Folge der Modellierungskonvention: XCL1 aus einem
+symmetrischen Spiel (identische Spieler), Hsp70/DnaJ und SecA aus der
+Annahme $\Delta_H = \Delta_S$ (experimentelle $K_D$-Werte, aber
+symmetrische Kopplung wird \emph{angenommen}) und nachträgliche Fälle
+aus der Geteilte-$\Delta$-Konvention. Alle non-PG-Systeme haben non-PG aus
+$\Delta_H \neq \Delta_S$ oder aus asymmetrischer Spielstruktur.
+PG/non-PG ist damit eine \emph{Konventionsentscheidung während der
+Modellierung}, kein emergentes empirisches Resultat. * Prefoldin basiert
+auf geschätzten Parametern ($K_D$, $\Delta G_\text{conf}$ unveröffentlicht).
+$^\ddagger$ MAD2 hat kein direktes ATP; TRIP13 AAA+ ATPase setzt MAD2
+zurück.}
+\endgroup
+
+
+% --- Result 3 ----------------------------------------------------------------
+\subsection{XCL1-Salzverschiebung: interne kalibrierte Rekonstruktion}
+\label{sec:xcl1}
+
+XCL1/Lymphotactin ist ein metamorphes Protein, das zwischen einer
+Chemokin-Faltung (Ltn10) und einer $\beta$-Faltblatt-Faltung (Ltn40)
+interkonvertiert, mit $K_\text{eq} = 1{,}2$ bei $25\,{}^\circ\text{C}$ und
+$0$\,mM~NaCl als Kalibrierungsanker des Projekts. Die internen
+Aufzeichnungen verweisen sowohl auf Tuinstra et~al.~\cite{Tuinstra2008}
+als auch auf Tyler et~al.~\cite{Tyler2012}; die genaue Zuordnung dieses
+Werts zum Primärvolltext bleibt ungeprüft. Wir modellieren XCL1 als symmetrisches
+$2\times 2$-Koordinationsspiel zwischen zwei identischen Monomeren, mit
+den Strategien $\{\text{Chemokin}, \text{Beta-Faltblatt}\}$.
+
+Das Spiel ergibt 2~reine NE: (Chem, Chem) $=$ Ltn10 und
+(Beta, Beta) $=$ Ltn40. Damit wird die metamorphe Bistabilität als
+Koordinationsgleichgewicht dargestellt.
+
+\subsubsection{Salzabhängige Populationsverschiebung}
+
+Tyler et~al.~\cite{Tyler2012} zeigten, dass NaCl die Population von
+${\sim}55\,\%$~Ltn40 ($0$\,mM) auf ${\sim}24\,\%$~Ltn40 ($150$\,mM)
+verschiebt, vermittelt durch Chloridbindung an Arg23/Arg43
+($K_d \approx 16$\,mM aus CSP-Titration). Wir modellieren dies als
+Chloridbindungs-Sättigung:
+
+\begin{equation}
+  f(\text{Cl}^-) = \frac{[\text{Cl}^-]}{[\text{Cl}^-] + K_d}, \qquad
+  \Delta\Delta G([\text{NaCl}])
+  = \Delta\Delta G_{150}
+    \frac{f([\text{NaCl}])}{f(150\,\text{mM})},
+  \label{eq:salt_model}
+\end{equation}
+mit $\Delta\Delta G_{150} = 0{,}8$\,kcal/mol (Tyler et~al.\ 2012,
+ZZ-Exchange: $\Delta\Delta G(k_f)=0{,}5$ und $\Delta\Delta G(k_r)=0{,}3$\,kcal/mol,
+Summe $0{,}8$).
+Damit ist $0{,}8$\,kcal/mol der kodierte 150-mM-Anker und nicht die
+Asymptote; die implizierte Asymptote beträgt ungefähr
+$0{,}885$\,kcal/mol. Diese Normierung stimmt mit Implementierung und
+Tabelle überein. Die genaue Quellensemantik und Unsicherheit benötigen
+noch einen Audit des Primärvolltexts.
+
+\begin{table}[!htbp]
+\centering
+\caption{XCL1-Salzverschiebung: interne Rekonstruktion. Das Modell
+ist kalibriert bei $K_\text{eq}(0\,\text{mM}) = 1{,}2$,
+$\Delta\Delta G_{150} = 0{,}8$\,kcal/mol und $K_d = 16$\,mM.}
+\label{tab:xcl1_salt}
+\begin{tabular}{@{}rcccc@{}}
+\toprule
+{[NaCl]} (mM) & $f(\text{Cl}^-)$ & $K_\text{eq}$ & \% Ltn40 & Experiment \\
+\midrule
+0   & 0{,}00 & 1{,}200 & 54{,}5 & 54{,}5\,\% (Projektanker) \\
+10  & 0{,}39 & 0{,}676 & 40{,}3 & -- \\
+50  & 0{,}76 & 0{,}387 & 27{,}9 & -- \\
+75  & 0{,}82 & 0{,}351 & 26{,}0 & Tyler: \glqq ähnlich wie $150$\,mM\grqq{}  \\
+150 & 0{,}90 & 0{,}311 & 23{,}7 & ${\sim}24\,\%$ Tyler ZZ-exch.\  \\
+300 & 0{,}95 & 0{,}291 & 22{,}5 & -- \\
+365 & 0{,}96 & 0{,}287 & 22{,}3 & CSP-Sättigung (Tyler) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Unabhängigkeitsstatus}
+
+Die $150$\,mM-Rekonstruktion ($23{,}7\,\%$) verwendet Tylers
+$\Delta\Delta G$ als Eingabe und berechnet dieselbe Evidenzfamilie neu.
+Sie ist keine unabhängige Vorhersage. Die verbleibenden internen
+Kandidatenausgaben sind:
+
+\begin{enumerate}
+  \item \textbf{75\,mM-Rasterpunkt:} Das Modell ergibt $26{,}0\,\%$.
+    Tylers qualitative Aussage, $70$\,mM und $150$\,mM hätten einen
+    ähnlichen Effekt, stammt aus derselben Kalibrierungsevidenz und ist
+    kein externer Test.
+  \item \textbf{Form der Sättigungskurve:} Die nichtlineare Form wird
+    durch Chloridbindungs-Sättigung bestimmt ($K_d = 16$\,mM aus CSP),
+    nicht allein aus Tylers Populationsdaten ableitbar.
+  \item \textbf{K25A-Mutante:} Die Modellausgabe beträgt
+    $K_\text{eq} = 0{,}40$ ($28{,}6\,\%$~Ltn40). Sie wird hier nicht als
+    unabhängig vorregistrierte Mutantenvorhersage behandelt.
+\end{enumerate}
+
+
+% --- Result 4 ----------------------------------------------------------------
+\subsection[Konstruktionsbedingung: Thermosom]{Konstruktionsbedingung:
+Thermosom\\ Meta-Demonstration}
+\label{sec:thermosome}
+
+Um zu zeigen, dass PG/non-PG von der Spielformulierung abhängt und nicht
+allein durch das biologische System festgelegt ist, analysieren wir das Thermosom von
+\emph{Thermoplasma acidophilum} -- ein Gruppe-II-Chaperonin mit
+$(\alpha\beta)_4(\alpha\beta)_4$-hexadekamerer Architektur und negativer
+Inter-Ring-Kooperativität~\cite{Bigotti2008,Gutsche2000} -- mit zwei bewusst
+kontrastierenden Spielkodierungen:
+
+\begin{table}[!htbp]
+\centering
+\caption{Thermosom: dasselbe biologische System, zwei Spielmodelle,
+entgegengesetzte PG-Resultate.}
+\label{tab:thermosome}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}L{0.22\textwidth}YccrrL{0.13\textwidth}@{}}
+\toprule
+Modell & Spieler & PG & NE & $I_1$ & $I_2$ & Regime \\
+\midrule
+A: Ring vs.\ Ring & $\alpha_4\beta_4$-Ring 1 vs.\ Ring 2 &
+  $\checkmark$ & 2 & $-12{,}92$ & $-12{,}92$ & GG \\
+B: Chaperon vs.\ Substrat & Hexadekamer vs.\ Substrat &
+  $\times$ & 1 & $-4{,}0$ & $-1{,}5$ & therm.\ NGG \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Modell~A} behandelt die zwei Ringe als identische Spieler in
+einem symmetrischen Anti-Koordinationsspiel $\{$Tight, Relaxed$\}$. PG
+folgt algebraisch, weil $u_1 = u_2^\top$ gilt (identische Spieler
+$\Rightarrow I_1 = I_2$ per Konstruktion). Die zwei statischen NE sind
+(Tight, Relaxed) und (Relaxed, Tight). Sie stellen komplementäre
+Ringzustände dar, belegen aber für sich keine zeitliche Alternation;
+dazu wäre ein Übergangs- oder Markov-Modell erforderlich.
+
+\textbf{Modell~B} behandelt den Hexadekamer und das Substrat als
+asymmetrische Spieler. Es überführt einen ATP-Bindungseingang und eine
+einseitige Substratfaltungs-Beschleunigung in die Scoreterme
+$\Delta_H=4{,}0$ und $\Delta_S=1{,}5$. Da diese Observablen für sich keine
+gemeinsame thermodynamische Skala definieren, ist ihre Differenz von
+$2{,}5$ ein konstruierter PG-Scorekontrast und keine gemessene
+Freienergieverletzung.
+
+Das Paar illustriert Modellabhängigkeit und nicht zwei gleichwertig
+validierte biologische Mechanismen. Die Wahl ist eine
+Modellierungsentscheidung und motiviert die
+Konstruktionsbedingungs-Transparenz in der gesamten Arbeit.
+
+\subsubsection{Robustheit}
+
+Ein Scan über $\Delta_H \in [0{,}5,\, 8{,}0] \times \Delta_S \in [0{,}5,\, 8{,}0]$
+bestätigt, dass Modell~B PG$=$True ausschließlich auf der Diagonalen
+$\Delta_H = \Delta_S$ ergibt, wie algebraisch aus der
+Auszahlungsstruktur folgt. Dies ist eine Sensitivität gegenüber dem
+festgelegten Scorescan; der Scan belegt nicht, welche
+Parameterkombinationen physikalisch plausibel sind.
+
+
+% =============================================================================
+\section{Bekannte Grenzen und Tautologie-Transparenz}
+\label{sec:tautology}
+
+\subsection{Was tautologisch ist}
+
+\begin{enumerate}
+  \item \textbf{PG/non-PG folgt aus der Auszahlungskonstruktion:}
+    $\Delta_H = \Delta_S \Rightarrow$ PG (algebraisch);
+    $\Delta_H \neq \Delta_S \Rightarrow$ non-PG (algebraisch).
+    Der PG-Test testet die Auszahlungssymmetrie, nicht eine
+    Systemeigenschaft.
+
+  \item \textbf{NE-Vielfachheit:} In einem generischen (bindungsfreien)
+    exakten $2\times 2$-Potentialspiel gibt es genau dann zwei reine NE,
+    wenn kein Spieler eine strikt dominante Strategie besitzt; das ist eine
+    Folge der Spielstruktur, kein biologischer Befund.
+
+  \item \textbf{Frühere Nash-Frustration-Resultate (FST-III v3):} Der
+    Spektralradius $\rho(I-\eta H)<1$ an einem nichtentarteten Minimum
+    mit positiv definiter Hesse-Matrix folgt für
+    $0<\eta<2/\lambda_{\max}(H)$. Unter dieser Konstruktion ist er kein
+    Diskriminator biologischer Stabilität. Zufallsparameter erfüllen dasselbe Kriterium
+    ($\rho(J)<1$ in $50/50$ Zufalls- und $10/10$ gefitteten Läufen).
+\end{enumerate}
+
+\noindent\textbf{Skalengrenze.} Exakte Potentialität ist eine kardinale
+Eigenschaft. Getrennte positive Skalierungen der Spieler-Utilities
+können Beste Antworten und Nash-Gleichgewichte unverändert lassen, aber
+$I_H=I_S$ verändern. Vor einer thermodynamischen Interpretation muss
+daher eine gemeinsame physikalische Skala hergeleitet werden;
+gewichtete und ordinale Potentiale beantworten schwächere, andere
+Fragen.
+
+\subsection{Noch nicht unabhängig validierte Kandidatenausgaben}
+
+\begin{enumerate}
+  \item \textbf{NE-Identität und Sensitivität:} Die festgelegten
+    Matrizen erzeugen Gleichgewichtsprofile und Scoregrenzen, die für
+    künftige Tests eingefroren werden können.
+  \item \textbf{Salzantwort:} Die kalibrierte XCL1-Rekonstruktion
+    erzeugt eine Konzentrationskurve; nach Modell-Freeze wurde jedoch
+    noch keine unberührte Konzentrationsmessung geprüft.
+  \item \textbf{Regime-Labels:} Die vorgeschlagene Gruppierung ist eine
+    nachvollziehbare Rekodierung ausgewählter Symmetriemuster und keine
+    empirisch entdeckte Ontologie.
+\end{enumerate}
+
+\subsection{Pre-Review-Gate der Validierungsevidenz}
+
+Das maschinenlesbare Validierungsledger aus
+\path{scripts/validation_evidence_ledger.py} trennt acht zentrale
+Fallrouten entlang von fünf Achsen: Konstruktionsbedingtheit,
+experimentelle Dynamik, AlphaFold-Baseline, Baseline der energetischen
+Frustration und unabhängiger Chaperon-Zyklusanker. Alle acht Zeilen sind
+konstruktionsbedingt; keine enthält eine berechnete AlphaFold-Baseline,
+eine Baseline der energetischen Frustration oder einen quantitativen
+unabhängigen Zyklusanker. Damit beträgt die Zahl vollständiger
+Validierungspässe $0/8$.
+
+Dieses Gate verwirft den engeren XCL1-Populationscheck nicht, erhält aber
+seinen Vorbehalt der teilweisen Zirkularität. GroEL bleibt nur ein
+qualitativer Teilanker: Zwei von drei Kinetikkategorien sind konsistent,
+während sämtliche modellierten Zykluszeiten außerhalb des angegebenen
+experimentellen Bereichs von $15$--$20$\,s liegen
+(Primärquelle noch zu verifizieren). Der aktuelle Stand
+trägt deshalb nur eine diagnostische Klassifikation, kein validiertes
+mechanistisches Modell und keine Erweiterung des wissenschaftlichen Anspruchs.
+
+
+% =============================================================================
+\section{Diskussion}
+\label{sec:discussion}
+
+\subsection{Ehrliche Bilanz}
+
+Wir bewerten unseren Rahmen an 13~offenen Fragen im Chaperon-Feld
+(Tabelle~\ref{tab:balance}). Der Rahmen adressiert ${\sim}38\,\%$ der
+Fragen (5/13), davon besitzt nur eine (Q9, XCL1-Salzverschiebung) einen
+quantitativen, teilweise zirkulären Konsistenzcheck.
+
+\begin{table}[!htbp]
+\centering
+\caption{Ehrliche Bilanz: Abdeckung von 13 offenen Fragen durch den
+Rahmen.}
+\label{tab:balance}
+\begin{tabular}{@{}llc@{}}
+\toprule
+Kategorie & Fragen & Anteil \\
+\midrule
+QUANTITATIVER CHECK (teilweise zirkulär) & Q9 (XCL1-Salzverschiebung) & 7{,}7\,\% \\
+MODELLAUSGABE (konstruktionsbedingt) & Q1, Q6, Q10, Q13 & 30{,}8\,\% \\
+RE-DESCRIBE & Q4, Q8 & 15{,}4\,\% \\
+NONE & Q2, Q3, Q5, Q7, Q11, Q12 & 46{,}2\,\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+${\sim}46\,\%$ der Fragen liegen vollständig außerhalb des Geltungsbereichs
+des Rahmens. Diese Bilanz ist das ehrliche Fundament der vorliegenden Arbeit.
+
+\subsection{Vergleich mit bestehenden Ansätzen}
+
+Der PG-Test liefert eine \emph{diagnostische} Klassifikationsschicht, die
+bestehende Ansätze ergänzt, aber nicht ersetzt:
+
+\begin{itemize}
+  \item \textbf{Statistische Mechanik (Ising, MWC):} Wird das exakte
+    Potential eines PG-Spiels mit einer negativen freien Energie auf einer
+    gemeinsamen physikalischen Skala identifiziert, reduziert sich die
+    Suche nach reinen NE auf das Auffinden von Freienergie-Minima unter
+    einseitigen Zügen und fügt der statistischen Mechanik nichts hinzu.
+    Innerhalb einer festgelegten kardinalen Repräsentation ist PG dafür
+    notwendig, aber nicht hinreichend; die vorliegenden Scores begründen
+    keine solche Skala (Abschnitt~\ref{sec:game_construction}).
+
+  \item \textbf{AlphaFold / Strukturvorhersage:} Unser Rahmen arbeitet
+    auf einer anderen Ebene -- er kennzeichnet eine festgelegte Spielrepräsentation
+    konformationeller Regime, nicht die Struktur selbst. Für metamorphe
+    Proteine (XCL1, MAD2) liefert die NE-Analyse
+    konstruktionsbedingte Kandidatenbeschreibungen von Bistabilität.
+
+  \item \textbf{Xu-/Goloubinoff-Rahmen:} Xu unterscheidet Mechanismen
+    bereits anhand der gebrochenen Symmetriemengen. Unser Beitrag ist
+    eine vorgeschlagene spieltheoretische Rekodierung und Prüfung, nicht
+    die Entdeckung dieser biologischen Unterscheidung.
+\end{itemize}
+
+\subsection{Was die vorliegende Arbeit \emph{nicht} behauptet}
+
+\begin{itemize}
+  \item Nash-Gleichgewicht \glqq erklärt\grqq{} Chaperon-Funktion (es
+    klassifiziert).
+  \item PG/non-PG ist eine \glqq Erklärung\grqq{} für ein Phänomen (es ist
+    konstruktionsbedingt).
+  \item \glqq Drei Regime statt zwei\grqq{} ist eine Erweiterung von Goloubinoff
+    (es ist Unterstruktur).
+  \item AF2-Versagen ist durch Nash-Analyse \glqq gelöst\grqq{} (es wird
+    umformuliert).
+  \item ATP-Kosten werden durch Nash-Analyse \glqq vorhergesagt\grqq{}
+    (Goloubinoff erklärt sie bereits).
+  \item Die $150$\,mM-Population ist eine unabhängige Vorhersage (sie ist
+    eine kalibrierte interne Rekonstruktion).
+\end{itemize}
+
+
+% =============================================================================
+\section{Schlussfolgerung}
+\label{sec:conclusion}
+
+Der Vierzyklus-Test ist für ein festgelegtes Spiel mathematisch gültig;
+seine biologische Interpretation hängt jedoch von Spielerpartition,
+Grobkörnung, Nutzendefinition und kardinaler Skala ab. Die
+gegenwärtige Evidenz belegt weder eine $\mathrm{S4}\iff\mathrm{PG}$-Äquivalenz
+noch einen validierten Atlas mit 16 Systemen oder eine unabhängige
+XCL1-Vorhersage. Der vorliegende Beitrag ist ein Konstruktionsledger mit
+expliziten Fehlermodi und einem Validierungsstand von $0/8$.
+
+Der nächste entscheidende Schritt für eine eigenständige Evidenz ist eine vorregistrierte
+Netzwerk-zu-Spiel-Konstruktion aus gepaarten Vorwärts- und Rückwärtsraten
+mit Unsicherheitsfortpflanzung, Hidden-Cycle-Audit und einem verblindeten
+externen Endpunkt.
+
+Alle Skripte (36 Python-Dateien) und Resultatdateien sind verfügbar
+unter \href{https://github.com/research-line/fst-nash}{GitHub: research-line/fst-nash}.
+
+
+% =============================================================================
+\section*{Daten- und Codeverfügbarkeit}
+
+Alle Berechnungsskripte liegen in \texttt{scripts/} (36~Dateien), die
+Resultate in \texttt{results/} (JSON-Format). Die Template-Funktionen für
+den Vierzyklus-Test, die Nash-Gleichgewichtssuche und das
+Symmetrie-Mapping liegen in \texttt{scripts/fold\_switch\_template.py}.
+Hold-out-Skripte liegen in \texttt{scripts/extension\_B/}. Das
+Pre-Review-Evidenzgate wird durch
+\path{scripts/validation_evidence_ledger.py} erzeugt.
+
+
+% =============================================================================
+\begin{sloppypar}
+\input{ai_disclosure_STANDARD_de}
+\end{sloppypar}
+
+
+% =============================================================================
+\begin{thebibliography}{99}
+
+\bibitem{Xu2022}
+H.~Xu,
+``Non-equilibrium protein folding and activation by ATP-driven
+chaperones,''
+\textit{Biomolecules}\ \textbf{12}, 832 (2022), DOI: 10.3390/biom12060832.
+
+\bibitem{Goloubinoff2018}
+P.~Goloubinoff, A.~S.~Sassi, B.~Fauvet, A.~Barducci, and P.~De~Los~Rios,
+``Chaperones convert the energy from ATP into the nonequilibrium
+stabilization of native proteins,''
+\textit{Nat.\ Chem.\ Biol.}\ \textbf{14}, 388--395 (2018), DOI: 10.1038/s41589-018-0013-8.
+
+\bibitem{MondererShapley1996}
+D.~Monderer and L.~S.~Shapley,
+``Potential Games,''
+\textit{Games Econ.\ Behav.}\ \textbf{14}, 124--143 (1996), DOI: 10.1006/game.1996.0044.
+
+\bibitem{GeigerFSTIII2025}
+L.~Geiger,
+``Functional Stability Theory~III: Biological Stability and Nash
+Frustration,''
+Zenodo preprint (2026), DOI: 10.5281/zenodo.20130573.
+
+\bibitem{Tuinstra2008}
+R.~L.~Tuinstra, F.~C.~Peterson, S.~Kutlesa, E.~S.~Elgin,
+M.~A.~Kron, and B.~F.~Volkman,
+``Interconversion between two unrelated protein folds in the
+lymphotactin native state,''
+\textit{Proc.\ Natl.\ Acad.\ Sci.\ USA}\ \textbf{105}, 5057--5062 (2008), DOI: 10.1073/pnas.0709518105.
+
+\bibitem{Tyler2012}
+R.~C.~Tyler, J.~C.~Wieting, F.~C.~Peterson, and B.~F.~Volkman,
+``Electrostatic optimization of the conformational energy landscape in
+a metamorphic protein,''
+\textit{Biochemistry}\ \textbf{51}, 9067--9075 (2012), DOI: 10.1021/bi300842j.
+
+\bibitem{Bigotti2008}
+M.~G.~Bigotti and A.~R.~Clarke,
+``Chaperonins: The hunt for the Group~II mechanism,''
+\textit{Arch.\ Biochem.\ Biophys.}\ \textbf{474}, 331--339 (2008), DOI: 10.1016/j.abb.2008.03.015.
+
+\bibitem{Gutsche2000}
+I.~Gutsche, O.~Mihalache, and W.~Baumeister,
+``ATPase cycle of an archaeal chaperonin,''
+\textit{J.\ Mol.\ Biol.}\ \textbf{300}, 187--196 (2000), DOI: 10.1006/jmbi.2000.3833.
+
+\end{thebibliography}
+
+\end{document}

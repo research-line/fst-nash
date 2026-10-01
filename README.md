@@ -1,6 +1,6 @@
 # FST-Nash: Game-Theoretic Diagnostics for Chaperone Systems
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21014120.svg)](https://doi.org/10.5281/zenodo.21014120)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23082682.svg)](https://doi.org/10.5281/zenodo.23082682)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-brightgreen.svg)](llms.txt)
@@ -9,13 +9,13 @@
 > [!NOTE]
 > **AI Agent & LLM Context**: This repository provides machine-readable metadata and reproducibility scripts for open-science research. See [`llms.txt`](./llms.txt) for structured indexing, search terms, and claim boundaries.
 
-FST-Nash is the repository for **Game-Theoretic Diagnostics for Chaperone Systems**, a preprint and reproducibility bundle that uses potential-game tests to map the Goloubinoff symmetry landscape. It sub-classifies non-equilibrium chaperone systems into kinetic and thermodynamic regimes and keeps the scripts, benchmark data, and result files together with the DOI record.
+FST-Nash accompanies a corrective preprint on explicitly constructed chaperone games. The exact four-cycle test classifies specified payoff matrices. It does not establish an S4–PG equivalence, a validated biological atlas, or independent hold-out predictions.
 
 ## Start here
 
 | Need | File or link |
 |---|---|
-| Read the current paper | [Zenodo record 10.5281/zenodo.21014120](https://doi.org/10.5281/zenodo.21014120) |
+| Read the current paper | [Zenodo record 10.5281/zenodo.23082682](https://doi.org/10.5281/zenodo.23082682) |
 | Cite the work | [`CITATION.cff`](./CITATION.cff) |
 | Re-run the chaperone diagnostics | [`scripts/`](./scripts/) |
 | Inspect main result files | [`results/`](./results/) |
@@ -24,11 +24,11 @@ FST-Nash is the repository for **Game-Theoretic Diagnostics for Chaperone System
 
 ## Paper
 
-**Game-Theoretic Diagnostics for Chaperone Systems: A Potential-Game Test Maps the Goloubinoff Symmetry Landscape**
+**Construction-Conditioned Potential-Game Diagnostics for Chaperone Models**
 
-- Zenodo DOI: [10.5281/zenodo.21014120](https://doi.org/10.5281/zenodo.21014120)
+- Zenodo DOI: [10.5281/zenodo.23082682](https://doi.org/10.5281/zenodo.23082682)
 - Concept-DOI: [10.5281/zenodo.20402751](https://doi.org/10.5281/zenodo.20402751)
-- Status: Preprint v1.3 (June 2026; English, German, and combined PDFs)
+- Status: Corrective preprint v1.4 (October 2026; separate English and German PDFs, plus a historical proof note with errata)
 
 This paper supersedes Section 3 ("Game-Theoretic Stability") of FST-III Biological ([10.5281/zenodo.20130573](https://doi.org/10.5281/zenodo.20130573)).
 
@@ -44,13 +44,9 @@ This paper supersedes Section 3 ("Game-Theoretic Stability") of FST-III Biologic
 
 ## Method
 
-We construct 2x2 games from chaperone-substrate interactions and apply the potential-game (PG) test of Monderer & Shapley (1996). The fourth symmetry condition (S4) of Xu (2022) corresponds to the PG property, yielding a **regime trinity**:
+We construct 2x2 games and apply the exact potential-game test of Monderer & Shapley (1996): equality of the two interaction contrasts characterizes an exact potential game. Shared contrasts yield potential games by construction. Xu's symmetry framework motivates a modeling convention; no equivalence with the physical S4 condition has been established.
 
-| Regime | S3 | S4 | PG | Example |
-|--------|----|----|-----|---------|
-| Equilibrium (GG) | intact | intact | True | XCL1, Prefoldin |
-| Kinetic NGG | broken | intact | True | Hsp70/DnaJ, SecA |
-| Thermodynamic NGG | broken | broken | False | GroEL, Hsp90, ClpB, p97 |
+The 16-case table is a construction ledger. Extension B cases are post-hoc convention-consistency checks. The XCL1 salt response is an internal calibrated reconstruction; precise primary-text attribution of its 1.2 baseline anchor remains unverified. Thermosome encodings demonstrate construction dependence. A thermodynamic interpretation requires a justified common physical utility scale.
 
 ## Reproducibility status
 
@@ -69,14 +65,18 @@ For search and disambiguation, refer to this project as:
 ## Repository layout
 
 ```
-scripts/                    36 calibration/diagnostic scripts
-  extension_B/              5 hold-out scripts + pre-registration
+scripts/                    Calibration/diagnostic scripts
+  extension_B/              Post-hoc convention checks + historical pre-registration
   results/                  Extension B hold-out results (JSON)
 results/                    Main atlas results (JSON)
 data/                       PDB structures (25 benchmark + 5 original)
 code/                       Legacy protein-folding scripts
 tests/                      Pytest verification suite
 ```
+
+## Release artifacts
+
+The approved English and German sources and PDFs are in [`publications/v1.4/`](./publications/v1.4/). The supplementary ZIP contains the original historical C2 note together with its current errata README. Read the errata before using the historical note.
 
 ## Key scripts
 
@@ -92,7 +92,7 @@ python scripts/goloubinoff_symmetry_mapping.py
 python scripts/fold_switching_diagnostic.py
 python scripts/validation_evidence_ledger.py
 
-# Extension B: hold-out validation
+# Extension B: post-hoc convention-consistency checks
 python scripts/extension_B/dnaj_holdout.py
 python scripts/extension_B/thermosome_holdout.py
 

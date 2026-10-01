@@ -1,12 +1,12 @@
 # FST-Nash machine-readable context
 
 Canonical repository: https://github.com/research-line/fst-nash
-Canonical paper DOI: https://doi.org/10.5281/zenodo.21014120
+Canonical paper DOI: https://doi.org/10.5281/zenodo.23082682
 Concept DOI: https://doi.org/10.5281/zenodo.20402751
 
 ## Identity
 
-FST-Nash is the research-line repository for "Game-Theoretic Diagnostics for Chaperone Systems: A Potential-Game Test Maps the Goloubinoff Symmetry Landscape".
+FST-Nash is the research-line repository for "Construction-Conditioned Potential-Game Diagnostics for Chaperone Models".
 
 The repository contains research code, benchmark structures, calibration scripts, and JSON result artifacts for a preprint on potential-game diagnostics for chaperone systems and related protein-folding regimes.
 
@@ -35,6 +35,10 @@ protein folding potential game
 FST Nash Zenodo preprint
 ```
 
+## Current corrective release
+
+Version 1.4 uses the exact four-cycle identity only for explicitly specified games. S4–PG equivalence is unproved; atlas rows and Extension B outputs are construction-conditioned convention checks. XCL1 is an internal reconstruction, not an independent prediction. Physical energy minimization requires a common cardinal scale. The supplementary historical C2 note must be read with its errata README: the pair-only formula has a global-shift zero mode, and numerical optimizer termination does not certify a non-degenerate minimum.
+
 ## Scope boundary
 
 This is a research-code and preprint companion repository. It is not a clinical, diagnostic, medical-device, or production bioinformatics tool.
@@ -51,10 +55,10 @@ The current pre-review evidence waterline is diagnostic classification only. The
 - `.github/workflows/ci.yml`: GitHub Actions CI pipeline testing Python 3.10-3.12.
 - `scripts/`: calibrated chaperone diagnostics and cross-system analyses.
 - `scripts/validation_evidence_ledger.py`: reproducible five-axis pre-review evidence gate.
-- `scripts/extension_B/`: hold-out validation scripts and preregistration notes.
+- `scripts/extension_B/`: post-hoc convention-consistency scripts and historical preregistration notes.
 - `results/validation_evidence_ledger.json`: machine-readable gate summary and eight audited routes.
 - `results/`: main JSON and figure outputs.
 - `data/`: PDB benchmark structures and dataset manifest.
 - `code/`: legacy protein-folding scripts retained for traceability.
 
-## Last-checked: 2026-07-27
+## Last-checked: 2026-10-01

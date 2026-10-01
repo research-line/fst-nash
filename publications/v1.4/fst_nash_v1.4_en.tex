@@ -1,0 +1,824 @@
+% =============================================================================
+% FST-Nash: Game-Theoretic Diagnostics for Chaperone Systems
+% Version 1.4 — Zenodo Preprint
+% Author: Lukas Geiger, Independent Researcher, Bernau
+% =============================================================================
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{needspace}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{xurl}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage[unicode=true,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{
+  pdftitle={Construction-Conditioned Potential-Game Diagnostics for Chaperone Models},
+  pdfauthor={Lukas Geiger},
+  pdfsubject={Functional Stability Theory; chaperone systems; potential-game diagnostics},
+  pdfkeywords={chaperone systems, potential game, Nash equilibrium, symmetry breaking, protein folding, non-equilibrium thermodynamics, game theory, fold switching, functional stability theory},
+  pdflang={en-US},
+  bookmarksnumbered=true,
+  pdfpagemode=UseOutlines
+}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\emergencystretch=3em
+
+\title{Construction-Conditioned Potential-Game\\
+Diagnostics for Chaperone Models}
+
+\author{Lukas Geiger\\
+\small Independent Researcher, Bernau\\
+\small Code: \href{https://github.com/research-line/fst-nash}{research-line/fst-nash}}
+
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+% =============================================================================
+\begin{abstract}
+We examine $2\times 2$ normal-form games constructed from selected
+chaperone--substrate and fold-switching examples with the exact
+potential-game (PG) test of Monderer and Shapley (1996). Under the
+modeling convention used here, a shared interaction contrast is encoded
+as PG and an asymmetric contrast as non-PG. This convention is motivated
+by Xu's (2022) symmetry framework, but it is not derived from a
+chaperone reaction network and therefore does not establish an
+$\mathrm{S4}\iff\mathrm{PG}$ equivalence.
+
+The 16-case table is consequently a \emph{construction ledger}, not an
+independently validated biological atlas. XCL1/\allowbreak Lymphotactin
+provides an internal salt-shift reconstruction ($23.7\%$~Ltn40 at
+$150$\,mM~NaCl) because the same Tyler et~al.\ (2012) data set supplies
+the calibration and comparison. The Thermosome example shows that the
+same biological system can receive opposite PG labels under different
+game constructions. A five-axis validation ledger yields $0/8$ full
+validation passes. Nash-equilibrium identities and sensitivity
+boundaries are therefore candidate outputs for future preregistered
+tests, not validated predictions.
+
+\medskip\noindent
+\textbf{Relation to Prior Work.}
+This paper supersedes Section~3 (``Game-Theoretic Stability'') of the
+overview paper \emph{Functional Stability Theory~III: Biological Stability
+and Nash Frustration} (Geiger~2026, DOI: 10.5281/zenodo.20130573).
+The Nash-Frustration correlation reported there ($\rho_S = 0.44$,
+$p = 0.033$, $n = 24$) is not discriminatory under the earlier
+minimum-and-step-size construction: for a positive-definite Hessian,
+$\rho(I-\eta H)<1$ follows whenever
+$0<\eta<2/\lambda_{\max}(H)$. Those results are therefore not retained
+as biological evidence here; the present paper uses the reformulated
+framework instead.
+\end{abstract}
+
+\clearpage
+\begingroup
+\small
+\setlength{\parskip}{0pt}
+\tableofcontents
+\endgroup
+\clearpage
+
+
+% =============================================================================
+\section{Introduction}
+\label{sec:intro}
+
+Molecular chaperones assist protein folding through diverse mechanisms
+ranging from passive holdase activity to ATP-driven conformational cycles.
+Xu~\cite{Xu2022}, building on Goloubinoff et~al.~\cite{Goloubinoff2018},
+classified chaperone mechanisms via four symmetry conditions on the rate
+matrix of chaperone--substrate interactions:
+\begin{itemize}
+  \item[\textbf{S1}] Detailed balance of binding/unbinding
+  \item[\textbf{S2}] Substrate-independent dissociation
+  \item[\textbf{S3}] Substrate-independent ATPase rate
+  \item[\textbf{S4}] Reversibility: every closed chaperone state has a
+    reversible path to an open state without consuming chemical energy
+\end{itemize}
+When all four hold, the system is at equilibrium.
+Breaking any condition yields a non-equilibrium
+system. We abbreviate these as Goldilocks~(GG) and
+non-Goldilocks~(NGG) throughout; this terminology is ours, not Xu's.
+We use ``Goloubinoff landscape'' as shorthand for the
+equilibrium/non-equilibrium chaperone research program founded by
+Goloubinoff et~al.~\cite{Goloubinoff2018} and formalized into the
+S1--S4 conditions by Xu~\cite{Xu2022}.
+Xu already distinguishes Hsp70 and Hsp90 by the different subsets of
+symmetry conditions they break and by their different non-equilibrium
+mechanisms. Our narrower question is whether explicitly specified game
+representations can provide an auditable re-encoding of such symmetry
+patterns.
+
+\subsection{Contribution}
+
+We apply the \emph{potential-game} (PG) property of Monderer and
+Shapley~\cite{MondererShapley1996} to explicitly constructed
+$2\times 2$ normal-form games. The four-cycle test audits a specified
+payoff representation; it does not independently determine Xu's S4
+condition. We use the following proposed labels as a descriptive
+partition:
+\begin{enumerate}
+  \item \textbf{Kinetic NGG} (S3 broken, S4 treated as intact; encoded
+    with a shared contrast, hence PG by construction): proposed for routes
+    in which rates are substrate-dependent but no directed cycle is
+    assumed to shift the equilibrium.
+  \item \textbf{Thermodynamic NGG} (S3 and S4 treated as broken; encoded
+    with asymmetric contrasts, hence non-PG by construction): proposed for
+    routes in which a directed thermodynamic cycle is assumed to shift the
+    equilibrium; the present models do not compute cycle affinities.
+\end{enumerate}
+
+We document 16~model constructions, including four post-hoc
+convention-consistency cases, reconstruct the calibrated XCL1 salt
+response, and illustrate construction-conditioning via the Thermosome
+meta-demonstration.
+
+\subsection{Relation to Prior Work}
+
+This paper replaces the Nash-Frustration analysis in FST-III~\cite{GeigerFSTIII2025}. That analysis modeled each residue as a player
+choosing backbone dihedral angles $(\varphi_i, \psi_i)$ on the
+torus~$T^2$, with pairwise cosine couplings. The spectral radius
+$\rho(J) < 1$ of the Jacobian $J = I - \eta H$ was interpreted as
+``Nash stability.'' However, a random-parameter control
+(Section~\ref{sec:tautology}) showed that for a positive-definite
+Hessian, $\rho(I-\eta H)<1$ follows under the step-size condition
+$0<\eta<2/\lambda_{\max}(H)$. The test is therefore not discriminatory
+under that minimum-and-step-size construction. Prior results, including
+the Spearman correlation $\rho_S = 0.44$ against B-factors, are not
+retained as biological evidence here.
+
+The present framework sets aside the continuous dihedral-angle approach
+entirely and instead formulates chaperone--substrate interactions as
+discrete $2\times 2$ normal-form games, where the PG test is a well-defined audit of the specified payoff representation.
+
+
+% =============================================================================
+\section{Theory: Four-Cycle Test and the S4-Motivated Construction}
+\label{sec:theory}
+
+\begin{definition}[Potential Game, Monderer and Shapley 1996]
+A finite $n$-player game is a \emph{potential game} if there exists a
+function $\Phi: S_1 \times \cdots \times S_n \to \mathbb{R}$ such that
+for every player~$k$, every strategy profile $s_{-k}$, and every pair
+of strategies $s_k, s_k'$:
+\begin{equation}
+  u_k(s_k', s_{-k}) - u_k(s_k, s_{-k})
+  = \Phi(s_k', s_{-k}) - \Phi(s_k, s_{-k}).
+  \label{eq:pg_def}
+\end{equation}
+\end{definition}
+
+For a $2\times 2$ game with players $H$ (chaperone) and $S$ (substrate),
+strategies $\{0, 1\}$, and payoff matrices $u_H$, $u_S$, the PG
+condition reduces to a single scalar test:
+
+\begin{proposition}[Four-Cycle Test for $2\times 2$ Games]
+\label{prop:four_cycle}
+Define the \emph{interaction index} for each player~$k$:
+\begin{equation}
+  I_k = u_k[0,0] - u_k[0,1] - u_k[1,0] + u_k[1,1].
+  \label{eq:interaction}
+\end{equation}
+The game is a potential game if and only if $I_H = I_S$.
+\end{proposition}
+
+\begin{proof}
+Consider the two unilateral paths from $(0,0)$ to $(1,1)$. Along the
+first path, $H$ changes the row and $S$ then changes the column; along
+the second, $S$ changes the column and $H$ then changes the row. A
+scalar exact potential is path independent if and only if
+\begin{align}
+ &[u_H(1,0)-u_H(0,0)]+[u_S(1,1)-u_S(1,0)] \nonumber\\
+ ={}&[u_S(0,1)-u_S(0,0)]+[u_H(1,1)-u_H(0,1)].
+\end{align}
+Rearranging gives $I_H=I_S$, the four-cycle condition for this
+orientation. The converse follows by constructing $\Phi$ along either
+path~\cite{MondererShapley1996}.
+\end{proof}
+
+\subsection{Construction Rule Motivated by Xu's S4}
+
+Xu's fourth symmetry condition~(S4)~\cite{Xu2022} requires that every
+closed chaperone state has a reversible path to an open state without
+consuming chemical energy---i.e., that the chaperone--substrate
+reaction network is microscopically reversible.
+
+In the present models, a case treated as S4-intact is represented with a
+shared interaction contrast, which makes $I_H=I_S$ by construction. A
+case treated as S4-broken is represented with asymmetric contrasts,
+which generally makes $I_H\neq I_S$. These are modeling rules, not a
+derivation from transition rates or a proof of biological equivalence.
+
+\textbf{Construction dependence.} Potentiality is a property of the
+specified game. Player partition, coarse-graining, utility definition,
+and cardinal scale can change the PG result. A coarse-grained four-state
+game can also hide dissipative cycles. Thus PG does not imply biological
+reversibility or S4 unless a complete network-to-game mapping and its
+cycle affinities are independently established. The Thermosome
+meta-demonstration (Section~\ref{sec:thermosome}) illustrates this
+dependence.
+
+
+% =============================================================================
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Game Construction}
+\label{sec:game_construction}
+
+Each chaperone--substrate system is modeled as a $2\times 2$ normal-form
+game:
+\begin{itemize}
+  \item \textbf{Player~$H$} (chaperone): strategies
+    $\{\text{Inactive/Resting}, \text{Active/Engaged}\}$
+  \item \textbf{Player~$S$} (substrate): strategies
+    $\{\text{Unfolded/Free}, \text{Folded/Bound}\}$
+\end{itemize}
+
+The payoff matrix for player~$k \in \{H, S\}$ is:
+\begin{equation}
+  u_k = \begin{pmatrix}
+    u_k[0,0] & u_k[0,1] \\
+    u_k[1,0] & u_k[1,1]
+  \end{pmatrix},
+\end{equation}
+where larger entries are treated computationally as preferred model
+scores. Some terms are energy-derived and reported in kcal/mol; other
+terms are transformations of kinetic ratios or assumptions. The current
+case models do not provide a universal thermodynamic mapping from
+$K_D$, $k_\text{cat}$, and conformational energies onto one common
+cardinal utility scale. Accordingly, exact-PG differences in kcal/mol
+are construction-level score contrasts, not direct physical
+measurements. A claim-bearing thermodynamic model would instead require
+matched forward/reverse rates or explicitly defined utilities such as
+$u=-G$ at fixed temperature and standard state.
+
+The coupling energy $\Delta_k$ represents the change in player~$k$'s
+payoff when the other player switches strategy:
+\begin{equation}
+  \Delta_k = u_k[\text{coupled}] - u_k[\text{uncoupled}].
+\end{equation}
+
+\subsection{Four-Cycle Test (PG Test)}
+
+For each calibrated system, we compute $I_H$ and $I_S$ via
+Eq.~\eqref{eq:interaction} and evaluate:
+\begin{equation}
+  \text{PG violation} = |I_H - I_S|.
+\end{equation}
+If the violation is below a numerical threshold
+($\varepsilon = 10^{-10}$), the specified game is classified as an
+exact PG. This numerical identity is not an empirical S4 decision and
+does not propagate measurement uncertainty.
+
+\subsection{Nash Equilibrium Search}
+
+Pure Nash equilibria are identified by checking all four strategy
+profiles for unilateral deviation incentives. A profile $(s_H^*, s_S^*)$
+is a pure NE if:
+\begin{align}
+  u_H(s_H^*, s_S^*) &\geq u_H(s_H', s_S^*) \quad \forall\, s_H', \\
+  u_S(s_H^*, s_S^*) &\geq u_S(s_H^*, s_S') \quad \forall\, s_S'.
+\end{align}
+
+\subsection{Regime Classification}
+
+Based on PG test and Xu's symmetry conditions~\cite{Xu2022}:
+\begin{enumerate}
+  \item \textbf{GG} (Equilibrium): S1--S4 treated as intact; the chosen
+    shared-contrast representation is PG; no ATP or no modeled
+    substrate stimulation
+  \item \textbf{Kinetic NGG}: S3 broken, S4 treated as intact; the
+    chosen shared-contrast representation is PG
+  \item \textbf{Thermodynamic NGG}: S3 and S4 treated as broken; the
+    chosen asymmetric-contrast representation is non-PG
+  \item \textbf{Special cases}: non-standard $2\times 2$ structure
+    (3-player, oscillatory, regulated)
+\end{enumerate}
+
+\subsection{Symmetry Mapping}
+
+For each system, we evaluate S1--S4 based on published experimental
+data:
+\begin{itemize}
+  \item S1: Does the system obey detailed balance for binding/unbinding?
+  \item S2: Is dissociation substrate-independent?
+  \item S3: Is the ATPase rate substrate-independent?
+  \item S4: Does the cited biological route meet Xu's reversibility
+    condition? This label is recorded separately from the game result;
+    the present construction encodes an S4-intact label with a shared
+    contrast and therefore with $I_H=I_S$.
+\end{itemize}
+
+
+% =============================================================================
+\section{Results}
+
+% --- Result 1 ----------------------------------------------------------------
+\subsection{Construction-Conditioned Regime Proposal}
+\label{sec:regime_trinity}
+
+The 16~game constructions can be organized into three proposed labels
+(Table~\ref{tab:atlas}). This is a descriptive grouping of the chosen
+representations, not an independently learned biological partition:
+
+\begin{enumerate}
+  \item \textbf{Equilibrium (GG):} 6~systems. PG $=$ True,
+    no S3-breaking. Includes XCL1 (metamorphic fold-switching),
+    Prefoldin (holdase), and 4~post-hoc convention-consistency systems
+    (DnaJ, Hsp26, Hsp33, Hsc70).
+
+  \item \textbf{Kinetic NGG:} 2~systems (Hsp70/DnaJ, SecA).
+    Xu identifies Hsp70-mediated folding as breaking S3. His necessary
+    condition for breaking S4 requires at least two ATP molecules to be
+    hydrolyzed sequentially per cycle, which is absent from the Hsp70
+    route considered here. The biological S4 label is therefore
+    consistent with Xu. Separately, PG$=$True in our matrix follows
+    from the assumed shared interaction contrast; it is not an
+    independent test of that label.
+
+  \item \textbf{Thermodynamic NGG:} 4~systems (Hsp90/Cdc37, GroEL/GroES,
+    ClpB/Hsp104, p97/VCP). PG $=$ False with constructed score
+    differences of $0.5$--$2.5$. These systems are represented as breaking both S3 and S4. The motivating
+    hypothesis is that co-chaperones, multi-ring architectures, or domain
+    asymmetries create directed thermodynamic cycles that shift the
+    equilibrium; the present $2\times 2$ scores encode this assumption and
+    do not compute or test cycle affinities. For GroEL, substrate release requires sequential ATP
+    hydrolysis in the trans-ring, violating Xu's S4~\cite{Xu2022}.
+\end{enumerate}
+
+Four additional systems (Trigger Factor, KaiB/KaiC, Hsp70$\to$Hsp90
+handoff, MAD2) fall outside the standard three-regime classification due
+to non-standard game structures (ribosome-coupled, oscillatory,
+3-player, or regulated metamorphic).
+
+
+% --- Result 2 ----------------------------------------------------------------
+\clearpage
+\subsection{Construction Ledger}
+\label{sec:atlas}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}rL{0.23\textwidth}cccL{0.13\textwidth}L{0.33\textwidth}@{}}
+\caption{Construction Ledger: 16 specified game representations audited
+with the exact-PG test. The final column records input status and the
+construction that determines PG or non-PG. No row is an independent
+validation of a biological label (see Section~\ref{sec:thermosome}).
+NE $=$ number of pure Nash equilibria in the specified game.}
+\label{tab:atlas}
+\\
+\toprule
+\# & System & ATP? & PG & NE & Regime & Evidence / PG basis \\
+\midrule
+\endfirsthead
+\toprule
+\# & System & ATP? & PG & NE & Regime & Evidence / PG basis \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+\multicolumn{7}{@{}l}{\textit{Regime 1 --- Equilibrium (GG)}} \\
+1  & XCL1 (metamorphic) & No & $\checkmark$ & \textbf{2} & GG
+   & Symmetric game by construction; calibrated. \\
+2  & Prefoldin (holdase) & No & $\checkmark$* & \textbf{2}* & GG*
+   & Estimated parameters ($f{=}0.5$); not independently calibrated. \\
+3  & DnaJ alone & No & $\checkmark$ & 1 & GG
+   & Shared-$\Delta$ convention; post-hoc consistency case. \\
+4  & Hsp26 sHsp & No & $\checkmark$ & 1 & GG
+   & Shared-$\Delta$ convention; post-hoc consistency case. \\
+5  & Hsp33 redox & No & $\checkmark$ & 1 & GG
+   & Shared-$\Delta$ convention; post-hoc consistency case. \\
+6  & Hsc70 alone & Basal & $\checkmark$ & 1 & GG
+   & Shared-$\Delta$ convention; post-hoc consistency case. \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Regime 2 --- Kinetic NGG}} \\
+7  & Hsp70/DnaJ & Yes & $\checkmark$ & 1 & kin.\ NGG
+   & Shared-$\Delta$ from experimental $K_D$ values; calibrated. \\
+8  & SecA & Yes & $\checkmark$ & 1 & kin.\ NGG
+   & Shared-$\Delta$ from experimental $K_D$ values; calibrated. \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Regime 3 --- Thermodynamic NGG}} \\
+9  & Hsp90/Cdc37 & Yes & $\times$ & 1 & therm.\ NGG
+   & Asymmetric $\Delta$ (calibrated/estimated); calibrated. \\
+10 & GroEL/GroES & Yes & $\times$ & 1 & therm.\ NGG
+   & Experimentally motivated ring asymmetry; calibrated. \\
+11 & ClpB/Hsp104 & Yes & $\times$ & 1 & therm.\ NGG
+   & Threading asymmetry; calibrated. \\
+12 & p97/VCP & Yes & $\times$ & 1 & therm.\ NGG
+   & Estimated D1/D2 asymmetry; calibrated. \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{Special cases (non-standard regime)}} \\
+13 & Trigger Factor & No & $\times$ & 1 & non-GG
+   & Ribosome asymmetry using experimental $K_D$; calibrated. \\
+14 & KaiB/KaiC & Indirect & $\times$ & 1 & non-GG
+   & Oscillatory system with experimental kinetics; calibrated. \\
+15 & Hsp70$\to$Hsp90 (3-player) & Yes & $\times$ & 1 & non-PG
+   & Three-player model, not a $2\times 2$ game; calibrated. \\
+16 & MAD2 (regulated metamorphic) & No$^\ddagger$ & $\times$ & 1 & non-PG
+   & TRIP13-regulated asymmetry; calibrated. \\
+\end{longtable}
+
+\noindent{\footnotesize
+\textbf{Honesty note.} All PG$=$True systems have PG as an algebraic
+consequence of the modeling convention: XCL1 from a symmetric game
+(identical players), Hsp70/DnaJ and SecA from the assumption
+$\Delta_H = \Delta_S$ (experimental $K_D$ values, but symmetric coupling
+is \emph{assumed}), and post-hoc cases from the shared-$\Delta$
+convention.
+All non-PG systems have non-PG from $\Delta_H \neq \Delta_S$ or from
+asymmetric game structure. PG/non-PG is thus a \emph{convention decision
+during modeling}, not an emergent empirical result. * Prefoldin is based
+on estimated parameters ($K_D$, $\Delta G_\text{conf}$ unpublished).
+$^\ddagger$ MAD2 has no direct ATP; TRIP13 AAA+ ATPase resets MAD2.}
+\endgroup
+
+
+% --- Result 3 ----------------------------------------------------------------
+\subsection{XCL1 Salt-Shift: Internal Calibrated Reconstruction}
+\label{sec:xcl1}
+
+XCL1/Lymphotactin is a metamorphic protein that interconverts between a
+chemokine fold (Ltn10) and a $\beta$-sheet fold (Ltn40) with
+$K_\text{eq} = 1.2$ at $25\,{}^\circ\text{C}$, $0$\,mM~NaCl as the
+project's calibration anchor. The internal records refer to both
+Tuinstra et~al.~\cite{Tuinstra2008} and Tyler et~al.~\cite{Tyler2012};
+the precise primary-text attribution of this value remains unverified. We model XCL1 as a symmetric $2\times 2$
+coordination game between two identical monomers, with strategies
+$\{\text{Chemokine}, \text{Beta-sheet}\}$.
+
+The game yields 2~pure NE: (Chem, Chem) $=$ Ltn10 and
+(Beta, Beta) $=$ Ltn40, representing the metamorphic bistability as a
+coordination equilibrium.
+
+\subsubsection{Salt-Dependent Population Shift}
+
+Tyler et~al.~\cite{Tyler2012} showed that NaCl shifts the population
+from ${\sim}55\%$ Ltn40 ($0$\,mM) to ${\sim}24\%$ Ltn40 ($150$\,mM) via
+chloride binding at Arg23/Arg43 ($K_d \approx 16$\,mM from CSP
+titration). We model this as a chloride-binding saturation:
+
+\begin{equation}
+  f(\text{Cl}^-) = \frac{[\text{Cl}^-]}{[\text{Cl}^-] + K_d}, \qquad
+  \Delta\Delta G([\text{NaCl}])
+  = \Delta\Delta G_{150}
+    \frac{f([\text{NaCl}])}{f(150\,\text{mM})},
+  \label{eq:salt_model}
+\end{equation}
+with $\Delta\Delta G_{150} = 0.8$\,kcal/mol (Tyler 2012 ZZ-exchange:
+$\Delta\Delta G(k_f)=0.5$ and $\Delta\Delta G(k_r)=0.3$\,kcal/mol,
+summing to $0.8$).
+Thus $0.8$\,kcal/mol is the encoded 150-mM anchor, not the asymptotic
+shift; the implied asymptote is approximately $0.885$\,kcal/mol. This
+normalization matches the implementation and table. Its precise source
+semantics and uncertainty still require a primary-full-text audit.
+
+\begin{table}[!htbp]
+\centering
+\caption{XCL1 Salt-Shift Reconstruction. Model calibrated at
+$K_\text{eq}(0\,\text{mM}) = 1.2$, $\Delta\Delta G_{150} = 0.8$\,kcal/mol,
+and $K_d = 16$\,mM.}
+\label{tab:xcl1_salt}
+\begin{tabular}{@{}rcccc@{}}
+\toprule
+{[NaCl]} (mM) & $f(\text{Cl}^-)$ & $K_\text{eq}$ & \% Ltn40 & Experimental \\
+\midrule
+0   & 0.00 & 1.200 & 54.5 & 54.5\% (project anchor) \\
+10  & 0.39 & 0.676 & 40.3 & --- \\
+50  & 0.76 & 0.387 & 27.9 & --- \\
+75  & 0.82 & 0.351 & 26.0 & Tyler: ``similar to 150\,mM''  \\
+150 & 0.90 & 0.311 & 23.7 & ${\sim}24\%$ Tyler ZZ-exch.\  \\
+300 & 0.95 & 0.291 & 22.5 & --- \\
+365 & 0.96 & 0.287 & 22.3 & CSP saturation (Tyler) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Independence Status}
+
+The $150$\,mM reconstruction ($23.7\%$) uses Tyler's
+$\Delta\Delta G$ as input and recalculates the same evidence family.
+It is not an independent prediction. The remaining internal candidate
+outputs are:
+
+\begin{enumerate}
+  \item \textbf{75\,mM grid point:} The model gives $26.0\%$. Tyler's
+    qualitative statement that $70$\,mM and $150$\,mM had a similar
+    effect comes from the calibration evidence family and is not an
+    external test.
+  \item \textbf{Saturation curve shape:} The nonlinear form is
+    determined by chloride-binding saturation ($K_d = 16$\,mM from CSP),
+    not derivable from Tyler's population data alone.
+  \item \textbf{K25A mutant:} The model output is
+    $K_\text{eq} = 0.40$ ($28.6\%$~Ltn40). It is not treated here as an
+    independently preregistered mutant prediction.
+\end{enumerate}
+
+
+% --- Result 4 ----------------------------------------------------------------
+\subsection[Construction-Conditioning: Thermosome]{Construction-Conditioning: Thermosome\\ Meta-Demonstration}
+\label{sec:thermosome}
+
+To demonstrate that PG/non-PG depends on the game formulation and is
+not fixed by the biological system alone, we analyze the Thermosome of
+\emph{Thermoplasma acidophilum}---a Group~II chaperonin with
+$(\alpha\beta)_4(\alpha\beta)_4$ hexadecameric architecture and negative
+inter-ring cooperativity~\cite{Bigotti2008,Gutsche2000}---using two deliberately
+contrasting game encodings:
+
+\begin{table}[!htbp]
+\centering
+\caption{Thermosome: Same Biological System, Two Game Models, Opposite
+PG Results.}
+\label{tab:thermosome}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}L{0.22\textwidth}YccrrL{0.13\textwidth}@{}}
+\toprule
+Model & Players & PG & NE & $I_1$ & $I_2$ & Regime \\
+\midrule
+A: Ring vs.\ Ring & $\alpha_4\beta_4$-Ring 1 vs.\ Ring 2 &
+  $\checkmark$ & 2 & $-12.92$ & $-12.92$ & GG \\
+B: Chaperone vs.\ Substrate & Hexadecamer vs.\ Substrate &
+  $\times$ & 1 & $-4.0$ & $-1.5$ & therm.\ NGG \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Model~A} treats the two rings as identical players in a symmetric
+anti-coordination game $\{$Tight, Relaxed$\}$. PG follows algebraically
+because $u_1 = u_2^\top$ (identical players $\Rightarrow I_1 = I_2$ by
+construction). Its two static NE are (Tight, Relaxed) and
+(Relaxed, Tight). They represent complementary ring states but do not
+by themselves establish temporal alternation; that would require a
+transition or Markov model.
+
+\textbf{Model~B} treats the hexadecamer and substrate as asymmetric
+players. It converts an ATP-binding input and a one-way substrate-folding
+acceleration into score terms $\Delta_H=4.0$ and $\Delta_S=1.5$.
+Because those observables do not by themselves define a shared
+thermodynamic scale, their $2.5$ difference is a constructed PG-score
+contrast rather than a measured free-energy violation.
+
+The pair illustrates model dependence, not two equally validated
+biological mechanisms. The choice is a modeling decision and motivates
+construction-conditioning transparency throughout this paper.
+
+\subsubsection{Robustness}
+
+A scan over $\Delta_H \in [0.5, 8.0] \times \Delta_S \in [0.5, 8.0]$
+confirms that Model~B yields PG$=$True exclusively on the diagonal
+$\Delta_H = \Delta_S$, as follows algebraically from the payoff
+structure. This is sensitivity to the specified score scan; the scan
+does not establish which parameter combinations are physically
+plausible.
+
+
+% =============================================================================
+\section{Known Limitations and Tautology Transparency}
+\label{sec:tautology}
+
+\subsection{What Is Tautological}
+
+\begin{enumerate}
+  \item \textbf{PG/non-PG follows from payoff construction:}
+    $\Delta_H = \Delta_S \Rightarrow$ PG (algebraically);
+    $\Delta_H \neq \Delta_S \Rightarrow$ non-PG (algebraically).
+    The PG test tests the payoff symmetry, not a system property.
+
+  \item \textbf{NE multiplicity:} In a generic (tie-free) $2\times 2$
+    exact potential game, two pure NE occur if and only if neither player
+    has a strictly dominant strategy; this is a consequence of the game
+    structure, not a biological finding.
+
+  \item \textbf{Prior Nash-Frustration results (FST-III v3):} The
+    spectral radius $\rho(I-\eta H)<1$ at a non-degenerate minimum with
+    positive-definite Hessian follows for
+    $0<\eta<2/\lambda_{\max}(H)$. Under that construction it is not a
+    discriminator of biological stability. Random parameters satisfy the same criterion
+    ($\rho(J)<1$ in $50/50$ random and $10/10$ fitted runs).
+\end{enumerate}
+
+\noindent\textbf{Scale limitation.} Exact potentiality is a cardinal
+property. Separate positive rescalings of player utilities can preserve
+best responses and Nash equilibria while changing $I_H=I_S$. A common
+physical scale must therefore be derived before exact PG is interpreted
+thermodynamically; weighted and ordinal potentials answer weaker,
+different questions.
+
+\subsection{Candidate Outputs Not Yet Independently Validated}
+
+\begin{enumerate}
+  \item \textbf{NE identity and sensitivity:} The specified matrices
+    produce equilibrium profiles and score-boundaries that can be frozen
+    for future tests.
+  \item \textbf{Salt response:} The calibrated XCL1 reconstruction
+    produces a concentration-response curve, but no untouched
+    concentration measurement has yet been tested after model freeze.
+  \item \textbf{Regime labels:} The proposed grouping is an auditable
+    re-encoding of selected symmetry patterns, not an empirically
+    discovered ontology.
+\end{enumerate}
+
+\subsection{Pre-Review Validation-Evidence Gate}
+
+The machine-readable validation ledger generated by
+\path{scripts/validation_evidence_ledger.py} separates eight
+headline case routes across five axes: construction conditioning,
+experimental dynamics, an AlphaFold baseline, an energetic-frustration
+baseline, and an independent chaperone-cycle anchor. All eight rows are
+construction-conditioned; none contains a computed AlphaFold baseline,
+an energetic-frustration baseline, or a quantitative independent cycle
+anchor. Consequently, the full-stack validation count is $0/8$.
+
+This gate does not erase the narrower XCL1 population consistency check,
+but it preserves its partial-circularity caveat. GroEL remains only a
+qualitative partial anchor: two of three kinetic categories are
+consistent, while all modeled cycle times miss the stated
+$15$--$20$\,s experimental range (primary source pending verification). The current evidence therefore supports
+diagnostic classification only, not a validated mechanistic model or a
+claim upgrade.
+
+
+% =============================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Honest Balance}
+
+We evaluate our framework against 13~open questions in the chaperone
+field (Table~\ref{tab:balance}). The framework addresses ${\sim}38\%$ of
+questions (5/13), of which only one (Q9, XCL1 salt-shift) has a
+quantitative, partially circular consistency check.
+
+\begin{table}[!htbp]
+\centering
+\caption{Honest Balance: Framework Coverage of 13~Open Questions.}
+\label{tab:balance}
+\begin{tabular}{@{}llc@{}}
+\toprule
+Category & Questions & Fraction \\
+\midrule
+QUANTITATIVE CHECK (partly circular) & Q9 (XCL1 salt-shift) & 7.7\% \\
+MODEL OUTPUT (construction-conditioned) & Q1, Q6, Q10, Q13 & 30.8\% \\
+RE-DESCRIBE & Q4, Q8 & 15.4\% \\
+NONE & Q2, Q3, Q5, Q7, Q11, Q12 & 46.2\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+${\sim}46\%$ of questions lie entirely outside the framework's scope.
+This balance is the honest foundation of this paper.
+
+\subsection{Comparison with Existing Approaches}
+
+The PG test provides a \emph{diagnostic} classification layer that
+complements rather than replaces existing approaches:
+
+\begin{itemize}
+  \item \textbf{Statistical mechanics (Ising, MWC):} If the exact potential
+    of a PG game is identified with a negative free energy on a common
+    physical scale, pure-NE search reduces to locating free-energy minima
+    under unilateral moves and adds nothing beyond statistical mechanics.
+    Within a specified cardinal representation, PG is necessary but not
+    sufficient for this reduction; the present scores do not establish
+    such a scale (Section~\ref{sec:game_construction}).
+
+  \item \textbf{AlphaFold / structural prediction:} Our framework
+    operates on a different level---it labels a specified game representation
+    of conformational regimes, not the structure itself. For metamorphic
+    proteins (XCL1, MAD2), the NE analysis supplies
+    construction-conditioned candidate descriptions of bistability.
+
+  \item \textbf{Xu/Goloubinoff framework:} Xu already distinguishes
+    mechanisms by their broken symmetry subsets. Our contribution is a
+    proposed game-theoretic re-encoding and audit, not the discovery of
+    that biological distinction.
+\end{itemize}
+
+\subsection{What This Paper Does Not Claim}
+
+\begin{itemize}
+  \item Nash equilibrium ``explains'' chaperone function (it classifies).
+  \item PG/non-PG is an ``explanation'' for a phenomenon (it is
+    construction-conditioned).
+  \item ``Three regimes instead of two'' as an extension of Goloubinoff
+    (it is substructure).
+  \item AF2 failure is ``solved'' by Nash analysis (it is reformulated).
+  \item ATP costs are ``predicted'' by Nash analysis (Goloubinoff
+    already explains them).
+  \item The $150$\,mM population is an independent prediction (it is a
+    calibrated internal reconstruction).
+\end{itemize}
+
+
+% =============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+The four-cycle test is mathematically valid for a specified game, but
+its biological interpretation is conditional on player partition,
+coarse-graining, utility definition, and cardinal scale. Current
+evidence does not establish an $\mathrm{S4}\iff\mathrm{PG}$ equivalence, a
+validated 16-system atlas, or an independent XCL1 prediction. The
+present contribution is a construction ledger with explicit failure
+modes and a $0/8$ validation status.
+
+The next claim-bearing step is a preregistered network-to-game
+construction from matched forward and reverse rates, with uncertainty
+propagation, a hidden-cycle audit, and a blinded external endpoint.
+
+All scripts (36~Python files) and result files are available at
+\href{https://github.com/research-line/fst-nash}{GitHub: research-line/fst-nash}.
+
+
+% =============================================================================
+\section*{Data and Code Availability}
+
+All computational scripts are located in \texttt{scripts/} (36~files)
+with results in \texttt{results/} (JSON format). The template functions
+for the four-cycle test, Nash-equilibrium search, and symmetry mapping
+are in \texttt{scripts/fold\_switch\_template.py}. Hold-out scripts are
+in \texttt{scripts/extension\_B/}. The pre-review evidence gate is
+generated by \path{scripts/validation_evidence_ledger.py}.
+
+
+% =============================================================================
+\begin{sloppypar}
+\input{ai_disclosure_STANDARD_en}
+\end{sloppypar}
+
+
+% =============================================================================
+\begin{thebibliography}{99}
+
+\bibitem{Xu2022}
+H.~Xu,
+``Non-equilibrium protein folding and activation by ATP-driven
+chaperones,''
+\textit{Biomolecules}\ \textbf{12}, 832 (2022), DOI: 10.3390/biom12060832.
+
+\bibitem{Goloubinoff2018}
+P.~Goloubinoff, A.~S.~Sassi, B.~Fauvet, A.~Barducci, and P.~De~Los~Rios,
+``Chaperones convert the energy from ATP into the nonequilibrium
+stabilization of native proteins,''
+\textit{Nat.\ Chem.\ Biol.}\ \textbf{14}, 388--395 (2018), DOI: 10.1038/s41589-018-0013-8.
+
+\bibitem{MondererShapley1996}
+D.~Monderer and L.~S.~Shapley,
+``Potential Games,''
+\textit{Games Econ.\ Behav.}\ \textbf{14}, 124--143 (1996), DOI: 10.1006/game.1996.0044.
+
+\bibitem{GeigerFSTIII2025}
+L.~Geiger,
+``Functional Stability Theory~III: Biological Stability and Nash
+Frustration,''
+Zenodo preprint (2026), DOI: 10.5281/zenodo.20130573.
+
+\bibitem{Tuinstra2008}
+R.~L.~Tuinstra, F.~C.~Peterson, S.~Kutlesa, E.~S.~Elgin,
+M.~A.~Kron, and B.~F.~Volkman,
+``Interconversion between two unrelated protein folds in the
+lymphotactin native state,''
+\textit{Proc.\ Natl.\ Acad.\ Sci.\ USA}\ \textbf{105}, 5057--5062 (2008), DOI: 10.1073/pnas.0709518105.
+
+\bibitem{Tyler2012}
+R.~C.~Tyler, J.~C.~Wieting, F.~C.~Peterson, and B.~F.~Volkman,
+``Electrostatic optimization of the conformational energy landscape in
+a metamorphic protein,''
+\textit{Biochemistry}\ \textbf{51}, 9067--9075 (2012), DOI: 10.1021/bi300842j.
+
+\bibitem{Bigotti2008}
+M.~G.~Bigotti and A.~R.~Clarke,
+``Chaperonins: The hunt for the Group~II mechanism,''
+\textit{Arch.\ Biochem.\ Biophys.}\ \textbf{474}, 331--339 (2008), DOI: 10.1016/j.abb.2008.03.015.
+
+\bibitem{Gutsche2000}
+I.~Gutsche, O.~Mihalache, and W.~Baumeister,
+``ATPase cycle of an archaeal chaperonin,''
+\textit{J.\ Mol.\ Biol.}\ \textbf{300}, 187--196 (2000), DOI: 10.1006/jmbi.2000.3833.
+
+\end{thebibliography}
+
+\end{document}

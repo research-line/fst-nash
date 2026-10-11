@@ -418,7 +418,7 @@
         "d = 3.0 kcal/mol (Dimerisierungsenergie, nicht unabhaengig gemessen)",
         "Spieler-Partition (Monomer A vs B, nicht N-/C-Terminal)"
       ],
-      "validiert": [
+      "interne_konsistenz": [
         "Tyler 2012 ZZ-Exchange: K_eq(150mM,25C) ~ 0.31 => ~24% Ltn40",
         "Tyler 2012: 70 mM und 150 mM NaCl geben aehnliche Stabilisierung (Saettigung)",
         "Tuinstra 2008 HSQC: 12-21% Ltn40 bei 150 mM NaCl"

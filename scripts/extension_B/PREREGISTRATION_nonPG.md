@@ -291,4 +291,4 @@ Extension B Phase 2 gehört in den Discussion-Abschnitt als
 - [x] Modell A getestet: PG=True, NE=2 (I₁=I₂=−12.92) ✓
 - [x] Modell B getestet: PG=False, NE=1 (I₁=−4.0, I₂=−1.5, Verletzung=2.5) ✓
 - [x] Robustheitsanalyse (Kipppunkt bei Δ_S=Δ_H=4.0, tautologisch; 2. NE bei Δ_S≥5.0)
-- [x] Meta-Ergebnis dokumentiert in BEWEISNOTIZ.md (Phase 2 Abschnitt, 2026-05-26)
+- [x] Meta-Ergebnis dokumentiert im Forschungsregister (Phase 2 Abschnitt, 2026-05-26)

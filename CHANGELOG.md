@@ -5,6 +5,14 @@ All notable changes to `research-line/fst-nash` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-10-11
+
+### Changed
+- Synchronized `pyproject.toml` package metadata (version 1.4.0, corrective title, Zenodo DOI 10.5281/zenodo.23082682).
+- Added `tests/test_metadata.py` and expanded `tests/test_validation_ledger.py` for formula and publication artifact parity (7/7 tests green).
+- Neutralized internal register references in `scripts/extension_B/` preregistration notes.
+- Synchronized calibrated XCL1 reconstruction scripts and JSON evidence ledgers with conservative wording.
+
 ## Paper [1.4] - 2026-10-01
 
 ### Corrected

@@ -23,9 +23,9 @@ Status: Teilweise kalibriert.
     Jedes symmetrische 2-Spieler-Koordinationsspiel ist ein PG.
     Dies ist eine Strukturaussage, keine empirische Entdeckung.
 
-  Empirischer Gehalt (was NICHT aus der Konstruktion folgt):
-  - Quantitative Vorhersage des Populations-Shifts unter NaCl-Variation
-  - Bistabilitaets-Struktur (zwei NE) erklaert die ~50:50 Population
+  Interne Kandidatenausgaben (noch nicht unabhängig validiert):
+  - Kalibrierte Rekonstruktion des Populations-Shifts unter NaCl-Variation
+  - Bistabilitaets-Struktur (zwei NE) als Modelldarstellung
   - Temperaturabhaengigkeit des dominanten NE
 
 Referenzen:
@@ -55,7 +55,7 @@ KEQ_25C_NO_SALT = 1.2       # ± 0.2, 25 C, kein NaCl (NMR-Peaks, Tyler 2012)
 DDG_SALT_150MM = 0.8        # kcal/mol, GLEICHGEWICHTS-ddG (Ltn10 vs Ltn40)
 # Tyler 2012 ZZ-Exchange bei 25C: ddG(k_f)=0.5 (Ltn10 stab.) + ddG(k_r)=0.3
 # (Ltn40 destab.) = 0.8 total. NICHT 1.0 (das ist Ltn10 vs UNFOLDED aus Urea).
-# Validierung: Tyler K_eq(150mM, 25C) ~ 0.31 => 24% Ltn40
+# Interner Vergleich: Tyler K_eq(150mM, 25C) ~ 0.31 => 24% Ltn40
 
 # Interkonversionsraten (NMR zz-Exchange + Fluoreszenz)
 # Konvention: k_10to40 = Rate Ltn10 -> Ltn40 (verifiziert via Keq-Konsistenz)
@@ -220,7 +220,7 @@ def find_nash_equilibria(u_A, u_B):
     return nash
 
 
-# ── Quantitative Vorhersage: Populations-Shift unter NaCl ────────
+# ── Kalibrierte Rekonstruktion: Populations-Shift unter NaCl ─────
 
 
 def chloride_binding_fraction(nacl_mM, kd_mM=16.0):
@@ -231,31 +231,32 @@ def chloride_binding_fraction(nacl_mM, kd_mM=16.0):
     return nacl_mM / (kd_mM + nacl_mM)
 
 
-def salt_ddG(nacl_mM, ddG_max=DDG_SALT_150MM, kd_mM=16.0):
+def salt_ddG(nacl_mM, ddG_150mm=DDG_SALT_150MM, kd_mM=16.0):
     """Salz-abhaengiges ddG mit Saettigungskinetik statt linearer Extrapolation.
     Tyler et al. (2012): Chlorid bindet spezifisch an Arg23/Arg43 (K_d ~16 mM).
-    Bei 150 mM sind ~90% besetzt. ddG_max = 0.8 kcal/mol (Gleichgewichts-ddG
-    aus ZZ-Exchange, NICHT 1.0 aus Urea-Entfaltung).
-    Modell: ddG([NaCl]) = ddG_max * f_bound([NaCl]) / f_bound(150 mM).
+    Bei 150 mM sind ~90% besetzt. ddG_150mm = 0.8 kcal/mol
+    (Gleichgewichts-ddG aus ZZ-Exchange, NICHT 1.0 aus Urea-Entfaltung).
+    Der Parameter ist der 150-mM-Anker, nicht die Asymptote.
+    Modell: ddG([NaCl]) = ddG_150mm * f_bound([NaCl]) / f_bound(150 mM).
     """
     f_ref = chloride_binding_fraction(150.0, kd_mM)
     f_nacl = chloride_binding_fraction(nacl_mM, kd_mM)
-    return ddG_max * f_nacl / f_ref
+    return ddG_150mm * f_nacl / f_ref
 
 
 def salt_population_prediction():
-    """Vorhersage des Populations-Shifts als Funktion von [NaCl].
+    """Kalibrierte Rekonstruktion des Populations-Shifts als Funktion von [NaCl].
 
     Verwendet Chlorid-Bindungs-Saettigungsmodell (Tyler 2012, K_d = 16 mM)
     statt linearer Extrapolation. Berechnet an 12 Konzentrationen.
 
-    Validierungsdaten (Tyler 2012, 25C):
+    Kalibrierungs-/Vergleichsdaten (Tyler 2012, 25C):
       0 mM:   K_eq = 1.2 ± 0.2 (HSQC) => 54.5% Ltn40 [Ankerpunkt]
       150 mM: K_eq ~ 0.31 (ZZ-Exchange abgeleitet) => ~24% Ltn40
       70 mM:  ~= 150 mM (Tyler: "similar effect") => aehnlich
     Tuinstra 2008 (150 mM, 25C): 12-21% Ltn40 (HSQC-Peakintensitaeten)
     """
-    # Tyler 2012 ZZ-Exchange-abgeleitete Validierung
+    # Tyler 2012 ZZ-Exchange-abgeleiteter interner Vergleich
     tyler_keq_150 = KEQ_25C_NO_SALT * np.exp(-0.8 / RT_25C)
     tyler_f_ltn40_150 = tyler_keq_150 / (1 + tyler_keq_150)
 
@@ -357,6 +358,7 @@ def biological_interpretation(nash, pg, dq):
             "AF2-Fehler bei XCL1 liegt an Single-Structure-Bias, nicht an "
             "fehlendem Nicht-GG-Verstaendnis."
         ),
+        # Historischer JSON-Schlüssel; der Inhalt ist eine Rekonstruktion.
         "vorhersage_salt": (
             f"Bei 0 mM NaCl, 25 C: f(Ltn40) = {dq['f_Ltn40_25C_no_salt']:.1%}. "
             f"Bei 150 mM NaCl, 25 C: f(Ltn40) = {dq['f_Ltn40_25C_150mM']:.1%}. "
@@ -443,10 +445,10 @@ def main():
         print(f"  ({ne['Monomer_A']}, {ne['Monomer_B']}): "
               f"u_A={ne['u_A']:.4f}, u_B={ne['u_B']:.4f} -> {ne['biologisch']}")
 
-    # 6. Quantitative Vorhersage: Salt-Shift
-    print(f"\n--- Vorhersage: Populations-Shift unter NaCl (25 C) ---")
+    # 6. Kalibrierte Rekonstruktion: Salt-Shift
+    print(f"\n--- Rekonstruktion: Populations-Shift unter NaCl (25 C) ---")
     print(f"  Salz-Modell: Chlorid-Bindung K_d = 16 mM (Tyler 2012)")
-    print(f"  ddG_max = {DDG_SALT_150MM} kcal/mol (Gleichgewichts-ddG aus ZZ-Exchange)")
+    print(f"  ddG_150mM = {DDG_SALT_150MM} kcal/mol (150-mM-Anker aus ZZ-Exchange)")
     salt_pred = salt_population_prediction()
     for r in salt_pred:
         exp_note = ""
@@ -461,7 +463,7 @@ def main():
     tyler_keq = KEQ_25C_NO_SALT * np.exp(-0.8 / RT_25C)
     tyler_f = tyler_keq / (1 + tyler_keq)
     r150 = [r for r in salt_pred if r["NaCl_mM"] == 150][0]
-    print(f"\n  --- Validierung gegen Tyler 2012 (25 C, 150 mM) ---")
+    print(f"\n  --- Interner Vergleich mit Tyler 2012 (25 C, 150 mM) ---")
     print(f"  Tyler ZZ-Exchange (abgeleitet): K_eq = {tyler_keq:.3f}, "
           f"f(Ltn40) = {tyler_f:.1%}")
     print(f"  Unser Modell:                  K_eq = {r150['Keq_predicted']:.3f}, "
@@ -525,6 +527,7 @@ def main():
         "pg_test": pg,
         "potential_funktion": pot,
         "nash_gleichgewichte": nash,
+        # Historischer Schema-Schlüssel, aus Kompatibilitätsgründen beibehalten.
         "salt_vorhersage": salt_pred,
         "temperatur_variation": temp_var,
         "robustheit_d": rob_d,
@@ -550,7 +553,7 @@ def main():
                     "d = 3.0 kcal/mol (Dimerisierungsenergie, nicht unabhaengig gemessen)",
                     "Spieler-Partition (Monomer A vs B, nicht N-/C-Terminal)",
                 ],
-                "validiert": [
+                "interne_konsistenz": [
                     "Tyler 2012 ZZ-Exchange: K_eq(150mM,25C) ~ 0.31 => ~24% Ltn40",
                     "Tyler 2012: 70 mM und 150 mM NaCl geben aehnliche Stabilisierung (Saettigung)",
                     "Tuinstra 2008 HSQC: 12-21% Ltn40 bei 150 mM NaCl",

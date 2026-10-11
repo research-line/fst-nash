@@ -235,7 +235,7 @@ weicht <20% von experimentellem Wert ab.
 3. ✅ Scripts geschrieben: `dnaj_holdout.py`, `hsp26_holdout.py`, `hsp33_holdout.py`,
    `hsc70_holdout.py` (shared-Delta-Konvention, PG-Konvention-Labels)
 4. ✅ Vorhersagen getestet: 4/4 PG=Konvention-konsistent, 4/4 NE=1 (strukturell konsistent)
-5. ✅ Ergebnisse dokumentiert: Hit/Miss-Tabelle + Chronologie-Transparenz in BEWEISNOTIZ.md
+5. ✅ Ergebnisse dokumentiert: Hit/Miss-Tabelle + Chronologie-Transparenz im Forschungsregister
 
 ## 6. Anti-Tautologie-Checks
 

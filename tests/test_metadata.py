@@ -1,6 +1,5 @@
 from pathlib import Path
-import tomllib
-import yaml
+import re
 
 
 def test_pyproject_metadata():
@@ -8,17 +7,12 @@ def test_pyproject_metadata():
     pyproject_path = root / "pyproject.toml"
     assert pyproject_path.exists(), "pyproject.toml must exist"
 
-    with open(pyproject_path, "rb") as f:
-        data = tomllib.load(f)
-
-    project = data.get("project", {})
-    assert project.get("name") == "fst-nash"
-    assert project.get("version") == "1.4.0"
-    assert project.get("description") == "Construction-Conditioned Potential-Game Diagnostics for Chaperone Models"
-
-    urls = project.get("urls", {})
-    assert urls.get("Preprint DOI") == "https://doi.org/10.5281/zenodo.23082682"
-    assert urls.get("Concept DOI") == "https://doi.org/10.5281/zenodo.20402751"
+    txt = pyproject_path.read_text(encoding="utf-8")
+    assert re.search(r'name\s*=\s*"fst-nash"', txt)
+    assert re.search(r'version\s*=\s*"1\.4\.0"', txt)
+    assert re.search(r'description\s*=\s*"Construction-Conditioned Potential-Game Diagnostics for Chaperone Models"', txt)
+    assert re.search(r'"Preprint DOI"\s*=\s*"https://doi\.org/10\.5281/zenodo\.23082682"', txt)
+    assert re.search(r'"Concept DOI"\s*=\s*"https://doi\.org/10\.5281/zenodo\.20402751"', txt)
 
 
 def test_citation_cff():
@@ -26,12 +20,10 @@ def test_citation_cff():
     cff_path = root / "CITATION.cff"
     assert cff_path.exists(), "CITATION.cff must exist"
 
-    with open(cff_path, "r", encoding="utf-8") as f:
-        cff = yaml.safe_load(f)
-
-    assert cff.get("version") == "1.4"
-    assert cff.get("doi") == "10.5281/zenodo.23082682"
-    assert cff.get("title") == "Construction-Conditioned Potential-Game Diagnostics for Chaperone Models"
+    txt = cff_path.read_text(encoding="utf-8")
+    assert re.search(r'version:\s*"1\.4"', txt)
+    assert re.search(r'doi:\s*"10\.5281/zenodo\.23082682"', txt)
+    assert re.search(r'title:\s*"Construction-Conditioned Potential-Game Diagnostics for Chaperone Models"', txt)
 
 
 def test_publication_v1_4_artifacts():

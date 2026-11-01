@@ -5,6 +5,15 @@ All notable changes to `research-line/fst-nash` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Security
+- Enforce least-privilege permissions (contents: read) in GitHub Actions CI workflow (.github/workflows/ci.yml).
+
+### Added
+- Added automated contract test for Monderer & Shapley (1996) 4-cycle exact potential game condition (test_four_cycle_exact_potential_game_contract).
+- Added automated text layer verification test for publication v1.4 PDFs (test_publication_v1_4_pdf_textlayer).
+
 ## [1.4.0] - 2026-10-11
 
 ### Changed
